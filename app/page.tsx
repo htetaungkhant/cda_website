@@ -1,10 +1,8 @@
 import Banner from "@/components/Banner";
-import Header from "@/components/Header";
 
 export default function Home() {
   return (
-    <main className="overflow-hidden font-[family-name:var(--font-poppins)]">
-      <Header />
+    <>
       <Banner />
       <section className="px-4 py-8 flex flex-col gap-4 text-black">
         <h1 className="text-4xl">
@@ -17,7 +15,6 @@ export default function Home() {
           training and a clear path to becoming a confident driver.
         </p>
       </section>
-      <footer></footer>
-    </main>
+    </>
   );
 }

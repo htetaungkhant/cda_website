@@ -46,7 +46,7 @@ const Header = () => {
         <nav className="max-lg:hidden">
           <ul className="flex gap-8 text-sm font-semibold">
             <li>
-              <Link href="/">ABOUT US</Link>
+              <Link href="/about-us">ABOUT US</Link>
             </li>
             <li>
               <Link href="/">OUR TEAM</Link>
