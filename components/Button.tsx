@@ -13,7 +13,7 @@ export const ButtonStyle1: React.FC<
     <button {...props}>
       <motion.div
         className={cn(
-          "relative flex items-center gap-2 font-medium text-lg p-2 pl-4 rounded-full bg-[var(--custom-primary)] cursor-pointer group overflow-hidden max-lg:p-1 max-lg:pl-3",
+          "relative flex items-center gap-2 font-medium text-base p-2 pl-4 rounded-full bg-[var(--custom-primary)] cursor-pointer group overflow-hidden max-lg:p-1 max-lg:pl-3",
           className
         )}
         whileHover="hover"
@@ -30,7 +30,7 @@ export const ButtonStyle1: React.FC<
 
         {/* Content */}
         <motion.span
-          className="relative z-10 text-black whitespace-nowrap max-lg:text-base"
+          className="relative z-10 text-black whitespace-nowrap max-lg:text-sm"
           variants={{
             hover: { color: "#ffffff" },
           }}
