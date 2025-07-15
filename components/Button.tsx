@@ -42,7 +42,7 @@ export const ButtonStyle1: React.FC<
 
         {/* Arrow */}
         <motion.div
-          className="relative z-10 bg-white rounded-full p-2 flex items-center justify-center w-8 h-8 max-lg:p-1.5 max-lg:w-8 max-lg:h-8"
+          className="relative z-10 bg-white rounded-full p-2 flex items-center justify-center w-8 h-8 max-lg:p-1.5 max-lg:w-7 max-lg:h-7"
           variants={{
             hover: { rotate: 45 },
           }}
