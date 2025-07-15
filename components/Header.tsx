@@ -123,7 +123,7 @@ const Header = () => {
       >
         <ul className="flex flex-col gap-6 text-sm font-semibold">
           <li className="text-center">
-            <Link href="/">ABOUT US</Link>
+            <Link href="/about-us">ABOUT US</Link>
           </li>
           <li className="text-center">
             <Link href="/">OUR TEAM</Link>
