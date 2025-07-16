@@ -38,7 +38,7 @@ export default function RootLayout({
         suppressHydrationWarning={true}
         className={`${geistSans.variable} ${geistMono.variable} ${poppins.variable} antialiased`}
       >
-        <main className="overflow-hidden font-[family-name:var(--font-poppins)]">
+        <main className="overflow-hidden font-[family-name:var(--font-poppins)] bg-[#F2F0EF]">
           <Header />
           {children}
           <footer></footer>

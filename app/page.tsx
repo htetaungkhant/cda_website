@@ -5,13 +5,15 @@ import SvgImage1 from "@/public/1.svg";
 import SvgImage2 from "@/public/2.svg";
 import SvgImage3 from "@/public/3.svg";
 import SvgImage4 from "@/public/4.svg";
+import CourseCardsSection from "@/components/CourseCardsSection";
 
 export default function Home() {
   return (
     <>
       <Banner />
-      <section className="px-6 py-12 max-lg:px-3 max-lg:py-6 flex flex-col gap-4 text-black">
-        <h1 className="text-4xl">
+      {/* Info Cards Section */}
+      <section className="max-w-420 mx-auto px-6 py-8 max-lg:px-3 max-lg:py-6 flex flex-col gap-4 text-black">
+        <h1 className="text-4xl mt-3 lg:mt-6">
           Your Road to <strong>Driving Success</strong>
         </h1>
         <p>
@@ -31,7 +33,7 @@ export default function Home() {
                 alt="Enroll at CDA"
                 width={120}
                 height={120}
-                className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-14 md:-translate-y-20 w-2/5 h-auto object-contain transition-all duration-700 ease-in-out group-hover:top-0 group-hover:left-0 group-hover:translate-x-0 group-hover:translate-y-0 group-hover:w-12 group-hover:md:w-16"
+                className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-14 md:-translate-y-20 max-w-28 w-2/5 h-auto object-contain transition-all duration-700 ease-in-out group-hover:top-0 group-hover:left-0 group-hover:translate-x-0 group-hover:translate-y-0 group-hover:w-12 group-hover:md:w-16"
               />
 
               <h2 className="opacity-100 group-hover:opacity-0 absolute top-1/2 left-1/2 transform -translate-x-1/2 translate-y-6 md:translate-y-12 font-semibold text-lg lg:text-xl xl:text-2xl text-center transition-all duration-700 ease-in-out group-hover:top-20 group-hover:left-0 group-hover:translate-x-0 group-hover:translate-y-0 group-hover:text-left">
@@ -58,7 +60,7 @@ export default function Home() {
                 alt="Make Payment"
                 width={120}
                 height={120}
-                className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-14 md:-translate-y-20 w-2/5 h-auto object-contain transition-all duration-700 ease-in-out group-hover:top-0 group-hover:left-0 group-hover:translate-x-0 group-hover:translate-y-0 group-hover:w-12 group-hover:md:w-16"
+                className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-14 md:-translate-y-20 max-w-28 w-2/5 h-auto object-contain transition-all duration-700 ease-in-out group-hover:top-0 group-hover:left-0 group-hover:translate-x-0 group-hover:translate-y-0 group-hover:w-12 group-hover:md:w-16"
               />
 
               <h2 className="opacity-100 group-hover:opacity-0 absolute top-1/2 left-1/2 transform -translate-x-1/2 translate-y-6 md:translate-y-12 font-semibold text-lg lg:text-xl xl:text-2xl text-center transition-all duration-700 ease-in-out group-hover:top-20 group-hover:left-0 group-hover:translate-x-0 group-hover:translate-y-0">
@@ -89,7 +91,7 @@ export default function Home() {
                 alt="Complete Your Tuition"
                 width={120}
                 height={120}
-                className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-14 md:-translate-y-20 w-2/5 h-auto object-contain transition-all duration-700 ease-in-out group-hover:top-0 group-hover:left-0 group-hover:translate-x-0 group-hover:translate-y-0 group-hover:w-12 group-hover:md:w-16"
+                className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-14 md:-translate-y-20 max-w-28 w-2/5 h-auto object-contain transition-all duration-700 ease-in-out group-hover:top-0 group-hover:left-0 group-hover:translate-x-0 group-hover:translate-y-0 group-hover:w-12 group-hover:md:w-16"
               />
 
               <h2 className="opacity-100 group-hover:opacity-0 absolute top-1/2 left-1/2 transform -translate-x-1/2 translate-y-6 md:translate-y-12 font-semibold text-lg lg:text-xl xl:text-2xl text-center transition-all duration-700 ease-in-out group-hover:top-20 group-hover:left-0 group-hover:translate-x-0 group-hover:translate-y-0">
@@ -124,7 +126,7 @@ export default function Home() {
                 alt="Get Your Driving Licence"
                 width={120}
                 height={120}
-                className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-14 md:-translate-y-20 w-2/5 h-auto object-contain transition-all duration-700 ease-in-out group-hover:top-0 group-hover:left-0 group-hover:translate-x-0 group-hover:translate-y-0 group-hover:w-12 group-hover:md:w-16"
+                className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-14 md:-translate-y-20 max-w-28 w-2/5 h-auto object-contain transition-all duration-700 ease-in-out group-hover:top-0 group-hover:left-0 group-hover:translate-x-0 group-hover:translate-y-0 group-hover:w-12 group-hover:md:w-16"
               />
 
               <h2 className="opacity-100 group-hover:opacity-0 absolute top-1/2 left-1/2 transform -translate-x-1/2 translate-y-6 md:translate-y-12 font-semibold text-lg lg:text-xl xl:text-2xl text-center transition-all duration-700 ease-in-out group-hover:top-20 group-hover:left-0 group-hover:translate-x-0 group-hover:translate-y-0">
@@ -150,6 +152,8 @@ export default function Home() {
           </div>
         </div>
       </section>
+      {/* Course Cards Section */}
+      <CourseCardsSection />
     </>
   );
 }
