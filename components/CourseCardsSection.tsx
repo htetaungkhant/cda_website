@@ -345,6 +345,8 @@ const CourseCardsSection = () => {
           </button>
         </div>
       </div>
+
+      {/* Mobile Navigation Arrows */}
       <div className="relative flex justify-center lg:hidden">
         <button
           onClick={handleLeftArrowClick}
