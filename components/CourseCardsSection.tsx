@@ -68,10 +68,10 @@ const CourseCardsSection = () => {
 
   return (
     <section className="max-w-420 mx-auto px-6 py-8 max-lg:px-3 max-lg:py-6 flex flex-col gap-4 text-black">
-      <h1 className="text-4xl">
+      <h1 className="text-4xl max-lg:text-center">
         Our <strong>Driving Courses</strong>
       </h1>
-      <p>
+      <p className="max-lg:text-center">
         Whether you&apos;re a beginner or just need a refresher, Cambridge
         Driving Academy has a course tailored to your journey. Choose the right
         course and start driving with skill, confidence, and control.
@@ -111,7 +111,7 @@ const CourseCardsSection = () => {
               confidence and real-world driving experience.
             </p>
           </div>
-          <button className="absolute bottom-5 left-5 right-5 z-10 bg-white group-hover:bg-[var(--custom-primary)] text-black group-hover:text-white font-medium rounded-full flex items-center justify-between px-3 py-1 pr-1 transition-all duration-500 ease-in-out cursor-pointer">
+          <button className="absolute bottom-5 left-5 right-5 z-10 bg-white group-hover:bg-[var(--custom-primary)] text-black group-hover:text-white font-medium rounded-full flex items-center justify-between px-3 py-1 pr-1 transition-all duration-500 ease-in-out cursor-pointer hover:shadow-lg">
             <span className="whitespace-nowrap">READ MORE</span>
             <IoMdArrowForward className="p-1.5 max-lg:p-1 w-8 h-8 max-lg:w-7 max-lg:h-7 border border-black group-hover:border-white transform -rotate-45 group-hover:rotate-0 rounded-full transition-all duration-500 ease-in-out" />
           </button>
@@ -147,7 +147,7 @@ const CourseCardsSection = () => {
               test in weeks—not months.
             </p>
           </div>
-          <button className="absolute bottom-5 left-5 right-5 z-10 bg-white group-hover:bg-[var(--custom-primary)] text-black group-hover:text-white font-medium rounded-full flex items-center justify-between px-3 py-1 pr-1 transition-all duration-500 ease-in-out cursor-pointer">
+          <button className="absolute bottom-5 left-5 right-5 z-10 bg-white group-hover:bg-[var(--custom-primary)] text-black group-hover:text-white font-medium rounded-full flex items-center justify-between px-3 py-1 pr-1 transition-all duration-500 ease-in-out cursor-pointer hover:shadow-lg">
             <span className="whitespace-nowrap">READ MORE</span>
             <IoMdArrowForward className="p-1.5 max-lg:p-1 w-8 h-8 max-lg:w-7 max-lg:h-7 border border-black group-hover:border-white transform -rotate-45 group-hover:rotate-0 rounded-full transition-all duration-500 ease-in-out" />
           </button>
@@ -182,7 +182,7 @@ const CourseCardsSection = () => {
               we handle the gearwork. Ideal for quick learning and city driving.
             </p>
           </div>
-          <button className="absolute bottom-5 left-5 right-5 z-10 bg-white group-hover:bg-[var(--custom-primary)] text-black group-hover:text-white font-medium rounded-full flex items-center justify-between px-3 py-1 pr-1 transition-all duration-500 ease-in-out cursor-pointer">
+          <button className="absolute bottom-5 left-5 right-5 z-10 bg-white group-hover:bg-[var(--custom-primary)] text-black group-hover:text-white font-medium rounded-full flex items-center justify-between px-3 py-1 pr-1 transition-all duration-500 ease-in-out cursor-pointer hover:shadow-lg">
             <span className="whitespace-nowrap">READ MORE</span>
             <IoMdArrowForward className="p-1.5 max-lg:p-1 w-8 h-8 max-lg:w-7 max-lg:h-7 border border-black group-hover:border-white transform -rotate-45 group-hover:rotate-0 rounded-full transition-all duration-500 ease-in-out" />
           </button>
@@ -218,7 +218,7 @@ const CourseCardsSection = () => {
               affordable, and effective.
             </p>
           </div>
-          <button className="absolute bottom-5 left-5 right-5 z-10 bg-white group-hover:bg-[var(--custom-primary)] text-black group-hover:text-white font-medium rounded-full flex items-center justify-between px-3 py-1 pr-1 transition-all duration-500 ease-in-out cursor-pointer">
+          <button className="absolute bottom-5 left-5 right-5 z-10 bg-white group-hover:bg-[var(--custom-primary)] text-black group-hover:text-white font-medium rounded-full flex items-center justify-between px-3 py-1 pr-1 transition-all duration-500 ease-in-out cursor-pointer hover:shadow-lg">
             <span className="whitespace-nowrap">READ MORE</span>
             <IoMdArrowForward className="p-1.5 max-lg:p-1 w-8 h-8 max-lg:w-7 max-lg:h-7 border border-black group-hover:border-white transform -rotate-45 group-hover:rotate-0 rounded-full transition-all duration-500 ease-in-out" />
           </button>
@@ -226,7 +226,7 @@ const CourseCardsSection = () => {
       </div>
       <div
         ref={mobileScrollContainerRef}
-        className="flex overflow-x-auto gap-4 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none] lg:hidden"
+        className="flex overflow-x-auto gap-4 select-none [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none] lg:hidden"
       >
         {/* Course Card 1 */}
         <div className="min-w-[87vw] sm:min-w-72 relative h-112 flex flex-col gap-2 md:gap-3 xl:gap-5 p-4 max-[330px]:p-2 xl:p-6 border border-[#00000066] rounded-xl shadow-xl bg-white overflow-hidden group">
@@ -252,7 +252,7 @@ const CourseCardsSection = () => {
               </p>
             </div>
           </div>
-          <button className="bg-[var(--custom-primary)] cursor-pointer text-white font-medium rounded-full flex items-center justify-between px-3 py-1 pr-1">
+          <button className="bg-[var(--custom-primary)] cursor-pointer text-white font-medium rounded-full flex items-center justify-between px-3 py-1 pr-1 hover:shadow-lg">
             <span className="whitespace-nowrap">READ MORE</span>
             <IoMdArrowForward className="p-1.5 max-lg:p-1 w-8 h-8 max-lg:w-7 max-lg:h-7 border border-white rounded-full" />
           </button>
@@ -281,7 +281,7 @@ const CourseCardsSection = () => {
               </p>
             </div>
           </div>
-          <button className="bg-[var(--custom-primary)] cursor-pointer text-white font-medium rounded-full flex items-center justify-between px-3 py-1 pr-1">
+          <button className="bg-[var(--custom-primary)] cursor-pointer text-white font-medium rounded-full flex items-center justify-between px-3 py-1 pr-1 hover:shadow-lg">
             <span className="whitespace-nowrap">READ MORE</span>
             <IoMdArrowForward className="p-1.5 max-lg:p-1 w-8 h-8 max-lg:w-7 max-lg:h-7 border border-white rounded-full" />
           </button>
@@ -310,7 +310,7 @@ const CourseCardsSection = () => {
               </p>
             </div>
           </div>
-          <button className="bg-[var(--custom-primary)] cursor-pointer text-white font-medium rounded-full flex items-center justify-between px-3 py-1 pr-1">
+          <button className="bg-[var(--custom-primary)] cursor-pointer text-white font-medium rounded-full flex items-center justify-between px-3 py-1 pr-1 hover:shadow-lg">
             <span className="whitespace-nowrap">READ MORE</span>
             <IoMdArrowForward className="p-1.5 max-lg:p-1 w-8 h-8 max-lg:w-7 max-lg:h-7 border border-white rounded-full" />
           </button>
@@ -339,7 +339,7 @@ const CourseCardsSection = () => {
               </p>
             </div>
           </div>
-          <button className="bg-[var(--custom-primary)] cursor-pointer text-white font-medium rounded-full flex items-center justify-between px-3 py-1 pr-1">
+          <button className="bg-[var(--custom-primary)] cursor-pointer text-white font-medium rounded-full flex items-center justify-between px-3 py-1 pr-1 hover:shadow-lg">
             <span className="whitespace-nowrap">READ MORE</span>
             <IoMdArrowForward className="p-1.5 max-lg:p-1 w-8 h-8 max-lg:w-7 max-lg:h-7 border border-white rounded-full" />
           </button>
