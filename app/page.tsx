@@ -1,5 +1,6 @@
 import Banner from "@/components/Banner";
 import CourseCardsSection from "@/components/CourseCardsSection";
+import IgGallery from "@/components/IgGallery";
 import InfoCardsSection from "@/components/InfoCardsSection";
 import ReasonCardsSection from "@/components/ReasonCardsSection";
 
@@ -16,6 +17,9 @@ export default function Home() {
 
       {/* Reason Cards Section */}
       <ReasonCardsSection />
+
+      {/* IG Gallery Section */}
+      <IgGallery />
     </>
   );
 }
