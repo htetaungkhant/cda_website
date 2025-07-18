@@ -10,7 +10,6 @@ import { cn } from "@/lib/utils";
 
 const dummyData = [
   {
-    id: 1,
     image: "/dummy-data/3.png",
     name: "Bella Pellegrini",
     date: "2024-09-05",
@@ -19,7 +18,6 @@ const dummyData = [
       "I had an amazing experience with the driving class. The instructors were professional and the lessons were very informative.",
   },
   {
-    id: 2,
     image: "/dummy-data/3.png",
     name: "John Doe",
     date: "2024-09-06",
@@ -28,7 +26,6 @@ const dummyData = [
       "I did a 26 hour intensive course (spread over 6 days) with Ahmad and passed on my first attempt. I couldn't recommend CDA more!",
   },
   {
-    id: 3,
     image: "/dummy-data/3.png",
     name: "Jane Smith",
     date: "2024-09-07",
@@ -37,7 +34,6 @@ const dummyData = [
       "The instructors were very patient and helpful. I highly recommend this class!",
   },
   {
-    id: 4,
     image: "/dummy-data/3.png",
     name: "Alice Johnson",
     date: "2024-09-08",
@@ -121,7 +117,7 @@ const TestimonialsSection = () => {
           onMouseUp={handleMouseUp}
           className="flex overflow-x-auto gap-4 select-none [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
         >
-          {/* Testimonial Card */}
+          {/* Testimonial Cards */}
           {dummyData.map((testimonial, index) => (
             <div
               key={`${testimonial.name}-${index}`}
