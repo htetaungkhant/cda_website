@@ -3,8 +3,6 @@ import Image from "next/image";
 import { FaSquareInstagram } from "react-icons/fa6";
 
 import igGalleryImage from "@/public/ig-gallery.png";
-import dummyData1 from "@/public/dummy-data/1.png";
-import dummyData2 from "@/public/dummy-data/2.png";
 
 const IgGallery = () => {
   return (
@@ -31,56 +29,56 @@ const IgGallery = () => {
         </div>
         <div className="grid grid-cols-2 gap-4 mt-4 lg:mt-8 lg:grid-cols-4 lg:gap-8">
           <Image
-            src={dummyData1}
+            src="/dummy-data/1.png"
             width={200}
             height={200}
             alt="Instagram Gallery"
             className="w-full h-full rounded-sm object-cover"
           />
           <Image
-            src={dummyData2}
+            src="/dummy-data/2.png"
             width={200}
             height={200}
             alt="Instagram Gallery"
             className="w-full h-full rounded-sm object-cover"
           />
           <Image
-            src={dummyData1}
+            src="/dummy-data/1.png"
             width={200}
             height={200}
             alt="Instagram Gallery"
             className="w-full h-full rounded-sm object-cover"
           />
           <Image
-            src={dummyData2}
+            src="/dummy-data/2.png"
             width={200}
             height={200}
             alt="Instagram Gallery"
             className="w-full h-full rounded-sm object-cover"
           />
           <Image
-            src={dummyData1}
+            src="/dummy-data/1.png"
             width={200}
             height={200}
             alt="Instagram Gallery"
             className="w-full h-full rounded-sm object-cover"
           />
           <Image
-            src={dummyData2}
+            src="/dummy-data/2.png"
             width={200}
             height={200}
             alt="Instagram Gallery"
             className="w-full h-full rounded-sm object-cover"
           />
           <Image
-            src={dummyData1}
+            src="/dummy-data/1.png"
             width={200}
             height={200}
             alt="Instagram Gallery"
             className="w-full h-full rounded-sm object-cover"
           />
           <Image
-            src={dummyData2}
+            src="/dummy-data/2.png"
             width={200}
             height={200}
             alt="Instagram Gallery"
