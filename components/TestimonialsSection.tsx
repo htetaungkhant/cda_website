@@ -108,7 +108,9 @@ const TestimonialsSection = () => {
 
   return (
     <section className="max-w-420 mx-auto px-6 py-8 max-lg:px-3 max-lg:py-6 flex flex-col gap-4 text-black">
-      <h1 className="text-4xl font-semibold">Our Testimonials</h1>
+      <h1 className="text-4xl max-lg:text-center">
+        <strong>Our Testimonials</strong>
+      </h1>
       <div className="flex justify-center">
         <div
           ref={mobileScrollContainerRef}
