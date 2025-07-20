@@ -224,6 +224,8 @@ const CourseCardsSection = () => {
           </button>
         </div>
       </div>
+
+      {/* Mobile View */}
       <div
         ref={mobileScrollContainerRef}
         className="flex overflow-x-auto gap-4 select-none [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none] lg:hidden"
