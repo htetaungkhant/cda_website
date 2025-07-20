@@ -49,7 +49,7 @@ const Header = () => {
               <Link href="/about-us">ABOUT US</Link>
             </li>
             <li>
-              <Link href="/">OUR TEAM</Link>
+              <Link href="/our-team">OUR TEAM</Link>
             </li>
             <li>
               <HeaderDropdown
@@ -59,7 +59,7 @@ const Header = () => {
                 <ul className="px-2 py-2 text-xs font-medium">
                   <li className="flex items-center rounded-md text-black hover:bg-gray-100 cursor-pointer">
                     <Link
-                      href="/classes/1"
+                      href="/explore-classes/manual-driving-class"
                       className="flex items-center justify-between w-full px-2 py-2 whitespace-nowrap"
                     >
                       MANUAL DRIVING CLASS
@@ -68,7 +68,7 @@ const Header = () => {
                   </li>
                   <li className="flex rounded-md text-black hover:bg-gray-100 cursor-pointer">
                     <Link
-                      href="/classes/2"
+                      href="/explore-classes/automatic-driving-class"
                       className="flex items-center justify-between w-full px-2 py-2 whitespace-nowrap"
                     >
                       AUTOMATIC DRIVING CLASS
@@ -77,7 +77,7 @@ const Header = () => {
                   </li>
                   <li className="flex rounded-md text-black hover:bg-gray-100 cursor-pointer">
                     <Link
-                      href="/classes/3"
+                      href="/explore-classes/intensive-driving-class"
                       className="flex items-center justify-between w-full px-2 py-2 whitespace-nowrap"
                     >
                       INTENSIVE DRIVING CLASS
@@ -86,7 +86,7 @@ const Header = () => {
                   </li>
                   <li className="flex rounded-md text-black hover:bg-gray-100 cursor-pointer">
                     <Link
-                      href="/classes/2"
+                      href="/explore-classes/bulk-booking-class"
                       className="flex items-center justify-between w-full px-2 py-2 whitespace-nowrap"
                     >
                       BULK BOOKING CLASS
@@ -95,7 +95,7 @@ const Header = () => {
                   </li>
                   <li className="flex rounded-md text-black hover:bg-gray-100 cursor-pointer">
                     <Link
-                      href="/classes/3"
+                      href="/explore-classes/pricing"
                       className="flex items-center justify-between w-full px-2 py-2 whitespace-nowrap"
                     >
                       PRICING
@@ -106,7 +106,7 @@ const Header = () => {
               </HeaderDropdown>
             </li>
             <li>
-              <Link href="/">CONTACT US</Link>
+              <Link href="/contact-us">CONTACT US</Link>
             </li>
           </ul>
         </nav>
@@ -115,6 +115,7 @@ const Header = () => {
           <ButtonStyle1>Book Now</ButtonStyle1>
         </div>
       </div>
+
       {/* mobile navigation */}
       <div
         className={`lg:hidden flex flex-col items-center justify-center absolute top-0 left-0 rounded-b-4xl space-y-7 w-full pt-24 py-6 bg-linear-to-r from-[#A8A9AD] to-[#FFFFFF] ${
@@ -126,7 +127,7 @@ const Header = () => {
             <Link href="/about-us">ABOUT US</Link>
           </li>
           <li className="text-center">
-            <Link href="/">OUR TEAM</Link>
+            <Link href="/our-team">OUR TEAM</Link>
           </li>
           <li>
             <HeaderDropdown
@@ -136,7 +137,7 @@ const Header = () => {
               <ul className="px-2 py-2 text-xs font-medium">
                 <li className="flex items-center rounded-md text-black cursor-pointer">
                   <Link
-                    href="/classes/1"
+                    href="/explore-classes/manual-driving-class"
                     className="flex items-center justify-between gap-4 w-full px-2 py-2 whitespace-nowrap"
                   >
                     MANUAL DRIVING CLASS
@@ -145,7 +146,7 @@ const Header = () => {
                 </li>
                 <li className="flex rounded-md text-black cursor-pointer">
                   <Link
-                    href="/classes/2"
+                    href="/explore-classes/automatic-driving-class"
                     className="flex items-center justify-between gap-4 w-full px-2 py-2 whitespace-nowrap"
                   >
                     AUTOMATIC DRIVING CLASS
@@ -154,7 +155,7 @@ const Header = () => {
                 </li>
                 <li className="flex rounded-md text-black cursor-pointer">
                   <Link
-                    href="/classes/3"
+                    href="/explore-classes/intensive-driving-class"
                     className="flex items-center justify-between gap-4 w-full px-2 py-2 whitespace-nowrap"
                   >
                     INTENSIVE DRIVING CLASS
@@ -163,7 +164,7 @@ const Header = () => {
                 </li>
                 <li className="flex rounded-md text-black cursor-pointer">
                   <Link
-                    href="/classes/2"
+                    href="/explore-classes/bulk-booking-class"
                     className="flex items-center justify-between gap-4 w-full px-2 py-2 whitespace-nowrap"
                   >
                     BULK BOOKING CLASS
@@ -172,7 +173,7 @@ const Header = () => {
                 </li>
                 <li className="flex rounded-md text-black cursor-pointer">
                   <Link
-                    href="/classes/3"
+                    href="/explore-classes/pricing"
                     className="flex items-center justify-between gap-4 w-full px-2 py-2 whitespace-nowrap"
                   >
                     PRICING
@@ -183,7 +184,7 @@ const Header = () => {
             </HeaderDropdown>
           </li>
           <li className="text-center">
-            <Link href="/">CONTACT US</Link>
+            <Link href="/contact-us">CONTACT US</Link>
           </li>
         </ul>
 
