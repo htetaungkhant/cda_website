@@ -123,7 +123,7 @@ const TestimonialsSection = () => {
           {dummyData.map((testimonial, index) => (
             <div
               key={`${testimonial.name}-${index}`}
-              className="relative min-w-[87vw] sm:min-w-80 h-64 bg-gradient-to-b from-[#FCB521] to-[#FF8800] rounded-xl overflow-hidden"
+              className="relative min-w-[87vw] sm:min-w-80 h-64 xl:h-68 bg-gradient-to-b from-[#FCB521] to-[#FF8800] rounded-xl overflow-hidden"
             >
               <div className="absolute inset-[1px] rounded-xl flex flex-col gap-2 md:gap-3 xl:gap-5 p-4 max-[330px]:p-2 xl:p-6 bg-white">
                 <Image
@@ -167,7 +167,7 @@ const TestimonialsSection = () => {
                   </div>
                   <PiSealCheckFill className="text-blue-500 w-4 h-4" />
                 </div>
-                <p className="text-sm text-gray-700 line-clamp-4">
+                <p className="text-sm text-gray-700 line-clamp-4 xl:line-clamp-3">
                   {testimonial.review}
                 </p>
                 <div className="flex-1 flex items-end">
