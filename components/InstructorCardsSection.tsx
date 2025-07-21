@@ -1,5 +1,6 @@
 "use client";
 import React, { useRef } from "react";
+import Link from "next/link";
 import Image from "next/image";
 import { GiCarWheel } from "react-icons/gi";
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa6";
@@ -10,26 +11,31 @@ import { ButtonStyle1 } from "./Button";
 
 const dummyData: Instructor[] = [
   {
+    id: "1",
     image: "/dummy-data/4.jpg",
     name: "Ahmad Siddiqi",
     type: "manual",
   },
   {
+    id: "2",
     image: "/dummy-data/5.jpg",
     name: "Behzad Yacubi",
     type: "automatic",
   },
   {
+    id: "3",
     image: "/dummy-data/6.jpg",
     name: "Elnara Babayeva",
     type: "manual",
   },
   {
+    id: "4",
     image: "/dummy-data/7.jpg",
     name: "Dunya Nori",
     type: "manual",
   },
   {
+    id: "5",
     image: "/dummy-data/8.jpg",
     name: "Ghulam Mohd.",
     type: "automatic",
@@ -38,7 +44,7 @@ const dummyData: Instructor[] = [
 
 export const InstructorCard: React.FC<
   Instructor & { responsive?: boolean; className?: string }
-> = ({ image, name, type, responsive = false, className }) => {
+> = ({ id, image, name, type, responsive = false, className }) => {
   return (
     <div
       className={cn(
@@ -99,7 +105,11 @@ export const InstructorCard: React.FC<
           >
             Book Now
           </button>
-          <button
+          <Link
+            href={{
+              pathname: `/our-team/${name.replaceAll(" ", "-").toLowerCase()}`,
+              query: { unique: id },
+            }}
             className={cn(
               "whitespace-nowrap flex-1 bg-[var(--custom-primary)] font-medium text-white rounded-sm cursor-pointer hover:shadow-md",
               responsive
@@ -108,7 +118,7 @@ export const InstructorCard: React.FC<
             )}
           >
             View Details
-          </button>
+          </Link>
         </div>
       </div>
     </div>
