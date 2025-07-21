@@ -91,9 +91,9 @@ export const InstructorCard: React.FC<
         <div className="flex justify-center gap-2 sm:gap-3 xl:gap-6 py-2">
           <button
             className={cn(
-              "whitespace-nowrap flex-1 bg-[var(--custom-primary)] font-medium text-white rounded-sm cursor-pointer",
+              "whitespace-nowrap flex-1 bg-[var(--custom-primary)] font-medium text-white rounded-sm cursor-pointer hover:shadow-md",
               responsive
-                ? "text-[7px] px-1.5 py-1.5 min-[375px]:text-[10px] min-sm:py-2 min-sm:px-4"
+                ? "text-[7px] px-1.5 py-1.5 min-[375px]:text-[10px] min-sm:text-xs min-sm:py-2 min-sm:px-4"
                 : "text-xs py-2 px-4"
             )}
           >
@@ -101,9 +101,9 @@ export const InstructorCard: React.FC<
           </button>
           <button
             className={cn(
-              "whitespace-nowrap flex-1 bg-[var(--custom-primary)] font-medium text-white rounded-sm cursor-pointer",
+              "whitespace-nowrap flex-1 bg-[var(--custom-primary)] font-medium text-white rounded-sm cursor-pointer hover:shadow-md",
               responsive
-                ? "text-[7px] px-1.5 py-1.5 min-[375px]:text-[10px] min-sm:py-2 min-sm:px-4"
+                ? "text-[7px] px-1.5 py-1.5 min-[375px]:text-[10px] min-sm:text-xs min-sm:py-2 min-sm:px-4"
                 : "text-xs py-2 px-4"
             )}
           >
