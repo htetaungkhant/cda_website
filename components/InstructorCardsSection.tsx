@@ -5,41 +5,115 @@ import { GiCarWheel } from "react-icons/gi";
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa6";
 
 import { cn } from "@/lib/utils";
+import { Instructor } from "@/type";
 import { ButtonStyle1 } from "./Button";
-
-interface Instructor {
-  image: string;
-  name: string;
-  type: string;
-}
 
 const dummyData: Instructor[] = [
   {
     image: "/dummy-data/4.jpg",
     name: "Ahmad Siddiqi",
-    type: "Manual Instructor",
+    type: "manual",
   },
   {
     image: "/dummy-data/5.jpg",
     name: "Behzad Yacubi",
-    type: "Automatic Instructor",
+    type: "automatic",
   },
   {
     image: "/dummy-data/6.jpg",
     name: "Elnara Babayeva",
-    type: "Intensive Instructor",
+    type: "manual",
   },
   {
     image: "/dummy-data/7.jpg",
     name: "Dunya Nori",
-    type: "Manual Instructor",
+    type: "manual",
   },
   {
     image: "/dummy-data/8.jpg",
     name: "Ghulam Mohd.",
-    type: "Automatic Instructor",
+    type: "automatic",
   },
 ];
+
+export const InstructorCard: React.FC<
+  Instructor & { responsive?: boolean; className?: string }
+> = ({ image, name, type, responsive = false, className }) => {
+  return (
+    <div
+      className={cn(
+        "p-2 flex flex-col gap-4 border border-[var(--custom-primary)] shadow-[0px_4px_8px_0px_rgba(0,0,0,0.25)] bg-white first:ml-0 transform transition-all duration-500",
+        responsive ? "rounded-2xl sm:rounded-3xl" : "rounded-3xl",
+        className
+      )}
+    >
+      <div className={responsive ? "h-40 min-sm:h-76" : "h-76"}>
+        <Image
+          src={image}
+          width={128}
+          height={128}
+          alt={name}
+          className="w-full h-full object-cover rounded-t-2xl"
+        />
+      </div>
+      <div
+        className={cn(
+          "flex-1 flex flex-col gap-1",
+          responsive ? "sm:px-2" : "px-2"
+        )}
+      >
+        <h3
+          className={cn(
+            "font-semibold",
+            responsive ? "text-sm line-clamp-1" : "text-lg"
+          )}
+        >
+          {name}
+        </h3>
+        <p className="font-medium text-gray-600 flex items-center gap-1">
+          <GiCarWheel
+            className={cn(
+              "inline-block text-[var(--custom-primary)]",
+              responsive ? "w-4 h-4" : "w-5 h-5"
+            )}
+          />
+          <span
+            className={cn(
+              "whitespace-nowrap line-clamp-1",
+              responsive
+                ? "text-[10px] min-[375px]:text-xs min-sm:text-sm"
+                : "text-sm"
+            )}
+          >
+            {type === "manual" ? "Manual Instructor" : "Automatic Instructor"}
+          </span>
+        </p>
+        <div className="flex justify-center gap-2 sm:gap-3 xl:gap-6 py-2">
+          <button
+            className={cn(
+              "whitespace-nowrap flex-1 bg-[var(--custom-primary)] font-medium text-white rounded-sm cursor-pointer",
+              responsive
+                ? "text-[7px] px-1.5 py-1.5 min-[375px]:text-[10px] min-sm:py-2 min-sm:px-4"
+                : "text-xs py-2 px-4"
+            )}
+          >
+            Book Now
+          </button>
+          <button
+            className={cn(
+              "whitespace-nowrap flex-1 bg-[var(--custom-primary)] font-medium text-white rounded-sm cursor-pointer",
+              responsive
+                ? "text-[7px] px-1.5 py-1.5 min-[375px]:text-[10px] min-sm:py-2 min-sm:px-4"
+                : "text-xs py-2 px-4"
+            )}
+          >
+            View Details
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+};
 
 const InstructorCardsSection = () => {
   const timerRef = useRef<NodeJS.Timeout | null>(null);
@@ -129,7 +203,11 @@ const InstructorCardsSection = () => {
                 </h3>
                 <p className="text-sm lg:text-base font-medium text-gray-600 flex items-center gap-1">
                   <GiCarWheel className="inline-block text-[var(--custom-primary)] w-5 h-5" />
-                  <span>{instructor.type}</span>
+                  <span>
+                    {instructor.type === "manual"
+                      ? "Manual Instructor"
+                      : "Automatic Instructor"}
+                  </span>
                 </p>
                 <div className="flex flex-wrap justify-center gap-3 xl:gap-6 py-2">
                   <button className="whitespace-nowrap flex-1 bg-[var(--custom-primary)] font-medium text-xs lg:text-sm text-white py-2 px-4 rounded-sm cursor-pointer">
@@ -180,7 +258,11 @@ const InstructorCardsSection = () => {
                 </h3>
                 <p className="text-sm lg:text-base font-medium text-gray-600 flex items-center gap-1">
                   <GiCarWheel className="inline-block text-[var(--custom-primary)] w-5 h-5" />
-                  <span>{instructor.type}</span>
+                  <span>
+                    {instructor.type === "manual"
+                      ? "Manual Instructor"
+                      : "Automatic Instructor"}
+                  </span>
                 </p>
                 <div className="flex flex-wrap justify-center gap-3 xl:gap-6 py-2">
                   <button className="whitespace-nowrap flex-1 bg-[var(--custom-primary)] font-medium text-xs lg:text-sm text-white py-2 px-4 rounded-sm cursor-pointer">
@@ -204,35 +286,11 @@ const InstructorCardsSection = () => {
         >
           {/* Instructor Cards */}
           {dummyData.map((instructor, index) => (
-            <div
+            <InstructorCard
               key={`${instructor.name}-${index}`}
-              className="min-w-[85vw] sm:min-w-80 p-2 flex flex-col gap-4 border border-[var(--custom-primary)] shadow-[0px_4px_8px_0px_rgba(0,0,0,0.25)] rounded-3xl bg-white first:ml-0 transform transition-all duration-500"
-            >
-              <div className="h-76">
-                <Image
-                  src={instructor.image}
-                  width={128}
-                  height={128}
-                  alt={instructor.name}
-                  className="w-full h-full object-cover rounded-t-2xl"
-                />
-              </div>
-              <div className="flex-1 px-2 flex flex-col gap-1">
-                <h3 className="text-lg font-semibold">{instructor.name}</h3>
-                <p className="text-sm font-medium text-gray-600 flex items-center gap-1">
-                  <GiCarWheel className="inline-block text-[var(--custom-primary)] w-5 h-5" />
-                  <span>{instructor.type}</span>
-                </p>
-                <div className="flex flex-wrap justify-center gap-3 xl:gap-6 py-2">
-                  <button className="whitespace-nowrap flex-1 bg-[var(--custom-primary)] font-medium text-xs text-white py-2 px-4 rounded-sm cursor-pointer">
-                    Book Now
-                  </button>
-                  <button className="whitespace-nowrap flex-1 bg-[var(--custom-primary)] font-medium text-xs text-white py-2 px-4 rounded-sm cursor-pointer">
-                    View Details
-                  </button>
-                </div>
-              </div>
-            </div>
+              {...instructor}
+              className="min-w-[85vw] sm:min-w-80"
+            />
           ))}
         </div>
       </div>
