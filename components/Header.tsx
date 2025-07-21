@@ -17,7 +17,7 @@ const Header = () => {
   };
 
   return (
-    <header className="z-20 fixed top-0 left-0 right-0 lg:p-8">
+    <header className="z-20 fixed top-0 left-0 right-0 lg:p-8 custom-scroll-margin">
       <div className="max-lg:relative max-lg:z-20 flex justify-between items-center px-4 py-2 bg-[#ffffffed] border border-[#00000033] rounded-4xl max-lg:rounded-none max-lg:border-none max-lg:bg-white">
         <Link href="/" className="flex items-center">
           <Image

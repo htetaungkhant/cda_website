@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono, Poppins } from "next/font/google";
+import 'react-international-phone/style.css';
 import "./globals.css";
 
+import { Toaster } from "@/components/ui/sonner";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 
@@ -44,6 +46,7 @@ export default function RootLayout({
           {children}
           <Footer />
         </main>
+        <Toaster position="top-right" richColors closeButton />
       </body>
     </html>
   );
