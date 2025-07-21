@@ -20,7 +20,7 @@ const CardsSection = ({
     <>
       <div className="px-4 py-2 mt-8 grid grid-cols-2 gap-2 font-bold bg-white shadow-[4px_1px_12px_0px_rgba(0,0,0,0.25)] rounded-xl max-lg:p-2 max-lg:mt-4 text-[8px] min-[375px]:text-[10px] min-sm:text-xs min-md:text-sm min-lg:text-base">
         <button
-          className={`p-1.5 max-lg:p-1 rounded-lg whitespace-nowrap max-lg:rounded-md ${
+          className={`p-1.5 max-lg:p-1 rounded-lg whitespace-nowrap cursor-pointer hover:shadow-md max-lg:rounded-md ${
             activeTab === "manual"
               ? "bg-[var(--custom-primary)] text-white"
               : "text-[#1B1919CC] border border-black"
@@ -30,7 +30,7 @@ const CardsSection = ({
           MANUAL INSTRUCTORS
         </button>
         <button
-          className={`p-1.5 max-lg:p-1 rounded-lg whitespace-nowrap max-lg:rounded-md ${
+          className={`p-1.5 max-lg:p-1 rounded-lg whitespace-nowrap cursor-pointer hover:shadow-md max-lg:rounded-md ${
             activeTab === "automatic"
               ? "bg-[var(--custom-primary)] text-white"
               : "text-[#1B1919CC] border border-black"
