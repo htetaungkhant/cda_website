@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import { Instructor } from "@/type";
 import { InstructorCard } from "@/components/InstructorCardsSection";
 import { ButtonStyle1 } from "@/components/Button";
+import Image from "next/image";
 
 interface CardsSectionProps {
   manualInstructors: Instructor[];
@@ -14,7 +15,21 @@ const CardsSection = ({
   manualInstructors,
   automaticInstructors,
 }: CardsSectionProps) => {
-  const [activeTab, setActiveTab] = useState("manual");
+  const [activeTab, setActiveTab] = useState<"manual" | "automatic">("manual");
+
+  const emptyInstructor = (
+    <div className="mt-10 mb-20 col-span-full flex flex-col items-center justify-center text-center font-medium">
+      <Image
+        src="/empty-instructors.svg"
+        alt="No Data"
+        width={200}
+        height={200}
+        className="mb-4 w-auto h-52 sm:h-72 md:h-92 object-cover"
+      />
+      <h1 className="text-2xl sm:text-3xl">Sorry!</h1>
+      <p className="sm:text-lg">Currently, No Data Available</p>
+    </div>
+  );
 
   return (
     <>
@@ -44,17 +59,33 @@ const CardsSection = ({
         {(activeTab === "manual"
           ? manualInstructors
           : automaticInstructors
-        ).map((instructor, index) => (
+        )?.map((instructor, index) => (
           <InstructorCard
             key={`${instructor.name}-${index}`}
             {...instructor}
             responsive
           />
         ))}
+
+        {/* Show empty instructor message if no instructors are available */}
+        {activeTab === "manual"
+          ? (!manualInstructors || manualInstructors?.length === 0) &&
+            emptyInstructor
+          : (!automaticInstructors || automaticInstructors?.length === 0) &&
+            emptyInstructor}
       </div>
-      <div className="my-8 flex justify-center">
-        <ButtonStyle1>View More</ButtonStyle1>
-      </div>
+
+      {/* View More Button */}
+      {activeTab === "manual" && manualInstructors?.length > 0 && (
+        <div className="my-8 flex justify-center">
+          <ButtonStyle1>View More</ButtonStyle1>
+        </div>
+      )}
+      {activeTab === "automatic" && automaticInstructors?.length > 0 && (
+        <div className="my-8 flex justify-center">
+          <ButtonStyle1>View More</ButtonStyle1>
+        </div>
+      )}
     </>
   );
 };
