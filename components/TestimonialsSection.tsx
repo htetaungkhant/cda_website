@@ -7,6 +7,7 @@ import { PiSealCheckFill } from "react-icons/pi";
 
 import googleSvg from "@/public/google-logo.svg";
 import { cn } from "@/lib/utils";
+import UniformPaddingSection from "./UniformPaddingSection";
 
 const dummyData = [
   {
@@ -107,7 +108,7 @@ const TestimonialsSection = () => {
   };
 
   return (
-    <section className="max-w-420 mx-auto px-6 py-8 max-lg:px-3 max-lg:py-6 flex flex-col gap-4 text-black">
+    <UniformPaddingSection className="flex flex-col gap-4 text-black">
       <h1 className="text-4xl max-lg:text-center">
         <strong>Our Testimonials</strong>
       </h1>
@@ -209,7 +210,7 @@ const TestimonialsSection = () => {
           <FaArrowRight className="text-[#545454]" />
         </button>
       </div>
-    </section>
+    </UniformPaddingSection>
   );
 };
 

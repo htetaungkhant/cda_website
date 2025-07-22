@@ -4,10 +4,11 @@ import SvgImage1 from "@/public/1.svg";
 import SvgImage2 from "@/public/2.svg";
 import SvgImage3 from "@/public/3.svg";
 import SvgImage4 from "@/public/4.svg";
+import UniformPaddingSection from "./UniformPaddingSection";
 
 const InfoCardsSection = () => {
   return (
-    <section className="max-w-420 mx-auto px-6 py-8 max-lg:px-3 max-lg:py-6 flex flex-col gap-4 text-black">
+    <UniformPaddingSection className="flex flex-col gap-4 text-black">
       <h1 className="text-4xl mt-3 lg:mt-6 max-lg:text-center">
         Your Road to <strong>Driving Success</strong>
       </h1>
@@ -146,7 +147,7 @@ const InfoCardsSection = () => {
           </div>
         </div>
       </div>
-    </section>
+    </UniformPaddingSection>
   );
 };
 

@@ -3,6 +3,7 @@ import Image from "next/image";
 
 import ReasonCardsSection from "@/components/ReasonCardsSection";
 import TopUniformSection from "@/components/TopUniformSection";
+import UniformPaddingSection from "@/components/UniformPaddingSection";
 import AboutUsImg1 from "@/public/about-us-1.png";
 import AboutUsImg2 from "@/public/about-us-2.jpg";
 import AboutUsImg3 from "@/public/about-us-3.png";
@@ -64,7 +65,7 @@ const AboutUs = () => {
           </div>
         </div>
       </TopUniformSection>
-      <section className="max-w-420 mx-auto py-8 max-lg:py-6">
+      <UniformPaddingSection className="px-0 max-lg:px-0">
         <div className="relative text-white p-3 min-h-80 max-lg:min-h-72 flex flex-col items-center justify-center gap-6 max-lg:gap-3 bg-[url(/about-us-4.png)] bg-cover bg-no-repeat bg-center">
           {/* Overlay */}
           <div className="absolute inset-0 bg-black opacity-50" />
@@ -82,7 +83,7 @@ const AboutUs = () => {
             for life.
           </p>
         </div>
-      </section>
+      </UniformPaddingSection>
 
       {/* Reason Cards Section */}
       <ReasonCardsSection

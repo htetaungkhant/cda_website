@@ -8,6 +8,7 @@ import { FaArrowLeft, FaArrowRight } from "react-icons/fa6";
 import { cn } from "@/lib/utils";
 import { Instructor } from "@/type";
 import { ButtonStyle1 } from "./Button";
+import UniformPaddingSection from "./UniformPaddingSection";
 
 const dummyData: Instructor[] = [
   {
@@ -168,7 +169,7 @@ const InstructorCardsSection = () => {
   };
 
   return (
-    <section className="max-w-420 mx-auto px-6 py-8 max-lg:px-3 max-lg:py-6 flex flex-col gap-4 text-black">
+    <UniformPaddingSection className="flex flex-col gap-4 text-black">
       <h1 className="text-4xl max-lg:text-center">
         <strong>Meet Our Instructors</strong>
       </h1>
@@ -323,7 +324,7 @@ const InstructorCardsSection = () => {
       <div className="flex justify-center mt-4">
         <ButtonStyle1 href="/our-team">View All</ButtonStyle1>
       </div>
-    </section>
+    </UniformPaddingSection>
   );
 };
 

@@ -2,6 +2,8 @@ import React from "react";
 import Image from "next/image";
 import { StaticImport } from "next/dist/shared/lib/get-img-props";
 
+import UniformPaddingSection from "./UniformPaddingSection";
+
 interface ReasonCard {
   icon?: string | StaticImport;
   title?: string;
@@ -26,7 +28,7 @@ const ReasonCardsSection: React.FC<ReasonCardsSectionProps> = ({
   fourthCard,
 }) => {
   return (
-    <section className="max-w-420 mx-auto px-6 py-8 max-lg:px-3 max-lg:py-6 flex flex-col gap-4 text-black">
+    <UniformPaddingSection className="flex flex-col gap-4 text-black">
       <h1 className="text-4xl max-lg:text-center">
         <strong>{title}</strong>
       </h1>
@@ -137,7 +139,7 @@ const ReasonCardsSection: React.FC<ReasonCardsSectionProps> = ({
           </div>
         )}
       </div>
-    </section>
+    </UniformPaddingSection>
   );
 };
 

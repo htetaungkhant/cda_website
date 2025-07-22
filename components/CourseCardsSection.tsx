@@ -9,6 +9,7 @@ import ManualDriving from "@/public/manual-driving.png";
 import IntensiveDriving from "@/public/intensive-driving.png";
 import AutomaticDriving from "@/public/automatic-driving.png";
 import BulkBooking from "@/public/bulk-booking.png";
+import UniformPaddingSection from "./UniformPaddingSection";
 
 const CourseCardsSection = () => {
   const cardsRowRef = useRef<HTMLDivElement | null>(null);
@@ -67,7 +68,7 @@ const CourseCardsSection = () => {
   };
 
   return (
-    <section className="max-w-420 mx-auto px-6 py-8 max-lg:px-3 max-lg:py-6 flex flex-col gap-4 text-black">
+    <UniformPaddingSection className="flex flex-col gap-4 text-black">
       <h1 className="text-4xl max-lg:text-center">
         Our <strong>Driving Courses</strong>
       </h1>
@@ -363,7 +364,7 @@ const CourseCardsSection = () => {
           <FaArrowRight className="text-[#545454]" />
         </button>
       </div>
-    </section>
+    </UniformPaddingSection>
   );
 };
 
