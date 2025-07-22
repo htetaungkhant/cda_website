@@ -1,12 +1,14 @@
 import React from "react";
 
+import TopUniformSection from "@/components/TopUniformSection";
+
 const PrivacyPolicy = () => {
   return (
     <>
-      <section className="max-w-420 mx-auto px-6 pb-8 pt-36 max-lg:px-3 max-lg:pb-6 max-lg:pt-24 flex flex-col gap-4 text-[#585858]">
-        <h1 className="max-lg:text-3xl text-4xl text-[#2D2E2F] text-center font-bold">
-          PRIVACY POLICY
-        </h1>
+      <TopUniformSection
+        title="Privacy Policy"
+        className="flex flex-col gap-4 text-[#585858]"
+      >
         <div className="flex flex-col gap-4 lg:gap-6 text-sm max-lg:text-xs">
           <p>
             <strong>Last updated:</strong> 20-06-2025
@@ -92,7 +94,7 @@ const PrivacyPolicy = () => {
             </p>
           </div>
         </div>
-      </section>
+      </TopUniformSection>
 
       <section className="w-full h-8" />
     </>

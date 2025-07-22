@@ -1,7 +1,12 @@
+import TopUniformSection from "@/components/TopUniformSection";
 import React from "react";
 
 const ExploreClasses = () => {
-  return <div>Explore Classes</div>;
+  return (
+    <>
+      <TopUniformSection title="Explore Classes"></TopUniformSection>
+    </>
+  );
 };
 
 export default ExploreClasses;

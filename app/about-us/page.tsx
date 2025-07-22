@@ -2,6 +2,7 @@ import React from "react";
 import Image from "next/image";
 
 import ReasonCardsSection from "@/components/ReasonCardsSection";
+import TopUniformSection from "@/components/TopUniformSection";
 import AboutUsImg1 from "@/public/about-us-1.png";
 import AboutUsImg2 from "@/public/about-us-2.jpg";
 import AboutUsImg3 from "@/public/about-us-3.png";
@@ -9,10 +10,7 @@ import AboutUsImg3 from "@/public/about-us-3.png";
 const AboutUs = () => {
   return (
     <>
-      <section className="max-w-420 mx-auto px-6 pb-8 pt-36 max-lg:px-3 max-lg:pb-6 max-lg:pt-24">
-        <h1 className="max-lg:text-3xl text-4xl text-[#2D2E2F] text-center font-bold">
-          ABOUT US
-        </h1>
+      <TopUniformSection title="About Us">
         <div className="mt-8 grid grid-cols-2 gap-6 text-[#585858] max-lg:grid-cols-1 max-lg:mt-4 max-lg:gap-3">
           <div className="flex flex-col gap-6 max-lg:gap-3">
             <Image
@@ -65,7 +63,7 @@ const AboutUs = () => {
             </p>
           </div>
         </div>
-      </section>
+      </TopUniformSection>
       <section className="max-w-420 mx-auto py-8 max-lg:py-6">
         <div className="relative text-white p-3 min-h-80 max-lg:min-h-72 flex flex-col items-center justify-center gap-6 max-lg:gap-3 bg-[url(/about-us-4.png)] bg-cover bg-no-repeat bg-center">
           {/* Overlay */}

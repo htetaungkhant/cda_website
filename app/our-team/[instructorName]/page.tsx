@@ -2,6 +2,8 @@ import React from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { FaYoutube } from "react-icons/fa6";
+
+import TopUniformSection from "@/components/TopUniformSection";
 import BookingForm from "../(components)/BookingForm";
 
 interface InstructorDetailsProps {
@@ -19,11 +21,13 @@ export default async function InstructorDetails({
 
   return (
     <>
-      <section className="max-w-420 mx-auto px-6 pb-8 pt-36 max-lg:px-3 max-lg:pb-6 max-lg:pt-24">
-        <h1 className="max-lg:text-3xl text-4xl text-[#2D2E2F] text-center font-bold">
-          OUR <span className="text-[var(--custom-primary)]">INSTRUCTOR</span>
-        </h1>
-
+      <TopUniformSection
+        title={
+          <>
+            OUR <span className="text-[var(--custom-primary)]">INSTRUCTOR</span>
+          </>
+        }
+      >
         <div className="mt-14 max-lg:mt-6 grid grid-cols-2 max-sm:grid-cols-1 bg-white shadow-md border border-[var(--custom-primary)] rounded-t-xl lg:rounded-t-2xl overflow-hidden">
           <Image
             src="/dummy-data/5.jpg"
@@ -69,7 +73,7 @@ export default async function InstructorDetails({
         </div>
 
         <BookingForm className="mx-auto my-8 lg:my-10" />
-      </section>
+      </TopUniformSection>
     </>
   );
 }

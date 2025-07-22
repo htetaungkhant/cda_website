@@ -1,6 +1,7 @@
 import React from "react";
 
 import { Instructor } from "@/type";
+import TopUniformSection from "@/components/TopUniformSection";
 import CardsSection from "./(components)/CardsSection";
 
 const dummyDataMI: Instructor[] = [
@@ -132,17 +133,19 @@ const dummyDataAI: Instructor[] = [
 const OurTeam = () => {
   return (
     <>
-      <section className="max-w-420 mx-auto px-6 pb-8 pt-36 max-lg:px-3 max-lg:pb-6 max-lg:pt-24">
-        <h1 className="max-lg:text-3xl text-4xl text-[#2D2E2F] text-center font-bold">
-          OUR <span className="text-[var(--custom-primary)]">TEAM</span>
-        </h1>
-
+      <TopUniformSection
+        title={
+          <>
+            OUR <span className="text-[var(--custom-primary)]">TEAM</span>
+          </>
+        }
+      >
         {/* Cards Section */}
         <CardsSection
           manualInstructors={dummyDataMI}
           automaticInstructors={dummyDataAI}
         />
-      </section>
+      </TopUniformSection>
     </>
   );
 };
