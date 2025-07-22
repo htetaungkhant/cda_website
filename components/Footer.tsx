@@ -75,14 +75,14 @@ const Footer = () => {
                 <FaFacebookSquare className="w-8 h-8 text-[var(--custom-primary)]" />
               </Link>
               <Link
-                href="https://www.instagram.com/cambridgedrivingacademy/"
+                href="https://www.instagram.com/cambridgedriving/"
                 target="_blank"
                 rel="noreferrer"
               >
                 <FaSquareInstagram className="w-8 h-8 text-[var(--custom-primary)]" />
               </Link>
               <Link
-                href="https://twitter.com/cambridge_driv"
+                href="https://x.com/sadisafi5"
                 target="_blank"
                 rel="noreferrer"
               >
@@ -96,7 +96,7 @@ const Footer = () => {
                 <FaSquareYoutube className="w-8 h-8 text-[var(--custom-primary)]" />
               </Link>
               <Link
-                href="https://www.tiktok.com/@cambridgedrivingacademy"
+                href="https://www.tiktok.com/@cambridgedriving?_t=8qOhWSvcEAT&_r=1"
                 target="_blank"
                 rel="noreferrer"
               >
