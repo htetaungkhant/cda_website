@@ -65,7 +65,7 @@ export function PricingCardStyle2({
   features,
 }: PricingCardStyle2Props) {
   return (
-    <div className="w-full sm:w-120 flex flex-col border border-black rounded-xl shadow-[0px_4px_10px_0px_rgba(0,0,0,0.25)] overflow-hidden">
+    <div className="w-full sm:w-112 flex flex-col border border-black rounded-xl shadow-[0px_4px_10px_0px_rgba(0,0,0,0.25)] overflow-hidden">
       <h1 className="px-2 py-2 lg:px-3 lg:py-3 flex items-center justify-center gap-2 text-white text-lg md:text-xl lg:text-2xl font-semibold uppercase bg-[#302204]">
         <TbWheel className="w-5 min-w-5 h-5 text-white border-3 border-white rounded-full" />
         <span>{transmissionType} Transmission</span>
