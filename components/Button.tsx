@@ -34,7 +34,7 @@ export const ButtonStyle1: React.FC<
 
       {/* Content */}
       <motion.span
-        className="relative z-10 text-black whitespace-nowrap max-lg:text-sm"
+        className="relative flex-1 text-left z-10 text-black whitespace-nowrap max-lg:text-sm"
         variants={{
           hover: { color: "#ffffff" },
         }}
@@ -88,7 +88,7 @@ export const ButtonStyle2: React.FC<
       )}
     >
       {/* Content */}
-      <span className="relative z-10 whitespace-nowrap max-lg:text-sm">
+      <span className="relative flex-1 text-left z-10 whitespace-nowrap max-lg:text-sm">
         {children}
       </span>
 
@@ -122,4 +122,50 @@ export const ButtonStyle2: React.FC<
       {content}
     </button>
   );
+};
+
+export const ButtonStyle3: React.FC<
+  ButtonHTMLAttributes<HTMLButtonElement> &
+    AnchorHTMLAttributes<HTMLAnchorElement> & {
+      contentClassName?: string;
+    }
+> = ({ href, children, contentClassName, ...props }) => {
+  const content = (
+    <div
+      className={cn(
+        "relative flex items-center gap-2 font-medium text-base p-1.5 pl-3.5 rounded-full bg-black text-white cursor-pointer group overflow-hidden max-lg:p-1 max-lg:pl-3",
+        contentClassName
+      )}
+    >
+      {/* Content */}
+      <span className="relative flex-1 text-left z-10 whitespace-nowrap max-lg:text-sm">
+        {children}
+      </span>
+
+      {/* Arrow */}
+      <div className="relative z-10 bg-white rounded-full p-2 flex items-center justify-center w-8 h-8 max-lg:p-1.5 max-lg:w-7 max-lg:h-7 transition-all duration-500 ease-in-out rotate-45">
+        <Image
+          src={Arrow}
+          width={48}
+          height={48}
+          alt="Arrow"
+          className="w-full h-full object-contain"
+        />
+      </div>
+    </div>
+  );
+
+  if (href) {
+    return (
+      <Link
+        href={href}
+        {...props}
+        className={cn("no-underline group", props.className)}
+      >
+        {content}
+      </Link>
+    );
+  }
+
+  return <button {...props}>{content}</button>;
 };
