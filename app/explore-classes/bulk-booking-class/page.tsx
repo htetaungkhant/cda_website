@@ -5,7 +5,7 @@ import ReasonCardsSection from "@/components/ReasonCardsSection";
 import TopUniformSection from "@/components/TopUniformSection";
 import ContactUsBanner from "@/components/ContactUsBanner";
 import UniformPaddingSection from "@/components/UniformPaddingSection";
-import PricingCardStyle1 from "@/components/PricingCard";
+import { PricingCardStyle1 } from "@/components/PricingCard";
 
 const BulkBookingClass = () => {
   return (
