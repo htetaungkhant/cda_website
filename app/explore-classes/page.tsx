@@ -128,8 +128,8 @@ const ExploreClasses = () => {
       {/* Course Cards Section */}
       <CourseCardsSection />
 
-      {/* Contact Us Banner */}
-      <UniformPaddingSection className="max-lg:hidden my-4 lg:my-8">
+      {/* Contact Us Banner / max-lg:hidden */}
+      <UniformPaddingSection className="my-4 lg:my-8">
         <ContactUsBanner />
       </UniformPaddingSection>
     </>

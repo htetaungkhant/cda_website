@@ -113,7 +113,7 @@ const AutomaticDrivingClass = () => {
       <InstructorCardsSection />
 
       {/* Contact Us Banner */}
-      <UniformPaddingSection className="max-lg:hidden my-4 lg:my-8">
+      <UniformPaddingSection className="my-4 lg:my-8">
         <ContactUsBanner />
       </UniformPaddingSection>
     </>
