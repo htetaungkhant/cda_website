@@ -1,4 +1,5 @@
 import React, { useRef } from "react";
+import Image from "next/image";
 import { PiSealCheckFill } from "react-icons/pi";
 import { TbWheel } from "react-icons/tb";
 import { MdArrowOutward } from "react-icons/md";
@@ -9,6 +10,7 @@ import { CoursePackage } from "@/type";
 import { ButtonStyle3 } from "./Button";
 import {
   Dialog,
+  DialogClose,
   DialogContent,
   DialogDescription,
   DialogTitle,
@@ -253,6 +255,7 @@ export function PricingCardStyle3({
         </div>
       </DialogTrigger>
       <DialogContent
+        showCloseButton={false}
         className={cn(
           "text-white p-0 sm:max-w-[90vw] w-[95vw] lg:max-w-400 2xl:-ml-6",
           color === "bronze" && "bg-gradient-to-r from-[#CD7F32] to-[#DBAB7E]",
@@ -263,6 +266,15 @@ export function PricingCardStyle3({
             "bg-gradient-to-r from-[#B78300] via-[#C37F00] to-[#FFD700]"
         )}
       >
+        <DialogClose asChild>
+          <Image
+            src="/cross-icon.png"
+            alt="Close"
+            width={24}
+            height={24}
+            className="absolute top-2 right-2 cursor-pointer"
+          />
+        </DialogClose>
         <div className="px-4 py-4 lg:px-6 lg:py-8 max-h-[90vh] overflow-y-auto [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
           <DialogTitle className="font-semibold text-center text-lg sm:text-xl md:text-2xl lg:text-3xl uppercase whitespace-nowrap">
             <span className="font-black underline">{title}</span>
