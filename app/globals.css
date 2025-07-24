@@ -123,6 +123,8 @@
   }
 }
 
-body[data-scroll-locked] .custom-scroll-margin {
-  margin-right: 15px;
+@media screen and (min-width: 1024px) {
+  body[data-scroll-locked] .custom-scroll-margin {
+    margin-right: 15px;
+  }
 }
