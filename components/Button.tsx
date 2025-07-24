@@ -71,7 +71,14 @@ export const ButtonStyle1: React.FC<
     );
   }
 
-  return <button {...props}>{content}</button>;
+  return (
+    <button
+      {...props}
+      className={cn("outline-none focus-visible:ring-0", props.className)}
+    >
+      {content}
+    </button>
+  );
 };
 
 export const ButtonStyle2: React.FC<
@@ -118,7 +125,10 @@ export const ButtonStyle2: React.FC<
   }
 
   return (
-    <button {...props} className={cn("group", props.className)}>
+    <button
+      {...props}
+      className={cn("group outline-none focus-visible:ring-0", props.className)}
+    >
       {content}
     </button>
   );
@@ -167,5 +177,12 @@ export const ButtonStyle3: React.FC<
     );
   }
 
-  return <button {...props}>{content}</button>;
+  return (
+    <button
+      {...props}
+      className={cn("outline-none focus-visible:ring-0", props.className)}
+    >
+      {content}
+    </button>
+  );
 };
