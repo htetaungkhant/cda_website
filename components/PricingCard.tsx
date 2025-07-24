@@ -1,11 +1,20 @@
-import React from "react";
+import React, { useRef } from "react";
 import { PiSealCheckFill } from "react-icons/pi";
 import { TbWheel } from "react-icons/tb";
 import { MdArrowOutward } from "react-icons/md";
+import { FaArrowLeft, FaArrowRight } from "react-icons/fa6";
 
 import { cn } from "@/lib/utils";
-import { ButtonStyle3 } from "./Button";
 import { CoursePackage } from "@/type";
+import { ButtonStyle3 } from "./Button";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogTitle,
+  DialogTrigger,
+} from "./ui/dialog";
+import { CardStyle1 } from "./Card";
 
 interface PricingCardStyle1Props {
   transmissionType: "Automatic" | "Manual";
@@ -127,74 +136,256 @@ export function PricingCardStyle3({
   practicalTestPrice,
   noPracticalTestPrice,
   description,
+  courseDescription,
+  courseRequirements,
+  features,
   className,
 }: PricingCardStyle3Props) {
+  const mobileScrollContainerRef = useRef<HTMLDivElement | null>(null);
+
+  const handleLeftArrowClick = () => {
+    if (mobileScrollContainerRef.current) {
+      const cardWidth = (
+        mobileScrollContainerRef.current.querySelector(
+          ":first-child"
+        ) as HTMLElement | null
+      )?.offsetWidth;
+      const gap = 16;
+      if (cardWidth) {
+        const scrollAmount = cardWidth + gap;
+        mobileScrollContainerRef.current.scrollTo({
+          left: mobileScrollContainerRef.current.scrollLeft - scrollAmount,
+          behavior: "smooth",
+        });
+      }
+    }
+  };
+
+  const handleRightArrowClick = () => {
+    if (mobileScrollContainerRef.current) {
+      const cardWidth = (
+        mobileScrollContainerRef.current.querySelector(
+          ":first-child"
+        ) as HTMLElement | null
+      )?.offsetWidth;
+      const gap = 16;
+      if (cardWidth) {
+        const scrollAmount = cardWidth + gap;
+        mobileScrollContainerRef.current.scrollTo({
+          left: mobileScrollContainerRef.current.scrollLeft + scrollAmount,
+          behavior: "smooth",
+        });
+      }
+    }
+  };
   return (
-    <div
-      className={cn(
-        "relative w-full flex flex-col border border-[#FFFFFF66] rounded-xl overflow-hidden cursor-pointer",
-        className
-      )}
-    >
-      <MdArrowOutward className="absolute top-2 right-2 w-6 h-6 lg:w-8 lg:h-8 text-white" />
-      <div
-        className={cn(
-          "p-1.5 md:p-2 text-white font-semibold",
-          color === "bronze" && "bg-gradient-to-r from-[#CE8237] to-[#764413]",
-          color === "extended" &&
-            "bg-gradient-to-r from-[#7C7C7E] to-[#484847]",
-          color === "silver" && "bg-gradient-to-r from-[#7C7C7E] to-[#484847]",
-          color === "gold" && "bg-gradient-to-r from-[#A17301] to-[#3B2A00]"
-        )}
-      >
-        <h1 className="mx-auto max-w-9/10 p-1 text-center text-lg md:text-xl lg:text-2xl uppercase whitespace-nowrap">
-          <span>{title}</span>
-          {courseTiming && (
-            <>
-              <br />
-              <span>({courseTiming} Hours)</span>
-            </>
+    <Dialog>
+      <DialogTrigger asChild>
+        <div
+          className={cn(
+            "relative w-full flex flex-col border border-[#FFFFFF66] rounded-xl overflow-hidden cursor-pointer",
+            className
           )}
-        </h1>
-        <h4 className="flex items-center justify-center gap-2 whitespace-nowrap text-sm lg:text-base">
-          <TbWheel className="w-5 min-w-5 h-5 text-white border-3 border-white rounded-full" />
-          <span>{subTitle}</span>
-        </h4>
-      </div>
-      <div
+        >
+          <MdArrowOutward className="absolute top-2 right-2 w-6 h-6 lg:w-8 lg:h-8 text-white" />
+          <div
+            className={cn(
+              "p-1.5 md:p-2 text-white font-semibold",
+              color === "bronze" &&
+                "bg-gradient-to-r from-[#CE8237] to-[#764413]",
+              color === "extended" &&
+                "bg-gradient-to-r from-[#7C7C7E] to-[#484847]",
+              color === "silver" &&
+                "bg-gradient-to-r from-[#7C7C7E] to-[#484847]",
+              color === "gold" && "bg-gradient-to-r from-[#A17301] to-[#3B2A00]"
+            )}
+          >
+            <h1 className="mx-auto max-w-9/10 p-1 text-center text-lg md:text-xl lg:text-2xl uppercase whitespace-nowrap">
+              <span>{title}</span>
+              {courseTiming && (
+                <>
+                  <br />
+                  <span>({courseTiming} Hours)</span>
+                </>
+              )}
+            </h1>
+            <h4 className="flex items-center justify-center gap-2 whitespace-nowrap text-sm lg:text-base">
+              <TbWheel className="w-5 min-w-5 h-5 text-white border-3 border-white rounded-full" />
+              <span>{subTitle}</span>
+            </h4>
+          </div>
+          <div
+            className={cn(
+              "flex-1 flex flex-col p-1.5 md:p-2",
+              color === "bronze" &&
+                "bg-gradient-to-r from-[#DBAB7E] to-[#CD7F32]",
+              color === "extended" &&
+                "bg-gradient-to-r from-[#A8A9AD] to-[#C0C0C0]",
+              color === "silver" &&
+                "bg-gradient-to-r from-[#A8A9AD] to-[#C0C0C0]",
+              color === "gold" && "bg-gradient-to-r from-[#FFB700] to-[#FFD700]"
+            )}
+          >
+            <p className="flex-1 py-1 text-sm lg:text-base">{description}</p>
+            <div className="mt-1 flex">
+              <div className="flex-1 flex flex-col gap-1 justify-center items-center p-1.5 md:p-3 bg-white border border-[#794911] rounded-bl-2xl">
+                <span className="font-bold text-2xl md:text-3xl lg:text-4xl">
+                  {typeof practicalTestPrice === "number"
+                    ? `£${practicalTestPrice.toLocaleString("en-US")}`
+                    : practicalTestPrice}
+                </span>
+                <p className="text-[10px] min-[375px]:text-xs lg:text-sm whitespace-nowrap">
+                  Includes practical test
+                </p>
+              </div>
+              <div className="flex-1 flex flex-col gap-1 justify-center items-center p-1.5 md:p-3 bg-white border border-[#794911] rounded-br-2xl">
+                <span className="font-bold text-2xl md:text-3xl lg:text-4xl">
+                  {typeof noPracticalTestPrice === "number"
+                    ? `£${noPracticalTestPrice.toLocaleString("en-US")}`
+                    : noPracticalTestPrice}
+                </span>
+                <p className="text-[10px] min-[375px]:text-xs lg:text-sm whitespace-nowrap">
+                  Without practical test
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </DialogTrigger>
+      <DialogContent
         className={cn(
-          "flex-1 flex flex-col p-1.5 md:p-2",
-          color === "bronze" && "bg-gradient-to-r from-[#DBAB7E] to-[#CD7F32]",
+          "text-white p-0 sm:max-w-[90vw] w-[95vw] lg:max-w-400 2xl:-ml-6",
+          color === "bronze" && "bg-gradient-to-r from-[#CD7F32] to-[#DBAB7E]",
           color === "extended" &&
-            "bg-gradient-to-r from-[#A8A9AD] to-[#C0C0C0]",
-          color === "silver" && "bg-gradient-to-r from-[#A8A9AD] to-[#C0C0C0]",
-          color === "gold" && "bg-gradient-to-r from-[#FFB700] to-[#FFD700]"
+            "bg-gradient-to-r from-[#626262] to-[#C0C0C0]",
+          color === "silver" && "bg-gradient-to-r from-[#626262] to-[#C0C0C0]",
+          color === "gold" &&
+            "bg-gradient-to-r from-[#B78300] via-[#C37F00] to-[#FFD700]"
         )}
       >
-        <p className="flex-1 py-1 text-sm lg:text-base">{description}</p>
-        <div className="mt-1 flex">
-          <div className="flex-1 flex flex-col gap-1 justify-center items-center p-1.5 md:p-3 bg-white border border-[#794911] rounded-bl-2xl">
-            <span className="font-bold text-2xl md:text-3xl lg:text-4xl">
-              {typeof practicalTestPrice === "number"
-                ? `£${practicalTestPrice}`
-                : practicalTestPrice}
-            </span>
-            <p className="text-[10px] min-[375px]:text-xs lg:text-sm whitespace-nowrap">
-              Includes practical test
-            </p>
+        <div className="px-4 py-4 lg:px-6 lg:py-8 max-h-[90vh] overflow-y-auto [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
+          <DialogTitle className="font-semibold text-center text-lg sm:text-xl md:text-2xl lg:text-3xl uppercase whitespace-nowrap">
+            <span className="font-black underline">{title}</span>
+            {courseTiming && (
+              <>
+                <br />
+                <span className="text-base md:text-lg lg:text-xl">
+                  ({courseTiming} Hours)
+                </span>
+              </>
+            )}
+          </DialogTitle>
+          <h4 className="flex items-center justify-center gap-2 whitespace-nowrap text-sm lg:text-base font-semibold mt-1">
+            <TbWheel className="w-5 min-w-5 h-5 text-white border-3 border-white rounded-full" />
+            <span>{subTitle}</span>
+          </h4>
+          <div className="mt-4 lg:mt-6 flex flex-col gap-1 lg:gap-3">
+            <h2 className="font-black text-base sm:text-lg md:text-xl lg:text-2xl">
+              Course Description:
+            </h2>
+            <DialogDescription className="text-white text-xs md:text-sm lg:text-base">
+              {courseDescription}
+            </DialogDescription>
+            <ul className="list-none grid grid-cols-1 gap-1 text-xs md:text-sm lg:text-base">
+              {courseRequirements.map((req, index) => (
+                <li key={index}>
+                  <PiSealCheckFill className="inline-block mr-2 w-4 h-4 md:w-5 md:h-5 text-[#503517]" />
+                  <span className="font-semibold">{req.title}</span>{" "}
+                  {req.description}
+                </li>
+              ))}
+            </ul>
           </div>
-          <div className="flex-1 flex flex-col gap-1 justify-center items-center p-1.5 md:p-3 bg-white border border-[#794911] rounded-br-2xl">
-            <span className="font-bold text-2xl md:text-3xl lg:text-4xl">
-              {typeof noPracticalTestPrice === "number"
-                ? `£${noPracticalTestPrice}`
-                : noPracticalTestPrice}
-            </span>
-            <p className="text-[10px] min-[375px]:text-xs lg:text-sm whitespace-nowrap">
-              Without practical test
+          <div className="mt-4 lg:mt-6 flex flex-col gap-1 lg:gap-3">
+            <h2 className="font-black text-base sm:text-lg md:text-xl lg:text-2xl">
+              What’s Included:
+            </h2>
+            <div
+              ref={mobileScrollContainerRef}
+              className={cn(
+                "py-1 flex lg:grid lg:grid-cols-1 gap-4 max-lg:overflow-x-auto [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]",
+                features.length === 2 && "lg:grid-cols-2",
+                features.length >= 3 && "lg:grid-cols-3"
+              )}
+              style={{ touchAction: "pan-y" }}
+            >
+              {features.map((feature, index) => (
+                <CardStyle1
+                  key={`${feature.title}-${index}`}
+                  iconUrl={feature.image}
+                  title={feature.title}
+                  className="min-w-63 min-[375px]:max-md:min-w-77 md:max-lg:min-w-80 lg:min-w-auto shadow-md"
+                />
+              ))}
+            </div>
+
+            {/* Mobile Navigation Arrows */}
+            <div
+              className={cn(
+                "mt-4 relative flex justify-center lg:hidden",
+                features.length <= 2 && "md:hidden",
+                features.length <= 1 && "hidden"
+              )}
+            >
+              <button
+                onClick={handleLeftArrowClick}
+                className="px-4 py-2 bg-white cursor-pointer rounded-l-2xl hover:shadow-xl transition-all duration-500 ease-in-out"
+              >
+                <FaArrowLeft className="text-[#545454]" />
+              </button>
+              <button
+                onClick={handleRightArrowClick}
+                className="px-4 py-2 bg-white cursor-pointer rounded-r-2xl hover:shadow-xl transition-all duration-500 ease-in-out"
+              >
+                <FaArrowRight className="text-[#545454]" />
+              </button>
+            </div>
+          </div>
+          <div className="mt-4 lg:mt-6 flex flex-col gap-1 lg:gap-3">
+            <h2 className="font-black text-base sm:text-lg md:text-xl lg:text-2xl">
+              Pricings:
+            </h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 overflow-hidden">
+              <div className="flex flex-col gap-1 md:gap-2 p-2 md:p-3 bg-white text-black text-center md:border border-[#794911] md:rounded-bl-2xl">
+                <h1 className="font-black text-2xl md:text-3xl lg:text-4xl">
+                  {typeof practicalTestPrice === "number"
+                    ? `£${practicalTestPrice.toLocaleString("en-US")}`
+                    : practicalTestPrice}
+                </h1>
+                <p>Includes practical test</p>
+                <ButtonStyle3 className="w-full lg:max-w-7/10 mx-auto">
+                  Book Now
+                </ButtonStyle3>
+              </div>
+              <div className="flex flex-col gap-1 md:gap-2 p-2 md:p-3 max-md:pt-6 bg-white text-black text-center md:border border-[#794911] max-md:rounded-bl-2xl rounded-br-2xl">
+                <h1 className="font-black text-2xl md:text-3xl lg:text-4xl">
+                  {typeof noPracticalTestPrice === "number"
+                    ? `£${noPracticalTestPrice.toLocaleString("en-US")}`
+                    : noPracticalTestPrice}
+                </h1>
+                <p>Without practical test</p>
+                <ButtonStyle3 className="w-full lg:max-w-7/10 mx-auto">
+                  Book Now
+                </ButtonStyle3>
+              </div>
+            </div>
+          </div>
+          <div className="mt-4 lg:mt-6 flex flex-col rounded-2xl overflow-hidden border border-black shadow-md">
+            <h1 className="p-2 lg:p-3 text-lg lg:text-xl text-center font-semibold uppercase bg-[#660B0B]">
+              Important Disclaimer
+            </h1>
+            <p className="px-2 py-1 lg:px-3 lg:py-2 flex gap-1 lg:gap-2 bg-white text-[#585858]">
+              <PiSealCheckFill className="max-md:mt-1 md:max-lg:-mt-1 min-w-4 min-h-4 md:w-7 md:h-7 text-[var(--custom-primary)]" />
+              <span className="block text-sm lg:text-base">
+                Please be aware that the current waiting time for a practical
+                driving test in Cambridge is approximately 8 weeks from the
+                start of your course. An applicant should have cleared his/her
+                theory driving test
+              </span>
             </p>
           </div>
         </div>
-      </div>
-    </div>
+      </DialogContent>
+    </Dialog>
   );
 }

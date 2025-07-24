@@ -13,5 +13,14 @@ export interface CoursePackage {
   practicalTestPrice: number | string;
   noPracticalTestPrice: number | string;
   description: string;
+  courseDescription: string;
+  courseRequirements: {
+    title?: string;
+    description: string;
+  }[];
+  features: {
+    image: string;
+    title: string;
+  }[];
   color: "bronze" | "extended" | "silver" | "gold";
 }
