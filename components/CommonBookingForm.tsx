@@ -179,7 +179,7 @@ const CommonBookingForm: React.FC<CommonBookingFormProps> = ({ className }) => {
             className="w-full bg-[var(--custom-primary)] hover:bg-yellow-400 cursor-pointer text-white font-semibold py-4 rounded-full text-sm sm:text-base transition-all duration-200"
             size="lg"
           >
-            Submit
+            Make Payment
           </Button>
         </div>
       </form>
