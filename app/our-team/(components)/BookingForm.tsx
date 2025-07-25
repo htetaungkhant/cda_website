@@ -49,6 +49,9 @@ const formSchema = z.object({
   courseType: z.string().min(1, {
     message: "Please select a course type.",
   }),
+  licenseType: z.string().min(1, {
+    message: "Please select a license type.",
+  }),
   agreeToTerms: z.boolean().refine((value) => value === true, {
     message: "You must agree to the terms and conditions.",
   }),
@@ -69,6 +72,7 @@ const BookingForm: React.FC<BookingFormProps> = ({ className }) => {
       address: "",
       postCode: "",
       courseType: "",
+      licenseType: "CB3",
       agreeToTerms: true,
     },
   });
@@ -98,7 +102,7 @@ const BookingForm: React.FC<BookingFormProps> = ({ className }) => {
               control={form.control}
               name="firstName"
               render={({ field }) => (
-                <FormItem>
+                <FormItem className="flex flex-col">
                   <FormLabel className="text-gray-600 font-medium whitespace-nowrap text-xs sm:text-sm">
                     First Name
                   </FormLabel>
@@ -109,7 +113,7 @@ const BookingForm: React.FC<BookingFormProps> = ({ className }) => {
                       className="max-sm:text-xs border-gray-300 rounded-sm p-2 sm:px-4 sm:py-3 text-gray-800 placeholder:text-gray-500 focus:border-gray-400 focus:ring-0 focus-visible:ring-0"
                     />
                   </FormControl>
-                  <FormMessage />
+                  <FormMessage className="-mt-1 text-[10px] sm:text-xs" />
                 </FormItem>
               )}
             />
@@ -117,7 +121,7 @@ const BookingForm: React.FC<BookingFormProps> = ({ className }) => {
               control={form.control}
               name="surname"
               render={({ field }) => (
-                <FormItem>
+                <FormItem className="flex flex-col">
                   <FormLabel className="text-gray-600 font-medium whitespace-nowrap text-xs sm:text-sm">
                     Surname
                   </FormLabel>
@@ -128,7 +132,7 @@ const BookingForm: React.FC<BookingFormProps> = ({ className }) => {
                       className="max-sm:text-xs border-gray-300 rounded-sm p-2 sm:px-4 sm:py-3 text-gray-800 placeholder:text-gray-500 focus:border-gray-400 focus:ring-0 focus-visible:ring-0"
                     />
                   </FormControl>
-                  <FormMessage />
+                  <FormMessage className="-mt-1 text-[10px] sm:text-xs" />
                 </FormItem>
               )}
             />
@@ -140,7 +144,7 @@ const BookingForm: React.FC<BookingFormProps> = ({ className }) => {
               control={form.control}
               name="mobileNumber"
               render={({ field }) => (
-                <FormItem>
+                <FormItem className="flex flex-col">
                   <FormLabel className="text-gray-600 font-medium whitespace-nowrap text-xs sm:text-sm">
                     Mobile Number
                   </FormLabel>
@@ -153,7 +157,7 @@ const BookingForm: React.FC<BookingFormProps> = ({ className }) => {
                       inputClassName="w-full max-sm:text-xs!"
                     />
                   </FormControl>
-                  <FormMessage />
+                  <FormMessage className="-mt-1 text-[10px] sm:text-xs" />
                 </FormItem>
               )}
             />
@@ -161,7 +165,7 @@ const BookingForm: React.FC<BookingFormProps> = ({ className }) => {
               control={form.control}
               name="emailId"
               render={({ field }) => (
-                <FormItem>
+                <FormItem className="flex flex-col">
                   <FormLabel className="text-gray-600 font-medium whitespace-nowrap text-xs sm:text-sm">
                     Email ID
                   </FormLabel>
@@ -173,7 +177,7 @@ const BookingForm: React.FC<BookingFormProps> = ({ className }) => {
                       className="max-sm:text-xs border-gray-300 rounded-sm p-2 sm:px-4 sm:py-3 text-gray-800 placeholder:text-gray-500 focus:border-gray-400 focus:ring-0 focus-visible:ring-0"
                     />
                   </FormControl>
-                  <FormMessage />
+                  <FormMessage className="-mt-1 text-[10px] sm:text-xs" />
                 </FormItem>
               )}
             />
@@ -185,7 +189,7 @@ const BookingForm: React.FC<BookingFormProps> = ({ className }) => {
               control={form.control}
               name="address"
               render={({ field }) => (
-                <FormItem>
+                <FormItem className="flex flex-col">
                   <FormLabel className="text-gray-600 font-medium whitespace-nowrap text-xs sm:text-sm">
                     Address
                   </FormLabel>
@@ -196,7 +200,7 @@ const BookingForm: React.FC<BookingFormProps> = ({ className }) => {
                       className="max-sm:text-xs border-gray-300 rounded-sm p-2 sm:px-4 sm:py-3 text-gray-800 placeholder:text-gray-500 focus:border-gray-400 focus:ring-0 focus-visible:ring-0"
                     />
                   </FormControl>
-                  <FormMessage />
+                  <FormMessage className="-mt-1 text-[10px] sm:text-xs" />
                 </FormItem>
               )}
             />
@@ -204,7 +208,7 @@ const BookingForm: React.FC<BookingFormProps> = ({ className }) => {
               control={form.control}
               name="postCode"
               render={({ field }) => (
-                <FormItem>
+                <FormItem className="flex flex-col">
                   <FormLabel className="text-gray-600 font-medium whitespace-nowrap text-xs sm:text-sm">
                     Post Code
                   </FormLabel>
@@ -215,7 +219,7 @@ const BookingForm: React.FC<BookingFormProps> = ({ className }) => {
                       className="max-sm:text-xs border-gray-300 rounded-sm p-2 sm:px-4 sm:py-3 text-gray-800 placeholder:text-gray-500 focus:border-gray-400 focus:ring-0 focus-visible:ring-0"
                     />
                   </FormControl>
-                  <FormMessage />
+                  <FormMessage className="-mt-1 text-[10px] sm:text-xs" />
                 </FormItem>
               )}
             />
@@ -227,7 +231,7 @@ const BookingForm: React.FC<BookingFormProps> = ({ className }) => {
               control={form.control}
               name="courseType"
               render={({ field }) => (
-                <FormItem>
+                <FormItem className="flex flex-col">
                   <FormControl>
                     <Input
                       placeholder="Automatic"
@@ -235,22 +239,38 @@ const BookingForm: React.FC<BookingFormProps> = ({ className }) => {
                       className="max-sm:text-xs border-gray-300 rounded-sm p-2 sm:px-4 sm:py-3 text-gray-800 placeholder:text-gray-500 focus:border-gray-400 focus:ring-0 focus-visible:ring-0"
                     />
                   </FormControl>
-                  <FormMessage />
+                  <FormMessage className="-mt-1 text-[10px] sm:text-xs" />
                 </FormItem>
               )}
             />
-            <FormItem>
-              <Select defaultValue="CB3">
-                <SelectTrigger className="max-sm:text-xs w-full border-gray-300 rounded-sm p-2 sm:px-4 sm:py-3 text-gray-800 focus:border-gray-400 focus:ring-0 focus-visible:ring-0">
-                  <SelectValue placeholder="CB3" />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="CB3">CB3</SelectItem>
-                  <SelectItem value="CB4">CB4</SelectItem>
-                  <SelectItem value="CB5">CB5</SelectItem>
-                </SelectContent>
-              </Select>
-            </FormItem>
+            <FormField
+              control={form.control}
+              name="licenseType"
+              render={({ field }) => (
+                <FormItem className="flex flex-col">
+                  {/* <FormLabel className="text-gray-600 font-medium whitespace-nowrap text-xs sm:text-sm">
+                    License Type
+                  </FormLabel> */}
+                  <FormControl>
+                    <Select
+                      onValueChange={field.onChange}
+                      value={field.value}
+                      defaultValue="CB3"
+                    >
+                      <SelectTrigger className="max-sm:text-xs w-full border-gray-300 rounded-sm p-2 sm:px-4 sm:py-3 text-gray-800 focus:border-gray-400 focus:ring-0 focus-visible:ring-0">
+                        <SelectValue placeholder="CB3" />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectItem value="CB3">CB3</SelectItem>
+                        <SelectItem value="CB4">CB4</SelectItem>
+                        <SelectItem value="CB5">CB5</SelectItem>
+                      </SelectContent>
+                    </Select>
+                  </FormControl>
+                  <FormMessage className="-mt-1 text-[10px] sm:text-xs" />
+                </FormItem>
+              )}
+            />
           </div>
 
           {/* Terms and Conditions Checkbox */}
@@ -258,12 +278,12 @@ const BookingForm: React.FC<BookingFormProps> = ({ className }) => {
             control={form.control}
             name="agreeToTerms"
             render={({ field }) => (
-              <FormItem className="flex flex-row items-center space-x-0 space-y-0 mt-6">
+              <FormItem className="flex flex-row space-x-0 space-y-0 mt-6">
                 <FormControl>
                   <Checkbox
                     checked={field.value}
                     onCheckedChange={field.onChange}
-                    className="border-2 border-yellow-400 data-[state=checked]:bg-yellow-400 data-[state=checked]:border-yellow-400 rounded-sm w-4 h-4"
+                    className="mt-0.5 border-2 border-yellow-400 data-[state=checked]:bg-yellow-400 data-[state=checked]:border-yellow-400 rounded-sm w-4 h-4"
                   />
                 </FormControl>
                 <div className="space-y-1 leading-none">
@@ -276,7 +296,7 @@ const BookingForm: React.FC<BookingFormProps> = ({ className }) => {
                       terms & conditions
                     </Link>
                   </FormLabel>
-                  <FormMessage />
+                  <FormMessage className="-mt-1 text-[10px] sm:text-xs" />
                 </div>
               </FormItem>
             )}

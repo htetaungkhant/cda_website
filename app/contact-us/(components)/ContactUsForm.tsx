@@ -39,6 +39,9 @@ const formSchema = z.object({
   emailId: z.string().email({
     message: "Please enter a valid email address.",
   }),
+  course: z.string().min(1, {
+    message: "Please select a course.",
+  }),
   message: z.string().min(20, {
     message: "Message must be at least 20 characters.",
   }),
@@ -58,6 +61,7 @@ export function ContactUsForm({ className }: BookingFormProps) {
       firstName: "",
       mobileNumber: "",
       emailId: "",
+      course: "",
       message: "",
       agreeToTerms: true,
     },
@@ -115,14 +119,14 @@ export function ContactUsForm({ className }: BookingFormProps) {
             <h1 className="flex-1 px-5 py-3 text-lg font-semibold bg-gradient-to-r from-[#FFFAC6] to-[#FFFAC600] text-gray-800">
               Get A Free Quote
             </h1>
-            <div className="px-2 py-4 sm:px-3 md:px-6 md:py-6 space-y-5">
+            <div className="px-2 py-3 sm:px-3 md:px-6 md:py-5 space-y-3">
               {/* First Name and Email Row */}
               <div className="grid grid-cols-1 min-[375px]:grid-cols-2 gap-2 sm:gap-4">
                 <FormField
                   control={form.control}
                   name="firstName"
                   render={({ field }) => (
-                    <FormItem>
+                    <FormItem className="flex flex-col">
                       <FormLabel className="text-gray-600 font-medium whitespace-nowrap text-xs sm:text-sm">
                         First Name
                       </FormLabel>
@@ -133,7 +137,7 @@ export function ContactUsForm({ className }: BookingFormProps) {
                           className="max-sm:text-xs border-gray-300 rounded-sm p-2 sm:px-4 sm:py-3 text-gray-800 placeholder:text-gray-500 focus:border-gray-400 focus:ring-0 focus-visible:ring-0"
                         />
                       </FormControl>
-                      <FormMessage />
+                      <FormMessage className="-mt-1 text-[10px] sm:text-xs" />
                     </FormItem>
                   )}
                 />
@@ -141,7 +145,7 @@ export function ContactUsForm({ className }: BookingFormProps) {
                   control={form.control}
                   name="emailId"
                   render={({ field }) => (
-                    <FormItem>
+                    <FormItem className="flex flex-col">
                       <FormLabel className="text-gray-600 font-medium whitespace-nowrap text-xs sm:text-sm">
                         Email ID
                       </FormLabel>
@@ -153,7 +157,7 @@ export function ContactUsForm({ className }: BookingFormProps) {
                           className="max-sm:text-xs border-gray-300 rounded-sm p-2 sm:px-4 sm:py-3 text-gray-800 placeholder:text-gray-500 focus:border-gray-400 focus:ring-0 focus-visible:ring-0"
                         />
                       </FormControl>
-                      <FormMessage />
+                      <FormMessage className="-mt-1 text-[10px] sm:text-xs" />
                     </FormItem>
                   )}
                 />
@@ -165,7 +169,7 @@ export function ContactUsForm({ className }: BookingFormProps) {
                   control={form.control}
                   name="mobileNumber"
                   render={({ field }) => (
-                    <FormItem>
+                    <FormItem className="flex flex-col">
                       <FormLabel className="text-gray-600 font-medium whitespace-nowrap text-xs sm:text-sm">
                         Mobile Number
                       </FormLabel>
@@ -178,31 +182,37 @@ export function ContactUsForm({ className }: BookingFormProps) {
                           inputClassName="w-full max-sm:text-xs!"
                         />
                       </FormControl>
-                      <FormMessage />
+                      <FormMessage className="-mt-1 text-[10px] sm:text-xs" />
                     </FormItem>
                   )}
                 />
-                <FormItem>
-                  <FormLabel className="text-gray-600 font-medium whitespace-nowrap text-xs sm:text-sm">
-                    Your Course
-                  </FormLabel>
-                  <FormControl>
-                    <Select>
-                      <SelectTrigger className="max-sm:text-xs w-full border-gray-300 rounded-sm p-2 sm:px-4 sm:py-3 text-gray-800 focus:border-gray-400 focus:ring-0 focus-visible:ring-0">
-                        <SelectValue placeholder="Select your Course" />
-                      </SelectTrigger>
-                      <SelectContent>
-                        <SelectItem value="Automatic">Automatic</SelectItem>
-                        <SelectItem value="Manual">Manual</SelectItem>
-                        <SelectItem value="Intensive">Intensive</SelectItem>
-                        <SelectItem value="Bulk Booking">
-                          Bulk Booking
-                        </SelectItem>
-                      </SelectContent>
-                    </Select>
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
+                <FormField
+                  control={form.control}
+                  name="course"
+                  render={({ field }) => (
+                    <FormItem className="flex flex-col">
+                      <FormLabel className="text-gray-600 font-medium whitespace-nowrap text-xs sm:text-sm">
+                        Your Course
+                      </FormLabel>
+                      <FormControl>
+                        <Select onValueChange={field.onChange} value={field.value}>
+                          <SelectTrigger className="max-sm:text-xs w-full border-gray-300 rounded-sm p-2 sm:px-4 sm:py-3 text-gray-800 focus:border-gray-400 focus:ring-0 focus-visible:ring-0">
+                            <SelectValue placeholder="Select your Course" />
+                          </SelectTrigger>
+                          <SelectContent>
+                            <SelectItem value="Automatic">Automatic</SelectItem>
+                            <SelectItem value="Manual">Manual</SelectItem>
+                            <SelectItem value="Intensive">Intensive</SelectItem>
+                            <SelectItem value="Bulk Booking">
+                              Bulk Booking
+                            </SelectItem>
+                          </SelectContent>
+                        </Select>
+                      </FormControl>
+                      <FormMessage className="-mt-1 text-[10px] sm:text-xs" />
+                    </FormItem>
+                  )}
+                />
               </div>
 
               {/* Message Row */}
@@ -211,7 +221,7 @@ export function ContactUsForm({ className }: BookingFormProps) {
                   control={form.control}
                   name="message"
                   render={({ field }) => (
-                    <FormItem>
+                    <FormItem className="flex flex-col">
                       <FormLabel className="text-gray-600 font-medium whitespace-nowrap text-xs sm:text-sm">
                         Message
                       </FormLabel>
@@ -222,7 +232,7 @@ export function ContactUsForm({ className }: BookingFormProps) {
                           className="h-24 lg:h-28 max-sm:text-xs border-gray-300 rounded-sm p-2 sm:px-4 sm:py-3 text-gray-800 placeholder:text-gray-500 focus:border-gray-400 focus:ring-0 focus-visible:ring-0"
                         />
                       </FormControl>
-                      <FormMessage />
+                      <FormMessage className="-mt-1 text-[10px] sm:text-xs" />
                     </FormItem>
                   )}
                 />
@@ -233,12 +243,12 @@ export function ContactUsForm({ className }: BookingFormProps) {
                 control={form.control}
                 name="agreeToTerms"
                 render={({ field }) => (
-                  <FormItem className="flex flex-row items-center space-x-0 space-y-0 mt-6">
+                  <FormItem className="flex flex-row space-x-0 space-y-0 mt-6">
                     <FormControl>
                       <Checkbox
                         checked={field.value}
                         onCheckedChange={field.onChange}
-                        className="border-2 border-yellow-400 data-[state=checked]:bg-yellow-400 data-[state=checked]:border-yellow-400 rounded-sm w-4 h-4"
+                        className="mt-0.5 border-2 border-yellow-400 data-[state=checked]:bg-yellow-400 data-[state=checked]:border-yellow-400 rounded-sm w-4 h-4"
                       />
                     </FormControl>
                     <div className="space-y-1 leading-none">
@@ -251,7 +261,7 @@ export function ContactUsForm({ className }: BookingFormProps) {
                           terms & conditions
                         </Link>
                       </FormLabel>
-                      <FormMessage />
+                      <FormMessage className="-mt-1 text-[10px] sm:text-xs" />
                     </div>
                   </FormItem>
                 )}

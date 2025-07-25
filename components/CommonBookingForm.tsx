@@ -75,7 +75,7 @@ const CommonBookingForm: React.FC<CommonBookingFormProps> = ({ className }) => {
               control={form.control}
               name="firstName"
               render={({ field }) => (
-                <FormItem>
+                <FormItem className="flex flex-col">
                   <FormLabel className="text-gray-600 font-medium whitespace-nowrap text-xs sm:text-sm">
                     First Name
                   </FormLabel>
@@ -86,7 +86,7 @@ const CommonBookingForm: React.FC<CommonBookingFormProps> = ({ className }) => {
                       className="max-sm:text-xs border-gray-300 rounded-sm p-2 sm:px-4 sm:py-3 text-gray-800 placeholder:text-gray-500 focus:border-gray-400 focus:ring-0 focus-visible:ring-0"
                     />
                   </FormControl>
-                  <FormMessage className="text-[10px] sm:text-xs lg:text-sm" />
+                  <FormMessage className="-mt-1 text-[10px] sm:text-xs" />
                 </FormItem>
               )}
             />
@@ -94,7 +94,7 @@ const CommonBookingForm: React.FC<CommonBookingFormProps> = ({ className }) => {
               control={form.control}
               name="emailId"
               render={({ field }) => (
-                <FormItem>
+                <FormItem className="flex flex-col">
                   <FormLabel className="text-gray-600 font-medium whitespace-nowrap text-xs sm:text-sm">
                     Email ID
                   </FormLabel>
@@ -106,7 +106,7 @@ const CommonBookingForm: React.FC<CommonBookingFormProps> = ({ className }) => {
                       className="max-sm:text-xs border-gray-300 rounded-sm p-2 sm:px-4 sm:py-3 text-gray-800 placeholder:text-gray-500 focus:border-gray-400 focus:ring-0 focus-visible:ring-0"
                     />
                   </FormControl>
-                  <FormMessage className="text-[10px] sm:text-xs lg:text-sm" />
+                  <FormMessage className="-mt-1 text-[10px] sm:text-xs" />
                 </FormItem>
               )}
             />
@@ -118,7 +118,7 @@ const CommonBookingForm: React.FC<CommonBookingFormProps> = ({ className }) => {
               control={form.control}
               name="mobileNumber"
               render={({ field }) => (
-                <FormItem>
+                <FormItem className="flex flex-col">
                   <FormLabel className="text-gray-600 font-medium whitespace-nowrap text-xs sm:text-sm">
                     Mobile Number
                   </FormLabel>
@@ -131,7 +131,7 @@ const CommonBookingForm: React.FC<CommonBookingFormProps> = ({ className }) => {
                       inputClassName="w-full max-sm:text-xs!"
                     />
                   </FormControl>
-                  <FormMessage className="text-[10px] sm:text-xs lg:text-sm" />
+                  <FormMessage className="-mt-1 text-[10px] sm:text-xs" />
                 </FormItem>
               )}
             />
@@ -167,7 +167,7 @@ const CommonBookingForm: React.FC<CommonBookingFormProps> = ({ className }) => {
                       Privacy Policy
                     </Link>
                   </FormLabel>
-                  <FormMessage className="text-[10px] sm:text-xs lg:text-sm" />
+                  <FormMessage className="-mt-1 text-[10px] sm:text-xs" />
                 </div>
               </FormItem>
             )}
