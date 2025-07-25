@@ -124,19 +124,25 @@ const Header = () => {
       >
         <ul className="flex flex-col gap-6 text-sm font-semibold">
           <li className="text-center">
-            <Link href="/about-us">ABOUT US</Link>
+            <Link onClick={() => setHamburgerDisplay(false)} href="/about-us">
+              ABOUT US
+            </Link>
           </li>
           <li className="text-center">
-            <Link href="/our-team">OUR TEAM</Link>
+            <Link onClick={() => setHamburgerDisplay(false)} href="/our-team">
+              OUR TEAM
+            </Link>
           </li>
           <li>
             <HeaderDropdown
               title="EXPLORE CLASSES"
               titleHref="/explore-classes"
+              onTitleClick={() => setHamburgerDisplay(false)}
             >
               <ul className="px-2 py-2 text-xs font-medium">
                 <li className="flex items-center rounded-md text-black cursor-pointer">
                   <Link
+                    onClick={() => setHamburgerDisplay(false)}
                     href="/explore-classes/manual-driving-class"
                     className="flex items-center justify-between gap-4 w-full px-2 py-2 whitespace-nowrap"
                   >
@@ -146,6 +152,7 @@ const Header = () => {
                 </li>
                 <li className="flex rounded-md text-black cursor-pointer">
                   <Link
+                    onClick={() => setHamburgerDisplay(false)}
                     href="/explore-classes/automatic-driving-class"
                     className="flex items-center justify-between gap-4 w-full px-2 py-2 whitespace-nowrap"
                   >
@@ -155,6 +162,7 @@ const Header = () => {
                 </li>
                 <li className="flex rounded-md text-black cursor-pointer">
                   <Link
+                    onClick={() => setHamburgerDisplay(false)}
                     href="/explore-classes/intensive-driving-class"
                     className="flex items-center justify-between gap-4 w-full px-2 py-2 whitespace-nowrap"
                   >
@@ -164,6 +172,7 @@ const Header = () => {
                 </li>
                 <li className="flex rounded-md text-black cursor-pointer">
                   <Link
+                    onClick={() => setHamburgerDisplay(false)}
                     href="/explore-classes/bulk-booking-class"
                     className="flex items-center justify-between gap-4 w-full px-2 py-2 whitespace-nowrap"
                   >
@@ -173,6 +182,7 @@ const Header = () => {
                 </li>
                 <li className="flex rounded-md text-black cursor-pointer">
                   <Link
+                    onClick={() => setHamburgerDisplay(false)}
                     href="/explore-classes/pricing"
                     className="flex items-center justify-between gap-4 w-full px-2 py-2 whitespace-nowrap"
                   >
@@ -184,11 +194,15 @@ const Header = () => {
             </HeaderDropdown>
           </li>
           <li className="text-center">
-            <Link href="/contact-us">CONTACT US</Link>
+            <Link onClick={() => setHamburgerDisplay(false)} href="/contact-us">
+              CONTACT US
+            </Link>
           </li>
         </ul>
 
-        <ButtonStyle1>Book Now</ButtonStyle1>
+        <ButtonStyle1 onClick={() => setHamburgerDisplay(false)}>
+          Book Now
+        </ButtonStyle1>
       </div>
     </header>
   );

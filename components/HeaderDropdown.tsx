@@ -6,12 +6,14 @@ import { FaCaretDown } from "react-icons/fa6";
 interface HeaderDropdownProps {
   title: string;
   titleHref?: string;
+  onTitleClick?: () => void;
   children: ReactNode;
 }
 
 const HeaderDropdown = ({
   title,
   titleHref,
+  onTitleClick,
   children,
 }: HeaderDropdownProps) => {
   const dropdownRef = useRef<HTMLDivElement>(null);
@@ -44,7 +46,9 @@ const HeaderDropdown = ({
     <div className="relative z-10">
       {titleHref ? (
         <div className="w-full flex items-center justify-center gap-2 poppins-medium cursor-pointer">
-          <Link href={titleHref}>{title}</Link>
+          <Link href={titleHref} onClick={onTitleClick}>
+            {title}
+          </Link>
           <span ref={caretRef} onClick={handleClick}>
             <FaCaretDown />
           </span>
