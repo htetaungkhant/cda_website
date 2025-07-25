@@ -14,8 +14,8 @@ const HeaderDropdown = ({
   titleHref,
   children,
 }: HeaderDropdownProps) => {
-  const constainerRef = useRef<HTMLDivElement>(null);
   const dropdownRef = useRef<HTMLDivElement>(null);
+  const caretRef = useRef<HTMLElement>(null);
 
   const handleClick = () => {
     if (dropdownRef.current) {
@@ -26,9 +26,8 @@ const HeaderDropdown = ({
   const handleOutsideClick = (event: MouseEvent) => {
     if (
       dropdownRef.current &&
-      !dropdownRef.current.contains(event.target as Node) &&
-      constainerRef.current &&
-      !constainerRef.current.contains(event.target as Node)
+      caretRef.current &&
+      !caretRef.current.contains(event.target as Node)
     ) {
       dropdownRef.current.classList.add("hidden");
     }
@@ -42,11 +41,13 @@ const HeaderDropdown = ({
   }, []);
 
   return (
-    <div ref={constainerRef} className="relative z-10">
+    <div className="relative z-10">
       {titleHref ? (
         <div className="w-full flex items-center justify-center gap-2 poppins-medium cursor-pointer">
           <Link href={titleHref}>{title}</Link>
-          <FaCaretDown onClick={handleClick} />
+          <span ref={caretRef} onClick={handleClick}>
+            <FaCaretDown />
+          </span>
         </div>
       ) : (
         <button
@@ -54,7 +55,9 @@ const HeaderDropdown = ({
           onClick={handleClick}
         >
           {title}
-          <FaCaretDown />
+          <span ref={caretRef}>
+            <FaCaretDown />
+          </span>
         </button>
       )}
       <div
