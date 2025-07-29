@@ -1,11 +1,13 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono, Poppins } from "next/font/google";
-import 'react-international-phone/style.css';
+import "react-international-phone/style.css";
 import "./globals.css";
 
 import { Toaster } from "@/components/ui/sonner";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import { WhatsAppLink } from "@/components/WhatsAppLink";
+import ChatBot from "@/components/ChatBot";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -45,6 +47,8 @@ export default function RootLayout({
           <Header />
           {children}
           <Footer />
+          <WhatsAppLink />
+          <ChatBot />
         </main>
         <Toaster position="top-right" richColors closeButton />
       </body>
