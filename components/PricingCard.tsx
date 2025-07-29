@@ -206,7 +206,7 @@ export function PricingCardStyle3({
                   "bg-gradient-to-r from-[#A17301] to-[#3B2A00]"
               )}
             >
-              <h1 className="mx-auto max-w-9/10 p-1 text-center text-lg md:text-xl lg:text-2xl uppercase whitespace-nowrap">
+              <h1 className="mx-auto max-w-9/10 p-1 text-center text-base min-[375px]:text-lg md:text-xl lg:text-2xl uppercase whitespace-nowrap">
                 <span>{title}</span>
                 {courseTiming && (
                   <>
@@ -215,7 +215,7 @@ export function PricingCardStyle3({
                   </>
                 )}
               </h1>
-              <h4 className="flex items-center justify-center gap-2 whitespace-nowrap text-sm lg:text-base">
+              <h4 className="flex items-center justify-center gap-2 whitespace-nowrap text-xs min-[375px]:text-sm lg:text-base">
                 <TbWheel className="w-5 min-w-5 h-5 text-white border-3 border-white rounded-full" />
                 <span>{subTitle}</span>
               </h4>
@@ -233,7 +233,9 @@ export function PricingCardStyle3({
                   "bg-gradient-to-r from-[#FFB700] to-[#FFD700]"
               )}
             >
-              <p className="flex-1 py-1 text-sm lg:text-base">{description}</p>
+              <p className="flex-1 py-1 text-xs min-[375px]:text-sm lg:text-base">
+                {description}
+              </p>
               <div className="mt-1 flex">
                 <div className="flex-1 flex flex-col gap-1 justify-center items-center p-1.5 md:p-3 bg-white border border-[#794911] rounded-bl-2xl">
                   <span className="font-bold text-2xl md:text-3xl lg:text-4xl">
