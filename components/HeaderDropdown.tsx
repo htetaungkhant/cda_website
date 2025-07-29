@@ -1,11 +1,15 @@
 "use client";
-import Link from "next/link";
 import { useEffect, useRef, ReactNode } from "react";
+import Link from "next/link";
 import { FaCaretDown } from "react-icons/fa6";
+import { usePathname } from "next/navigation";
+
+import { cn } from "@/lib/utils";
 
 interface HeaderDropdownProps {
   title: string;
   titleHref?: string;
+  subMenuHrefs?: string[];
   onTitleClick?: () => void;
   children: ReactNode;
 }
@@ -13,9 +17,11 @@ interface HeaderDropdownProps {
 const HeaderDropdown = ({
   title,
   titleHref,
+  subMenuHrefs,
   onTitleClick,
   children,
 }: HeaderDropdownProps) => {
+  const pathname = usePathname();
   const dropdownRef = useRef<HTMLDivElement>(null);
   const caretRef = useRef<HTMLElement>(null);
 
@@ -45,7 +51,13 @@ const HeaderDropdown = ({
   return (
     <div className="relative z-10">
       {titleHref ? (
-        <div className="w-full flex items-center justify-center gap-2 poppins-medium cursor-pointer">
+        <div
+          className={cn(
+            "w-full flex items-center justify-center gap-2 poppins-medium cursor-pointer",
+            pathname === titleHref && " text-[var(--custom-primary)]",
+            subMenuHrefs?.includes(pathname) && "text-[var(--custom-primary)]"
+          )}
+        >
           <Link href={titleHref} onClick={onTitleClick}>
             {title}
           </Link>

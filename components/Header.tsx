@@ -2,6 +2,7 @@
 import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { FaArrowRightLong } from "react-icons/fa6";
 import { RxHamburgerMenu, RxCross2 } from "react-icons/rx";
 
@@ -10,6 +11,7 @@ import { ButtonStyle1 } from "./Button";
 import HeaderDropdown from "./HeaderDropdown";
 
 const Header = () => {
+  const pathname = usePathname();
   const [hamburgerDisplay, setHamburgerDisplay] = useState(false);
 
   const handleHamburgerClick = () => {
@@ -46,15 +48,36 @@ const Header = () => {
         <nav className="max-lg:hidden">
           <ul className="flex gap-8 text-sm font-semibold">
             <li>
-              <Link href="/about-us">ABOUT US</Link>
+              <Link
+                href="/about-us"
+                className={
+                  pathname === "/about-us" ? "text-[var(--custom-primary)]" : ""
+                }
+              >
+                ABOUT US
+              </Link>
             </li>
             <li>
-              <Link href="/our-team">OUR TEAM</Link>
+              <Link
+                href="/our-team"
+                className={
+                  pathname === "/our-team" ? "text-[var(--custom-primary)]" : ""
+                }
+              >
+                OUR TEAM
+              </Link>
             </li>
             <li>
               <HeaderDropdown
                 title="EXPLORE CLASSES"
                 titleHref="/explore-classes"
+                subMenuHrefs={[
+                  "/explore-classes/manual-driving-class",
+                  "/explore-classes/automatic-driving-class",
+                  "/explore-classes/intensive-driving-class",
+                  "/explore-classes/bulk-booking-class",
+                  "/explore-classes/pricing",
+                ]}
               >
                 <ul className="px-2 py-2 text-xs font-medium">
                   <li className="flex items-center rounded-md text-black hover:bg-gray-100 cursor-pointer">
@@ -106,7 +129,16 @@ const Header = () => {
               </HeaderDropdown>
             </li>
             <li>
-              <Link href="/contact-us">CONTACT US</Link>
+              <Link
+                href="/contact-us"
+                className={
+                  pathname === "/contact-us"
+                    ? "text-[var(--custom-primary)]"
+                    : ""
+                }
+              >
+                CONTACT US
+              </Link>
             </li>
           </ul>
         </nav>
@@ -124,12 +156,39 @@ const Header = () => {
       >
         <ul className="flex flex-col gap-6 text-sm font-semibold">
           <li className="text-center">
-            <Link onClick={() => setHamburgerDisplay(false)} href="/about-us">
+            <Link
+              onClick={() => setHamburgerDisplay(false)}
+              href="/"
+              className={
+                pathname === "/" ? "text-[var(--custom-primary)] font-bold" : ""
+              }
+            >
+              HOME
+            </Link>
+          </li>
+          <li className="text-center">
+            <Link
+              onClick={() => setHamburgerDisplay(false)}
+              href="/about-us"
+              className={
+                pathname === "/about-us"
+                  ? "text-[var(--custom-primary)] font-bold"
+                  : ""
+              }
+            >
               ABOUT US
             </Link>
           </li>
           <li className="text-center">
-            <Link onClick={() => setHamburgerDisplay(false)} href="/our-team">
+            <Link
+              onClick={() => setHamburgerDisplay(false)}
+              href="/our-team"
+              className={
+                pathname === "/our-team"
+                  ? "text-[var(--custom-primary)] font-bold"
+                  : ""
+              }
+            >
               OUR TEAM
             </Link>
           </li>
@@ -137,6 +196,13 @@ const Header = () => {
             <HeaderDropdown
               title="EXPLORE CLASSES"
               titleHref="/explore-classes"
+              subMenuHrefs={[
+                "/explore-classes/manual-driving-class",
+                "/explore-classes/automatic-driving-class",
+                "/explore-classes/intensive-driving-class",
+                "/explore-classes/bulk-booking-class",
+                "/explore-classes/pricing",
+              ]}
               onTitleClick={() => setHamburgerDisplay(false)}
             >
               <ul className="px-2 py-2 text-xs font-medium">
@@ -194,7 +260,15 @@ const Header = () => {
             </HeaderDropdown>
           </li>
           <li className="text-center">
-            <Link onClick={() => setHamburgerDisplay(false)} href="/contact-us">
+            <Link
+              onClick={() => setHamburgerDisplay(false)}
+              href="/contact-us"
+              className={
+                pathname === "/contact-us"
+                  ? "text-[var(--custom-primary)] font-bold"
+                  : ""
+              }
+            >
               CONTACT US
             </Link>
           </li>
