@@ -42,6 +42,14 @@ const dummyData = [
     review:
       "Great experience! The class was well-structured and the instructors were very knowledgeable.",
   },
+  {
+    image: "/dummy-data/3.png",
+    name: "Bob Williams",
+    date: "2024-09-09",
+    rating: 5,
+    review:
+      "I learned so much in this class. The instructors were very professional and made the learning process enjoyable.",
+  },
 ];
 
 const TestimonialsSection = () => {
