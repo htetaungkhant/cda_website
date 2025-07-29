@@ -49,8 +49,8 @@ const Footer = () => {
       </svg>
 
       {/* Content */}
-      <div className="bg-gradient-to-r from-[#2B2B2B] to-[#0B082B] lg:-mt-1">
-        <div className="px-16 py-8 max-lg:px-8 max-lg:py-4 max-lg:pt-8 flex justify-between max-lg:flex-col gap-8">
+      <div className="bg-[#0D0B2B] lg:bg-gradient-to-r from-[#2B2B2B] to-[#0B082B] lg:-mt-1">
+        <div className="px-16 py-8 max-lg:px-8 max-lg:py-4 max-lg:pt-8 flex justify-between max-lg:flex-col gap-16 lg:gap-8">
           <div className="w-72 flex flex-col items-start gap-2 lg:gap-4 max-lg:w-full max-md:items-center">
             <Link href="/">
               <Image
@@ -61,7 +61,7 @@ const Footer = () => {
                 className="w-48 h-auto object-contain"
               />
             </Link>
-            <p className="text-sm max-lg:text-xs">
+            <p className="text-sm max-lg:text-xs max-lg:mt-2">
               Cambridge Driving Academy was created out of a strong passion, a
               shared vision, and a ceaseless commitment to making learning easy
               and accessible.
@@ -107,10 +107,10 @@ const Footer = () => {
           <div className="grid grid-cols-2 lg:flex gap-4">
             {/* nav links */}
             <div className="flex flex-col gap-2 max-w-50">
-              <h3 className="relative whitespace-nowrap text-sm max-lg:text-xs font-bold after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-1/3 after:min-w-12 after:h-1 after:bg-[var(--custom-primary)]">
+              <h3 className="relative whitespace-nowrap text-[8px] min-[425px]:text-[10px] sm:text-xs lg:text-sm font-bold after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-1/5 sm:after:w-1/3 after:min-w-7 sm:after:min-w-12 after:h-0.5 sm:after:h-1 after:bg-[var(--custom-primary)]">
                 QUICK LINKS
               </h3>
-              <ul className="mt-4 flex flex-col gap-2 max-lg:text-sm text-[var(--custom-primary)]">
+              <ul className="mt-4 flex flex-col gap-2 text-[10px] sm:text-xs md:text-sm lg:text-base text-[var(--custom-primary)]">
                 <li>
                   <Link
                     href="/"
@@ -180,28 +180,28 @@ const Footer = () => {
               </ul>
             </div>
             <div className="flex flex-col gap-2 max-w-50">
-              <h3 className="relative whitespace-nowrap text-sm max-lg:text-xs font-bold after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-1/3 after:min-w-12 after:h-1 after:bg-[var(--custom-primary)]">
+              <h3 className="relative whitespace-nowrap text-[8px] min-[425px]:text-[10px] sm:text-xs lg:text-sm font-bold after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-1/5 sm:after:w-1/3 after:min-w-7 sm:after:min-w-12 after:h-0.5 sm:after:h-1 after:bg-[var(--custom-primary)]">
                 CONTACT INFO
               </h3>
-              <ul className="mt-4 flex flex-col gap-1 text-sm max-lg:text-xs text-[var(--custom-primary)]">
+              <ul className="mt-4 flex flex-col gap-1 text-[8px] sm:text-[10px] md:text-xs lg:text-sm text-[var(--custom-primary)]">
                 <li className="flex gap-1">
-                  <MdEmail className="w-4 min-w-4 h-4 text-[#E2D5B4]" />
+                  <MdEmail className="w-3 min-w-3 h-3 md:w-4 md:min-w-4 md:h-4 text-[#E2D5B4]" />
                   <span>support@cambridge.academy</span>
                 </li>
                 <li className="flex gap-1">
-                  <FaCalendarDays className="max-lg:w-3 max-lg:h-3 w-4 min-w-4 h-4 text-[#E2D5B4]" />
+                  <FaCalendarDays className="w-2.5 h-2.5 md:w-3 md:h-3 lg:w-4 lg:min-w-4 lg:h-4 text-[#E2D5B4]" />
                   <span>Mon–Sat</span>
                 </li>
                 <li className="flex gap-1">
-                  <IoTime className="w-4 min-w-4 h-4 text-[#E2D5B4]" />
+                  <IoTime className="w-3 min-w-3 h-3 md:w-4 md:min-w-4 md:h-4 text-[#E2D5B4]" />
                   <span>9:00 AM to 18:30 PM</span>
                 </li>
                 <li className="flex gap-1">
-                  <FaPhoneAlt className="max-lg:w-3 max-lg:h-3 w-4 min-w-4 h-4 text-[#E2D5B4]" />
+                  <FaPhoneAlt className="w-2.5 h-2.5 md:w-3 md:h-3 lg:w-4 lg:min-w-4 lg:h-4 text-[#E2D5B4]" />
                   <span>01223 974630</span>
                 </li>
                 <li className="flex gap-1">
-                  <FaLocationDot className="max-lg:h-6 max-lg:w-6 h-8 w-8 min-w-3 -mt-1 text-[#E2D5B4]" />
+                  <FaLocationDot className="w-4 h-4 md:h-6 md:w-6 lg:h-8 lg:w-8 lg:min-w-3 -mt-1 text-[#E2D5B4]" />
                   <span>
                     11 Kinross Rd, Chesterton, Cambridge CB4 1QU, United Kingdom
                   </span>
@@ -211,7 +211,7 @@ const Footer = () => {
           </div>
         </div>
         <div className="px-4">
-          <p className="p-4 text-sm text-center border-t border-[var(--custom-primary)]">
+          <p className="p-4 text-[10px] sm:text-xs lg:text-sm text-center border-t border-[var(--custom-primary)]">
             © Copyright 2025 Cambridge Driving Academy | All Rights Reserved
           </p>
         </div>
