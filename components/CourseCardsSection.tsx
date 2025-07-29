@@ -69,10 +69,10 @@ const CourseCardsSection = () => {
 
   return (
     <UniformPaddingSection className="flex flex-col gap-4 text-black">
-      <h1 className="text-4xl max-lg:text-center">
+      <h1 className="text-2xl md:text-3xl lg:text-4xl max-lg:text-center">
         Our <strong>Driving Courses</strong>
       </h1>
-      <p className="max-lg:text-center">
+      <p className="max-lg:text-center text-xs md:text-sm lg:text-base text-[#585858]">
         Whether you&apos;re a beginner or just need a refresher, Cambridge
         Driving Academy has a course tailored to your journey. Choose the right
         course and start driving with skill, confidence, and control.

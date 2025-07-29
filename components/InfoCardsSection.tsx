@@ -9,10 +9,10 @@ import UniformPaddingSection from "./UniformPaddingSection";
 const InfoCardsSection = () => {
   return (
     <UniformPaddingSection className="flex flex-col gap-4 text-black">
-      <h1 className="text-4xl mt-3 lg:mt-6 max-lg:text-center">
+      <h1 className="text-2xl md:text-3xl lg:text-4xl mt-3 lg:mt-6 max-lg:text-center">
         Your Road to <strong>Driving Success</strong>
       </h1>
-      <p className="max-lg:text-center">
+      <p className="max-lg:text-center text-xs md:text-sm lg:text-base text-[#585858]">
         Start your journey with ease at Cambridge Driving Academy. Whether
         it&apos;s getting your provisional licence, enrolling in lessons, or
         acing your driving test, we&apos;re here to support you with expert

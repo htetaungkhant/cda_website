@@ -29,10 +29,12 @@ const ReasonCardsSection: React.FC<ReasonCardsSectionProps> = ({
 }) => {
   return (
     <UniformPaddingSection className="flex flex-col gap-4 text-black">
-      <h1 className="text-4xl max-lg:text-center">
+      <h1 className="text-2xl md:text-3xl lg:text-4xl max-lg:text-center">
         <strong>{title}</strong>
       </h1>
-      <p className="max-lg:text-center">{description}</p>
+      <p className="max-lg:text-center text-xs md:text-sm lg:text-base text-[#585858]">
+        {description}
+      </p>
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-2 md:gap-4">
         {/* Reason Card 1 */}
         {firstCard && (
@@ -45,16 +47,16 @@ const ReasonCardsSection: React.FC<ReasonCardsSectionProps> = ({
                 alt="Reason 1"
                 width={64}
                 height={64}
-                className="w-12 h-12 md:w-14 md:h-14 object-contain relative"
+                className="w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 object-contain relative"
               />
             )}
             {firstCard.title && (
-              <h2 className="font-semibold text-lg md:text-xl relative">
+              <h2 className="font-semibold text-lg md:text-xl relative max-[425px]:leading-5">
                 {firstCard.title}
               </h2>
             )}
             {firstCard.description && (
-              <p className="text-sm md:text-base relative">
+              <p className="text-[10px] min-[425px]:text-xs sm:text-sm md:text-base relative">
                 {firstCard.description}
               </p>
             )}
@@ -71,16 +73,16 @@ const ReasonCardsSection: React.FC<ReasonCardsSectionProps> = ({
                 alt="Reason 2"
                 width={64}
                 height={64}
-                className="w-12 h-12 md:w-14 md:h-14 object-contain relative"
+                className="w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 object-contain relative"
               />
             )}
             {secondCard.title && (
-              <h2 className="font-semibold text-lg md:text-xl relative">
+              <h2 className="font-semibold text-lg md:text-xl relative max-[425px]:leading-5">
                 {secondCard.title}
               </h2>
             )}
             {secondCard.description && (
-              <p className="text-sm md:text-base relative">
+              <p className="text-[10px] min-[425px]:text-xs sm:text-sm md:text-base relative">
                 {secondCard.description}
               </p>
             )}
@@ -97,16 +99,16 @@ const ReasonCardsSection: React.FC<ReasonCardsSectionProps> = ({
                 alt="Reason 3"
                 width={64}
                 height={64}
-                className="w-12 h-12 md:w-14 md:h-14 object-contain relative"
+                className="w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 object-contain relative"
               />
             )}
             {thirdCard.title && (
-              <h2 className="font-semibold text-lg md:text-xl relative">
+              <h2 className="font-semibold text-lg md:text-xl relative max-[425px]:leading-5">
                 {thirdCard.title}
               </h2>
             )}
             {thirdCard.description && (
-              <p className="text-sm md:text-base relative">
+              <p className="text-[10px] min-[425px]:text-xs sm:text-sm md:text-base relative">
                 {thirdCard.description}
               </p>
             )}
@@ -123,16 +125,16 @@ const ReasonCardsSection: React.FC<ReasonCardsSectionProps> = ({
                 alt="Reason 4"
                 width={64}
                 height={64}
-                className="w-12 h-12 md:w-14 md:h-14 object-contain relative"
+                className="w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 object-contain relative"
               />
             )}
             {fourthCard.title && (
-              <h2 className="font-semibold text-lg md:text-xl relative">
+              <h2 className="font-semibold text-lg md:text-xl relative max-[425px]:leading-5">
                 {fourthCard.title}
               </h2>
             )}
             {fourthCard.description && (
-              <p className="text-sm md:text-base relative">
+              <p className="text-[10px] min-[425px]:text-xs sm:text-sm md:text-base relative">
                 {fourthCard.description}
               </p>
             )}

@@ -117,9 +117,14 @@ const TestimonialsSection = () => {
 
   return (
     <UniformPaddingSection className="flex flex-col gap-4 text-black">
-      <h1 className="text-4xl max-lg:text-center">
+      <h1 className="text-2xl md:text-3xl lg:text-4xl max-lg:text-center">
         <strong>Our Testimonials</strong>
       </h1>
+      <p className="text-center text-xs md:text-sm text-[#585858] lg:hidden">
+        At Cambridge Driving Academy, we go beyond lessons — we ensure a safe,
+        flexible, and personalized driving experience that sets you up for
+        success.
+      </p>
       <div className="flex justify-center">
         <div
           ref={mobileScrollContainerRef}

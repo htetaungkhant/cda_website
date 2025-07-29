@@ -69,10 +69,10 @@ const ManualDrivingClass = () => {
 
       {/* Lesson Badge Cards Section */}
       <UniformPaddingSection className="flex flex-col gap-4 text-black">
-        <h1 className="text-4xl max-lg:text-center">
+        <h1 className="text-2xl md:text-3xl lg:text-4xl max-lg:text-center">
           <strong>Inside Our Manual Driving Lessons</strong>
         </h1>
-        <p className="max-lg:text-center">
+        <p className="max-lg:text-center text-xs md:text-sm lg:text-base text-[#585858]">
           Our manual driving lessons focus on clutch control, smooth gear
           shifts, hill starts, and real-world driving scenarios—ensuring
           you&apos;re ready for any road ahead with confidence and precision.

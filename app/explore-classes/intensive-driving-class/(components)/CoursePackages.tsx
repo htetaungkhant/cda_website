@@ -52,10 +52,10 @@ export default function CoursePackages({
     <UniformPaddingSection
       className={cn("flex flex-col gap-4 text-black", className)}
     >
-      <h1 className="text-4xl max-lg:text-center">
+      <h1 className="text-2xl md:text-3xl lg:text-4xl max-lg:text-center">
         <strong>{title}</strong>
       </h1>
-      {description && <p className="max-lg:text-center">{description}</p>}
+      {description && <p className="max-lg:text-center text-xs md:text-sm lg:text-base text-[#585858]">{description}</p>}
       {coursePackages?.length > 0 && (
         <div className="mx-auto grid grid-cols-1 gap-4 lg:gap-8">
           <div
