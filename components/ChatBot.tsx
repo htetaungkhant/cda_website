@@ -128,7 +128,7 @@ const ChatBot = () => {
         <span
           ref={welcomeSpanRef}
           onClick={openPopover}
-          className="fixed bottom-4 md:bottom-5 right-17 md:right-25 z-50 max-w-[300px] bg-[#FFDA45] p-2 rounded-lg md:rounded-tr-none shadow-lg cursor-pointer opacity-0 transition-all duration-300 ease-in-out"
+          className="fixed bottom-4 md:bottom-5 right-17 md:right-25 z-50 max-w-[300px] bg-[#FFDA45] p-2 rounded-lg md:rounded-tr-none shadow-lg cursor-pointer opacity-0 transition-all duration-300 ease-in-out hidden"
         >
           <div
             className="absolute -right-2 max-md:bottom-2 md:-top-[1px] w-0 h-0 
@@ -149,12 +149,16 @@ const ChatBot = () => {
           <div
             onMouseEnter={() => {
               if (welcomeSpanRef.current) {
+                welcomeSpanRef.current.classList.remove("hidden");
                 welcomeSpanRef.current.classList.add("opacity-100");
               }
             }}
             onMouseLeave={() => {
               if (welcomeSpanRef.current) {
                 welcomeSpanRef.current.classList.remove("opacity-100");
+                setTimeout(() => {
+                  welcomeSpanRef.current?.classList.add("hidden");
+                }, 300);
               }
             }}
             className="fixed bottom-4 right-4 z-50 w-12 h-12 md:w-18 md:h-18 rounded-full shadow-lg cursor-pointer transition-transform group"
