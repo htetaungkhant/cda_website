@@ -132,6 +132,7 @@ const TestimonialsSection = () => {
           onMouseMove={handleMouseMove}
           onMouseUp={handleMouseUp}
           className="flex overflow-x-auto gap-4 select-none [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
+          style={{ touchAction: "pan-y" }}
         >
           {/* Testimonial Cards */}
           {dummyData.map((testimonial, index) => (

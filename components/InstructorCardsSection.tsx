@@ -294,6 +294,7 @@ const InstructorCardsSection = () => {
         <div
           ref={mobileScrollContainerRef}
           className="p-2 flex gap-4 overflow-x-auto select-none [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none] transform transition-all duration-500"
+          style={{ touchAction: "pan-y" }}
         >
           {/* Instructor Cards */}
           {dummyData.map((instructor, index) => (

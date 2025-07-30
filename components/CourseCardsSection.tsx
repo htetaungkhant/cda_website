@@ -230,6 +230,7 @@ const CourseCardsSection = () => {
       <div
         ref={mobileScrollContainerRef}
         className="flex overflow-x-auto gap-4 select-none [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none] lg:hidden"
+        style={{ touchAction: "pan-y" }}
       >
         {/* Course Card 1 */}
         <div className="min-w-[87vw] sm:min-w-72 relative h-112 flex flex-col gap-2 md:gap-3 xl:gap-5 p-4 max-[330px]:p-2 xl:p-6 border border-[#00000066] rounded-xl shadow-xl bg-white overflow-hidden group">

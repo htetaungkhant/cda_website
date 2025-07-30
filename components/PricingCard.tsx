@@ -281,7 +281,7 @@ export function PricingCardStyle3({
               alt="Close"
               width={24}
               height={24}
-              className="absolute top-2 right-2 cursor-pointer"
+              className="absolute top-2 right-2 cursor-pointer z-10"
             />
           </DialogClose>
           <div className="px-4 py-4 lg:px-6 lg:py-8 max-h-[90vh] overflow-y-auto [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
