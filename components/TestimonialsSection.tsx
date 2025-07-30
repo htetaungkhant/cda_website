@@ -120,7 +120,7 @@ const TestimonialsSection = () => {
       <h1 className="text-2xl md:text-3xl lg:text-4xl max-lg:text-center">
         <strong>Our Testimonials</strong>
       </h1>
-      <p className="text-center text-xs md:text-sm text-[#585858] lg:hidden">
+      <p className="max-lg:text-center text-xs md:text-sm lg:text-base text-[#585858]">
         At Cambridge Driving Academy, we go beyond lessons — we ensure a safe,
         flexible, and personalized driving experience that sets you up for
         success.
