@@ -1,6 +1,7 @@
 "use client";
 import React, { useRef } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { TbWheel } from "react-icons/tb";
 import { IoMdArrowForward } from "react-icons/io";
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa6";
@@ -112,10 +113,13 @@ const CourseCardsSection = () => {
               confidence and real-world driving experience.
             </p>
           </div>
-          <button className="absolute bottom-5 left-5 right-5 z-10 bg-white group-hover:bg-[var(--custom-primary)] text-black group-hover:text-white font-medium rounded-full flex items-center justify-between px-3 py-1 pr-1 transition-all duration-500 ease-in-out cursor-pointer hover:shadow-lg">
+          <Link
+            href="/explore-classes/manual-driving-class"
+            className="absolute bottom-5 left-5 right-5 z-10 bg-white group-hover:bg-[var(--custom-primary)] text-black group-hover:text-white font-medium rounded-full flex items-center justify-between px-3 py-1 pr-1 transition-all duration-500 ease-in-out cursor-pointer hover:shadow-lg"
+          >
             <span className="whitespace-nowrap">READ MORE</span>
             <IoMdArrowForward className="p-1.5 max-lg:p-1 w-8 h-8 max-lg:w-7 max-lg:h-7 border border-black group-hover:border-white transform -rotate-45 group-hover:rotate-0 rounded-full transition-all duration-500 ease-in-out" />
-          </button>
+          </Link>
         </div>
         {/* Course Card 2 */}
         <div
@@ -148,10 +152,13 @@ const CourseCardsSection = () => {
               test in weeks—not months.
             </p>
           </div>
-          <button className="absolute bottom-5 left-5 right-5 z-10 bg-white group-hover:bg-[var(--custom-primary)] text-black group-hover:text-white font-medium rounded-full flex items-center justify-between px-3 py-1 pr-1 transition-all duration-500 ease-in-out cursor-pointer hover:shadow-lg">
+          <Link
+            href="/explore-classes/intensive-driving-class"
+            className="absolute bottom-5 left-5 right-5 z-10 bg-white group-hover:bg-[var(--custom-primary)] text-black group-hover:text-white font-medium rounded-full flex items-center justify-between px-3 py-1 pr-1 transition-all duration-500 ease-in-out cursor-pointer hover:shadow-lg"
+          >
             <span className="whitespace-nowrap">READ MORE</span>
             <IoMdArrowForward className="p-1.5 max-lg:p-1 w-8 h-8 max-lg:w-7 max-lg:h-7 border border-black group-hover:border-white transform -rotate-45 group-hover:rotate-0 rounded-full transition-all duration-500 ease-in-out" />
-          </button>
+          </Link>
         </div>
         {/* Course Card 3 */}
         <div
@@ -183,10 +190,13 @@ const CourseCardsSection = () => {
               we handle the gearwork. Ideal for quick learning and city driving.
             </p>
           </div>
-          <button className="absolute bottom-5 left-5 right-5 z-10 bg-white group-hover:bg-[var(--custom-primary)] text-black group-hover:text-white font-medium rounded-full flex items-center justify-between px-3 py-1 pr-1 transition-all duration-500 ease-in-out cursor-pointer hover:shadow-lg">
+          <Link
+            href="/explore-classes/automatic-driving-class"
+            className="absolute bottom-5 left-5 right-5 z-10 bg-white group-hover:bg-[var(--custom-primary)] text-black group-hover:text-white font-medium rounded-full flex items-center justify-between px-3 py-1 pr-1 transition-all duration-500 ease-in-out cursor-pointer hover:shadow-lg"
+          >
             <span className="whitespace-nowrap">READ MORE</span>
             <IoMdArrowForward className="p-1.5 max-lg:p-1 w-8 h-8 max-lg:w-7 max-lg:h-7 border border-black group-hover:border-white transform -rotate-45 group-hover:rotate-0 rounded-full transition-all duration-500 ease-in-out" />
-          </button>
+          </Link>
         </div>
         {/* Course Card 4 */}
         <div
@@ -219,10 +229,13 @@ const CourseCardsSection = () => {
               affordable, and effective.
             </p>
           </div>
-          <button className="absolute bottom-5 left-5 right-5 z-10 bg-white group-hover:bg-[var(--custom-primary)] text-black group-hover:text-white font-medium rounded-full flex items-center justify-between px-3 py-1 pr-1 transition-all duration-500 ease-in-out cursor-pointer hover:shadow-lg">
+          <Link
+            href="/explore-classes/bulk-booking-class"
+            className="absolute bottom-5 left-5 right-5 z-10 bg-white group-hover:bg-[var(--custom-primary)] text-black group-hover:text-white font-medium rounded-full flex items-center justify-between px-3 py-1 pr-1 transition-all duration-500 ease-in-out cursor-pointer hover:shadow-lg"
+          >
             <span className="whitespace-nowrap">READ MORE</span>
             <IoMdArrowForward className="p-1.5 max-lg:p-1 w-8 h-8 max-lg:w-7 max-lg:h-7 border border-black group-hover:border-white transform -rotate-45 group-hover:rotate-0 rounded-full transition-all duration-500 ease-in-out" />
-          </button>
+          </Link>
         </div>
       </div>
 
@@ -256,10 +269,13 @@ const CourseCardsSection = () => {
               </p>
             </div>
           </div>
-          <button className="bg-[var(--custom-primary)] cursor-pointer text-white font-medium rounded-full flex items-center justify-between px-3 py-1 pr-1 hover:shadow-lg">
+          <Link
+            href="/explore-classes/manual-driving-class"
+            className="bg-[var(--custom-primary)] cursor-pointer text-white font-medium rounded-full flex items-center justify-between px-3 py-1 pr-1 hover:shadow-lg"
+          >
             <span className="whitespace-nowrap">READ MORE</span>
             <IoMdArrowForward className="p-1.5 max-lg:p-1 w-8 h-8 max-lg:w-7 max-lg:h-7 border border-white rounded-full" />
-          </button>
+          </Link>
         </div>
         {/* Course Card 2 */}
         <div className="min-w-[87vw] sm:min-w-72 relative h-112 flex flex-col gap-2 md:gap-3 xl:gap-5 p-4 max-[330px]:p-2 xl:p-6 border border-[#00000066] rounded-xl shadow-xl bg-white overflow-hidden group">
@@ -285,10 +301,13 @@ const CourseCardsSection = () => {
               </p>
             </div>
           </div>
-          <button className="bg-[var(--custom-primary)] cursor-pointer text-white font-medium rounded-full flex items-center justify-between px-3 py-1 pr-1 hover:shadow-lg">
+          <Link
+            href="/explore-classes/intensive-driving-class"
+            className="bg-[var(--custom-primary)] cursor-pointer text-white font-medium rounded-full flex items-center justify-between px-3 py-1 pr-1 hover:shadow-lg"
+          >
             <span className="whitespace-nowrap">READ MORE</span>
             <IoMdArrowForward className="p-1.5 max-lg:p-1 w-8 h-8 max-lg:w-7 max-lg:h-7 border border-white rounded-full" />
-          </button>
+          </Link>
         </div>
         {/* Course Card 3 */}
         <div className="min-w-[87vw] sm:min-w-72 relative h-112 flex flex-col gap-2 md:gap-3 xl:gap-5 p-4 max-[330px]:p-2 xl:p-6 border border-[#00000066] rounded-xl shadow-xl bg-white overflow-hidden group">
@@ -314,10 +333,13 @@ const CourseCardsSection = () => {
               </p>
             </div>
           </div>
-          <button className="bg-[var(--custom-primary)] cursor-pointer text-white font-medium rounded-full flex items-center justify-between px-3 py-1 pr-1 hover:shadow-lg">
+          <Link
+            href="/explore-classes/automatic-driving-class"
+            className="bg-[var(--custom-primary)] cursor-pointer text-white font-medium rounded-full flex items-center justify-between px-3 py-1 pr-1 hover:shadow-lg"
+          >
             <span className="whitespace-nowrap">READ MORE</span>
             <IoMdArrowForward className="p-1.5 max-lg:p-1 w-8 h-8 max-lg:w-7 max-lg:h-7 border border-white rounded-full" />
-          </button>
+          </Link>
         </div>
         {/* Course Card 4 */}
         <div className="min-w-[87vw] sm:min-w-72 relative h-112 flex flex-col gap-2 md:gap-3 xl:gap-5 p-4 max-[330px]:p-2 xl:p-6 border border-[#00000066] rounded-xl shadow-xl bg-white overflow-hidden group">
@@ -343,10 +365,13 @@ const CourseCardsSection = () => {
               </p>
             </div>
           </div>
-          <button className="bg-[var(--custom-primary)] cursor-pointer text-white font-medium rounded-full flex items-center justify-between px-3 py-1 pr-1 hover:shadow-lg">
+          <Link
+            href="/explore-classes/bulk-booking-class"
+            className="bg-[var(--custom-primary)] cursor-pointer text-white font-medium rounded-full flex items-center justify-between px-3 py-1 pr-1 hover:shadow-lg"
+          >
             <span className="whitespace-nowrap">READ MORE</span>
             <IoMdArrowForward className="p-1.5 max-lg:p-1 w-8 h-8 max-lg:w-7 max-lg:h-7 border border-white rounded-full" />
-          </button>
+          </Link>
         </div>
       </div>
 
