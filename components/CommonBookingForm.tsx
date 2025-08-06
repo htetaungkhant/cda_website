@@ -60,11 +60,11 @@ const CommonBookingForm: React.FC<CommonBookingFormProps> = ({ className }) => {
       <form
         onSubmit={form.handleSubmit(onSubmit)}
         className={cn(
-          "max-w-200 w-full border border-[var(--custom-primary)] shadow-[4px_4px_12px_0px_rgba(0,0,0,0.25)] rounded-xl bg-white overflow-hidden",
+          "max-w-200 w-full border border-[var(--custom-primary)] shadow-[4px_4px_12px_0px_rgba(0,0,0,0.25)] rounded-xl bg-white",
           className
         )}
       >
-        <h1 className="p-2 sm:px-5 sm:py-3 text-base sm:text-lg font-semibold bg-gradient-to-r from-[#FFFAC6] to-[#FFFAC600] text-gray-800">
+        <h1 className="p-2 sm:px-5 sm:py-3 text-base sm:text-lg font-semibold bg-gradient-to-r from-[#FFFAC6] to-[#FFFAC600] text-gray-800 rounded-t-xl">
           Please fill in the form below
         </h1>
 

@@ -383,7 +383,7 @@ export function PricingCardStyle3({
                     <DialogContent
                       // overlay={false}
                       showCloseButton={false}
-                      className="p-0 sm:max-w-[70vw] w-[90vw] md:w-[75vw] lg:w-[60vw] lg:max-w-200 rounded-3xl"
+                      className="p-0 sm:max-w-[70vw] w-[90vw] md:w-[75vw] lg:w-[60vw] lg:max-w-200 rounded-3xl border-none"
                     >
                       <DialogTitle className="hidden" />
                       <DialogDescription className="hidden" />
@@ -415,7 +415,7 @@ export function PricingCardStyle3({
                     </DialogTrigger>
                     <DialogContent
                       showCloseButton={false}
-                      className="p-0 sm:max-w-[70vw] w-[90vw] md:w-[75vw] lg:w-[60vw] lg:max-w-200 rounded-3xl"
+                      className="p-0 sm:max-w-[70vw] w-[90vw] md:w-[75vw] lg:w-[60vw] lg:max-w-200 rounded-3xl border-none"
                     >
                       <DialogTitle className="hidden" />
                       <DialogDescription className="hidden" />
