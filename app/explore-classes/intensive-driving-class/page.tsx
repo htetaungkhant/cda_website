@@ -182,7 +182,7 @@ const dummyAutomaticPackages: CoursePackage[] = [
     features: [
       {
         image: "/15.svg",
-        title: "Manual car training with expert guidance",
+        title: "Automatic car training with expert guidance",
       },
       {
         image: "/3.svg",
@@ -219,7 +219,7 @@ const dummyAutomaticPackages: CoursePackage[] = [
     features: [
       {
         image: "/15.svg",
-        title: "Manual car training with expert guidance",
+        title: "Automatic car training with expert guidance",
       },
       {
         image: "/3.svg",
@@ -256,7 +256,7 @@ const dummyAutomaticPackages: CoursePackage[] = [
     features: [
       {
         image: "/15.svg",
-        title: "Manual car training with expert guidance",
+        title: "Automatic car training with expert guidance",
       },
       {
         image: "/3.svg",
@@ -293,7 +293,7 @@ const dummyAutomaticPackages: CoursePackage[] = [
     features: [
       {
         image: "/15.svg",
-        title: "Manual car training with expert guidance",
+        title: "Automatic car training with expert guidance",
       },
       {
         image: "/3.svg",
