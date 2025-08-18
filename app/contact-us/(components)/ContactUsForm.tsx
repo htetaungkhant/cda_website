@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import Link from "next/link";
-import { PhoneInput } from "react-international-phone";
+import { ParsedCountry, PhoneInput } from "react-international-phone";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
@@ -33,9 +33,18 @@ const formSchema = z.object({
   firstName: z.string().min(2, {
     message: "First name must be at least 2 characters.",
   }),
-  mobileNumber: z.string().min(10, {
-    message: "Please enter a valid mobile number.",
-  }),
+  mobileNumber: z
+    .object({
+      phone: z.string().min(10, {
+        message: "Please enter a valid mobile number.",
+      }),
+      dialCode: z.string().min(2, {
+        message: "Please enter a valid dial code.",
+      }),
+    })
+    .refine((value) => value.phone.length > 10, {
+      message: "Please enter a valid mobile number.",
+    }),
   emailId: z.string().email({
     message: "Please enter a valid email address.",
   }),
@@ -59,7 +68,10 @@ export function ContactUsForm({ className }: BookingFormProps) {
     resolver: zodResolver(formSchema),
     defaultValues: {
       firstName: "",
-      mobileNumber: "",
+      mobileNumber: {
+        phone: "",
+        dialCode: "44",
+      },
       emailId: "",
       course: "",
       message: "",
@@ -70,6 +82,13 @@ export function ContactUsForm({ className }: BookingFormProps) {
   function onSubmit(values: z.infer<typeof formSchema>) {
     console.log(values);
     // Handle form submission here
+  }
+
+  function handlePhoneNumberChange(
+    phone: string,
+    meta: { country: ParsedCountry; inputValue: string }
+  ) {
+    form.setValue("mobileNumber", { phone, dialCode: meta?.country?.dialCode });
   }
 
   return (
@@ -121,7 +140,7 @@ export function ContactUsForm({ className }: BookingFormProps) {
             </h1>
             <div className="px-2 py-3 sm:px-3 md:px-6 md:py-5 space-y-3">
               {/* First Name and Email Row */}
-              <div className="grid grid-cols-1 min-[375px]:grid-cols-2 gap-2 sm:gap-4">
+              <div className="grid grid-cols-1 min-sm:grid-cols-2 gap-2 sm:gap-4">
                 <FormField
                   control={form.control}
                   name="firstName"
@@ -164,7 +183,7 @@ export function ContactUsForm({ className }: BookingFormProps) {
               </div>
 
               {/* Mobile Number and Course Row */}
-              <div className="grid grid-cols-1 min-[375px]:grid-cols-2 gap-2 sm:gap-4">
+              <div className="grid grid-cols-1 min-sm:grid-cols-2 gap-2 sm:gap-4">
                 <FormField
                   control={form.control}
                   name="mobileNumber"
@@ -176,10 +195,13 @@ export function ContactUsForm({ className }: BookingFormProps) {
                       <FormControl>
                         <PhoneInput
                           defaultCountry="gb"
-                          value={field.value}
-                          onChange={field.onChange}
-                          className="rounded-[3px] focus-within:border-gray-600 border-[0.5px]"
-                          inputClassName="w-full max-sm:text-xs!"
+                          value={field.value?.phone || ""}
+                          onChange={handlePhoneNumberChange}
+                          disableDialCodePrefill={true}
+                          disableDialCodeAndPrefix={true}
+                          placeholder="Phone number"
+                          className="rounded-[4px] focus-within:border-gray-600 border-[0.5px]"
+                          inputClassName="flex-1 max-sm:text-xs!"
                         />
                       </FormControl>
                       <FormMessage className="-mt-1 text-[10px] sm:text-xs" />
@@ -195,7 +217,10 @@ export function ContactUsForm({ className }: BookingFormProps) {
                         Your Course
                       </FormLabel>
                       <FormControl>
-                        <Select onValueChange={field.onChange} value={field.value}>
+                        <Select
+                          onValueChange={field.onChange}
+                          value={field.value}
+                        >
                           <SelectTrigger className="max-sm:text-xs w-full border-gray-300 rounded-sm p-2 sm:px-4 sm:py-3 text-gray-800 focus:border-gray-400 focus:ring-0 focus-visible:ring-0">
                             <SelectValue placeholder="Select your Course" />
                           </SelectTrigger>
