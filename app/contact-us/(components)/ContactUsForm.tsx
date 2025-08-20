@@ -38,11 +38,11 @@ const formSchema = z.object({
       phone: z.string().min(10, {
         message: "Please enter a valid mobile number.",
       }),
-      dialCode: z.string().min(2, {
+      dialCode: z.string().min(1, {
         message: "Please enter a valid dial code.",
       }),
     })
-    .refine((value) => value.phone.length > 10, {
+    .refine((value) => value.phone.length >= 10, {
       message: "Please enter a valid mobile number.",
     }),
   emailId: z.string().email({
@@ -80,7 +80,7 @@ export function ContactUsForm({ className }: BookingFormProps) {
   });
 
   function onSubmit(values: z.infer<typeof formSchema>) {
-    console.log(values);
+    console.log("Form submitted:", values);
     // Handle form submission here
   }
 
@@ -89,6 +89,10 @@ export function ContactUsForm({ className }: BookingFormProps) {
     meta: { country: ParsedCountry; inputValue: string }
   ) {
     form.setValue("mobileNumber", { phone, dialCode: meta?.country?.dialCode });
+
+    if (form.formState.isSubmitted) {
+      form.trigger("mobileNumber");
+    }
   }
 
   return (
