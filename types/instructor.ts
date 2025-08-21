@@ -13,6 +13,7 @@ export interface Instructor {
   drivingMode: DrivingMode;
   description: string;
   link: string;
+  totalDriveUrl: string;
   noOfBookings: number;
   createdAt: string;
   updatedAt: string;
