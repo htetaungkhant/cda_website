@@ -13,39 +13,84 @@ import UniformPaddingSection from "./UniformPaddingSection";
 const dummyData: Instructor[] = [
   {
     id: "1",
-    image: "/dummy-data/4.jpg",
+    image: {
+      id: "1",
+      image: "/dummy-data/4.jpg",
+      thumbnail: "/dummy-data/4.jpg",
+    },
     name: "Ahmad Siddiqi",
-    type: "manual",
+    drivingMode: "manual",
+    description: "Experienced driving instructor",
+    link: "#",
+    noOfBookings: 10,
+    createdAt: "2023-01-01",
+    updatedAt: "2023-01-01",
   },
   {
     id: "2",
-    image: "/dummy-data/5.jpg",
+    image: {
+      id: "2",
+      image: "/dummy-data/5.jpg",
+      thumbnail: "/dummy-data/5.jpg",
+    },
     name: "Behzad Yacubi",
-    type: "automatic",
+    drivingMode: "automatic",
+    description: "Skilled driving instructor",
+    link: "#",
+    noOfBookings: 8,
+    createdAt: "2023-01-01",
+    updatedAt: "2023-01-01",
   },
   {
     id: "3",
-    image: "/dummy-data/6.jpg",
+    image: {
+      id: "3",
+      image: "/dummy-data/6.jpg",
+      thumbnail: "/dummy-data/6.jpg",
+    },
     name: "Elnara Babayeva",
-    type: "manual",
+    drivingMode: "automatic",
+    description: "Skilled driving instructor",
+    link: "#",
+    noOfBookings: 8,
+    createdAt: "2023-01-01",
+    updatedAt: "2023-01-01",
   },
   {
     id: "4",
-    image: "/dummy-data/7.jpg",
+    image: {
+      id: "4",
+      image: "/dummy-data/7.jpg",
+      thumbnail: "/dummy-data/7.jpg",
+    },
     name: "Dunya Nori",
-    type: "manual",
+    drivingMode: "manual",
+    description: "Skilled driving instructor",
+    link: "#",
+    noOfBookings: 8,
+    createdAt: "2023-01-01",
+    updatedAt: "2023-01-01",
   },
   {
     id: "5",
-    image: "/dummy-data/8.jpg",
+    image: {
+      id: "5",
+      image: "/dummy-data/8.jpg",
+      thumbnail: "/dummy-data/8.jpg",
+    },
     name: "Ghulam Mohd.",
-    type: "automatic",
+    drivingMode: "automatic",
+    description: "Skilled driving instructor",
+    link: "#",
+    noOfBookings: 8,
+    createdAt: "2023-01-01",
+    updatedAt: "2023-01-01",
   },
 ];
 
 export const InstructorCard: React.FC<
   Instructor & { responsive?: boolean; className?: string }
-> = ({ id, image, name, type, responsive = false, className }) => {
+> = ({ id, image, name, drivingMode, responsive = false, className }) => {
   return (
     <div
       className={cn(
@@ -56,7 +101,7 @@ export const InstructorCard: React.FC<
     >
       <div className={responsive ? "h-40 min-sm:h-76" : "h-76"}>
         <Image
-          src={image}
+          src={image?.image}
           width={128}
           height={128}
           alt={name}
@@ -92,7 +137,9 @@ export const InstructorCard: React.FC<
                 : "text-sm"
             )}
           >
-            {type === "manual" ? "Manual Instructor" : "Automatic Instructor"}
+            {drivingMode === "manual"
+              ? "Manual Instructor"
+              : "Automatic Instructor"}
           </span>
         </p>
         <div className="flex justify-center gap-2 sm:gap-3 xl:gap-6 py-2">
@@ -201,7 +248,7 @@ const InstructorCardsSection = () => {
             >
               <div className="h-76 lg:h-90">
                 <Image
-                  src={instructor.image}
+                  src={instructor.image?.image}
                   width={128}
                   height={128}
                   alt={instructor.name}
@@ -215,7 +262,7 @@ const InstructorCardsSection = () => {
                 <p className="text-sm lg:text-base font-medium text-gray-600 flex items-center gap-1">
                   <GiCarWheel className="inline-block text-[var(--custom-primary)] w-5 h-5" />
                   <span>
-                    {instructor.type === "manual"
+                    {instructor.drivingMode === "manual"
                       ? "Manual Instructor"
                       : "Automatic Instructor"}
                   </span>
@@ -256,7 +303,7 @@ const InstructorCardsSection = () => {
             >
               <div className="h-76 lg:h-90">
                 <Image
-                  src={instructor.image}
+                  src={instructor.image?.image}
                   width={128}
                   height={128}
                   alt={instructor.name}
@@ -270,7 +317,7 @@ const InstructorCardsSection = () => {
                 <p className="text-sm lg:text-base font-medium text-gray-600 flex items-center gap-1">
                   <GiCarWheel className="inline-block text-[var(--custom-primary)] w-5 h-5" />
                   <span>
-                    {instructor.type === "manual"
+                    {instructor.drivingMode === "manual"
                       ? "Manual Instructor"
                       : "Automatic Instructor"}
                   </span>

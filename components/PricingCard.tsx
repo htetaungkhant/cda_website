@@ -7,7 +7,7 @@ import { MdArrowOutward } from "react-icons/md";
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa6";
 
 import { cn } from "@/lib/shared/utils";
-import { CoursePackage } from "@/types/instructor";
+import { CoursePackage } from "@/types/course";
 import { ButtonStyle3 } from "./Button";
 import {
   Dialog,

@@ -1,6 +1,19 @@
-export interface Instructor {
+import { DrivingMode } from "./global";
+
+export interface InstructorImage {
   id: string;
   image: string;
+  thumbnail: string;
+}
+
+export interface Instructor {
+  id: string;
+  image: InstructorImage;
   name: string;
-  type: "manual" | "automatic";
+  drivingMode: DrivingMode;
+  description: string;
+  link: string;
+  noOfBookings: number;
+  createdAt: string;
+  updatedAt: string;
 }
