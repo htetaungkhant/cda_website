@@ -3,7 +3,7 @@ import React from "react";
 import TopUniformSection from "@/components/TopUniformSection";
 import UniformPaddingSection from "@/components/UniformPaddingSection";
 import ContactUsBanner from "@/components/ContactUsBanner";
-import { CoursePackage } from "@/type";
+import { CoursePackage } from "@/types/course";
 import CoursePackages from "./(components)/CoursePackages";
 
 const dummyManualPackages: CoursePackage[] = [

@@ -1,7 +1,7 @@
 "use client";
 import React, { useState } from "react";
 
-import { Instructor } from "@/type";
+import { Instructor } from "@/types/instructor";
 import { InstructorCard } from "@/components/InstructorCardsSection";
 import { ButtonStyle1 } from "@/components/Button";
 import Image from "next/image";

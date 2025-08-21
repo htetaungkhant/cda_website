@@ -5,7 +5,7 @@ import { FaArrowLeft, FaArrowRight } from "react-icons/fa6";
 import UniformPaddingSection from "@/components/UniformPaddingSection";
 import { PricingCardStyle3 } from "@/components/PricingCard";
 import { cn } from "@/lib/shared/utils";
-import { CoursePackage } from "@/type";
+import { CoursePackage } from "@/types/course";
 
 interface CoursePackagesProps {
   title: string;

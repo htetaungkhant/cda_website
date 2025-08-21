@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Instructor } from "@/type";
+import { Instructor } from "@/types/instructor";
 import TopUniformSection from "@/components/TopUniformSection";
 import CardsSection from "./(components)/CardsSection";
 
