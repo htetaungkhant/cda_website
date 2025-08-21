@@ -4,7 +4,7 @@ import Link from "next/link";
 import { FaCaretDown } from "react-icons/fa6";
 import { usePathname } from "next/navigation";
 
-import { cn } from "@/lib/utils";
+import { cn } from "@/lib/shared/utils";
 
 interface HeaderDropdownProps {
   title: string;

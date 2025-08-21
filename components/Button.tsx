@@ -6,7 +6,7 @@ import { motion } from "motion/react";
 
 import Arrow from "@/public/arrow.svg";
 import WhiteArrow from "@/public/arrow-white.svg";
-import { cn } from "@/lib/utils";
+import { cn } from "@/lib/shared/utils";
 
 export const ButtonStyle1: React.FC<
   ButtonHTMLAttributes<HTMLButtonElement> &

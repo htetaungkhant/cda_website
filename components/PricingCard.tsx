@@ -6,7 +6,7 @@ import { TbWheel } from "react-icons/tb";
 import { MdArrowOutward } from "react-icons/md";
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa6";
 
-import { cn } from "@/lib/utils";
+import { cn } from "@/lib/shared/utils";
 import { CoursePackage } from "@/type";
 import { ButtonStyle3 } from "./Button";
 import {

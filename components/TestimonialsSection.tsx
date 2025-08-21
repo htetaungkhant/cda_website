@@ -6,7 +6,7 @@ import { FaArrowLeft, FaArrowRight } from "react-icons/fa6";
 import { PiSealCheckFill } from "react-icons/pi";
 
 import googleSvg from "@/public/google-logo.svg";
-import { cn } from "@/lib/utils";
+import { cn } from "@/lib/shared/utils";
 import UniformPaddingSection from "./UniformPaddingSection";
 
 const dummyData = [

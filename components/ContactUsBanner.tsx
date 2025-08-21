@@ -1,6 +1,6 @@
 import React from "react";
 
-import { cn } from "@/lib/utils";
+import { cn } from "@/lib/shared/utils";
 import { ButtonStyle2 } from "./Button";
 import Image from "next/image";
 

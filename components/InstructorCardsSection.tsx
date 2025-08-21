@@ -5,7 +5,7 @@ import Image from "next/image";
 import { GiCarWheel } from "react-icons/gi";
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa6";
 
-import { cn } from "@/lib/utils";
+import { cn } from "@/lib/shared/utils";
 import { Instructor } from "@/type";
 import { ButtonStyle1 } from "./Button";
 import UniformPaddingSection from "./UniformPaddingSection";
