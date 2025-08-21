@@ -8,6 +8,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { WhatsAppLink } from "@/components/WhatsAppLink";
 import ChatBot from "@/components/ChatBot";
+import { ClientProviders } from "@/providers/client-providers";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -43,13 +44,15 @@ export default function RootLayout({
         suppressHydrationWarning={true}
         className={`${geistSans.variable} ${geistMono.variable} ${poppins.variable} antialiased`}
       >
-        <main className="overflow-hidden font-[family-name:var(--font-poppins)] bg-[#F2F0EF]">
-          <Header />
-          {children}
-          <Footer />
-          <WhatsAppLink />
-          <ChatBot />
-        </main>
+        <ClientProviders>
+          <main className="overflow-hidden font-[family-name:var(--font-poppins)] bg-[#F2F0EF]">
+            <Header />
+            {children}
+            <Footer />
+            <WhatsAppLink />
+            <ChatBot />
+          </main>
+        </ClientProviders>
         <Toaster position="top-right" richColors closeButton />
       </body>
     </html>

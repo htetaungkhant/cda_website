@@ -12,7 +12,11 @@ export const API_ENDPOINTS = {
   COURSE_BY_ID: "/course/:id",
 
   // Contact endpoints
+  GET_ALL_INQUIRIES: "/contactUs/all",
   CREATE_INQUIRY: "/contactUs/create",
+  DELETE_INQUIRY: "/contactUs/delete",
+  UPDATE_INQUIRY: "/contactUs/update",
+  INQUIRY_BY_ID: "/contactUs/:id",
 } as const;
 
 export const TOKEN_STORAGE_KEYS = {

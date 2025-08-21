@@ -1,12 +1,13 @@
 "use client";
 import React from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { ParsedCountry, PhoneInput } from "react-international-phone";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import * as z from "zod";
+import { toast } from "sonner";
 
-import { cn } from "@/lib/utils";
+import { cn } from "@/lib/shared/utils";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Checkbox } from "@/components/ui/checkbox";
@@ -26,71 +27,73 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Textarea } from "@/components/ui/textarea";
-import Image from "next/image";
-
-// Form validation schema
-const formSchema = z.object({
-  firstName: z.string().min(2, {
-    message: "First name must be at least 2 characters.",
-  }),
-  mobileNumber: z
-    .object({
-      phone: z.string().min(10, {
-        message: "Please enter a valid mobile number.",
-      }),
-      dialCode: z.string().min(1, {
-        message: "Please enter a valid dial code.",
-      }),
-    })
-    .refine((value) => value.phone.length >= 10, {
-      message: "Please enter a valid mobile number.",
-    }),
-  emailId: z.string().email({
-    message: "Please enter a valid email address.",
-  }),
-  course: z.string().min(1, {
-    message: "Please select a course.",
-  }),
-  message: z.string().min(20, {
-    message: "Message must be at least 20 characters.",
-  }),
-  agreeToTerms: z.boolean().refine((value) => value === true, {
-    message: "You must agree to the terms and conditions.",
-  }),
-});
+import { ContactFormData, contactSchema } from "@/lib/shared/validations";
+import { useAsyncOperation } from "@/hooks/use-auth";
+import { contactService } from "@/services/client/contact-service";
 
 interface BookingFormProps {
   className?: string;
 }
 
+const defaultValues: ContactFormData = {
+  firstName: "",
+  mobileNumber: {
+    phone: "",
+    dialCode: "44",
+  },
+  emailId: "",
+  course: "",
+  message: "",
+  agreeToTerms: true,
+};
+
 export function ContactUsForm({ className }: BookingFormProps) {
-  const form = useForm<z.infer<typeof formSchema>>({
-    resolver: zodResolver(formSchema),
-    defaultValues: {
-      firstName: "",
-      mobileNumber: {
-        phone: "",
-        dialCode: "44",
-      },
-      emailId: "",
-      course: "",
-      message: "",
-      agreeToTerms: true,
-    },
+  const { loading, execute } = useAsyncOperation();
+
+  const form = useForm<ContactFormData>({
+    resolver: zodResolver(contactSchema),
+    defaultValues,
   });
 
-  function onSubmit(values: z.infer<typeof formSchema>) {
-    console.log("Form submitted:", values);
-    // Handle form submission here
+  async function onSubmit(data: ContactFormData) {
+    try {
+      const modifiedData = {
+        ...data,
+        fullName: data.firstName,
+        email: data.emailId,
+        phoneNumber: `+${data.mobileNumber.dialCode}-${data.mobileNumber.phone
+          ?.replace("+", "")
+          .replace(data.mobileNumber.dialCode, "")}`,
+        courseCategory: data.course,
+      };
+      console.log("Modified form data:", modifiedData);
+
+      await execute(async () => {
+        const result = await contactService.createInquiry(modifiedData);
+        toast.success("Contact created successfully!");
+        form.reset();
+        return result;
+      });
+    } catch (error) {
+      toast.error("Failed to submit the form. Please try again.");
+      console.error("Form submission error:", error);
+    }
   }
 
   function handlePhoneNumberChange(
     phone: string,
     meta: { country: ParsedCountry; inputValue: string }
   ) {
-    form.setValue("mobileNumber", { phone, dialCode: meta?.country?.dialCode });
+    const trimmedPhone = phone.trim();
+    form.setValue("mobileNumber", {
+      phone: trimmedPhone,
+      dialCode: meta?.country?.dialCode,
+    });
 
-    if (form.formState.isSubmitted) {
+    if (
+      form.formState.isSubmitted &&
+      trimmedPhone.replace(`+${meta?.country?.dialCode}`, "").length > 0
+    ) {
       form.trigger("mobileNumber");
     }
   }
@@ -157,6 +160,7 @@ export function ContactUsForm({ className }: BookingFormProps) {
                         <Input
                           placeholder="Walter"
                           {...field}
+                          disabled={loading}
                           className="max-sm:text-xs border-gray-300 rounded-sm p-2 sm:px-4 sm:py-3 text-gray-800 placeholder:text-gray-500 focus:border-gray-400 focus:ring-0 focus-visible:ring-0"
                         />
                       </FormControl>
@@ -177,6 +181,7 @@ export function ContactUsForm({ className }: BookingFormProps) {
                           type="email"
                           placeholder="waltergray.matter@gmail.com"
                           {...field}
+                          disabled={loading}
                           className="max-sm:text-xs border-gray-300 rounded-sm p-2 sm:px-4 sm:py-3 text-gray-800 placeholder:text-gray-500 focus:border-gray-400 focus:ring-0 focus-visible:ring-0"
                         />
                       </FormControl>
@@ -204,6 +209,7 @@ export function ContactUsForm({ className }: BookingFormProps) {
                           disableDialCodePrefill={true}
                           disableDialCodeAndPrefix={true}
                           placeholder="Phone number"
+                          disabled={loading}
                           className="rounded-[4px] focus-within:border-gray-600 border-[0.5px]"
                           inputClassName="flex-1 max-sm:text-xs!"
                         />
@@ -224,15 +230,16 @@ export function ContactUsForm({ className }: BookingFormProps) {
                         <Select
                           onValueChange={field.onChange}
                           value={field.value}
+                          disabled={loading}
                         >
                           <SelectTrigger className="max-sm:text-xs w-full border-gray-300 rounded-sm p-2 sm:px-4 sm:py-3 text-gray-800 focus:border-gray-400 focus:ring-0 focus-visible:ring-0">
                             <SelectValue placeholder="Select your Course" />
                           </SelectTrigger>
                           <SelectContent>
-                            <SelectItem value="Automatic">Automatic</SelectItem>
-                            <SelectItem value="Manual">Manual</SelectItem>
-                            <SelectItem value="Intensive">Intensive</SelectItem>
-                            <SelectItem value="Bulk Booking">
+                            <SelectItem value="automatic">Automatic</SelectItem>
+                            <SelectItem value="manual">Manual</SelectItem>
+                            <SelectItem value="intensive">Intensive</SelectItem>
+                            <SelectItem value="bulk booking">
                               Bulk Booking
                             </SelectItem>
                           </SelectContent>
@@ -258,6 +265,7 @@ export function ContactUsForm({ className }: BookingFormProps) {
                         <Textarea
                           placeholder="Need to discuss about the Course"
                           {...field}
+                          disabled={loading}
                           className="h-24 lg:h-28 max-sm:text-xs border-gray-300 rounded-sm p-2 sm:px-4 sm:py-3 text-gray-800 placeholder:text-gray-500 focus:border-gray-400 focus:ring-0 focus-visible:ring-0"
                         />
                       </FormControl>
@@ -277,6 +285,7 @@ export function ContactUsForm({ className }: BookingFormProps) {
                       <Checkbox
                         checked={field.value}
                         onCheckedChange={field.onChange}
+                        disabled={loading}
                         className="mt-0.5 border-2 border-yellow-400 data-[state=checked]:bg-yellow-400 data-[state=checked]:border-yellow-400 rounded-sm w-4 h-4"
                       />
                     </FormControl>
@@ -299,10 +308,18 @@ export function ContactUsForm({ className }: BookingFormProps) {
               {/* Submit Button */}
               <Button
                 type="submit"
-                className="w-full bg-[var(--custom-primary)] hover:bg-yellow-400 cursor-pointer text-white font-semibold py-4 rounded-full text-sm sm:text-base transition-all duration-200"
                 size="lg"
+                disabled={loading}
+                className="w-full bg-[var(--custom-primary)] hover:bg-yellow-400 cursor-pointer text-white font-semibold py-4 rounded-full text-sm sm:text-base transition-all duration-200"
               >
-                Submit
+                {loading ? (
+                  <div className="flex items-center gap-2">
+                    <div className="w-4 h-4 border-2 border-black border-t-transparent rounded-full animate-spin" />
+                    Submitting...
+                  </div>
+                ) : (
+                  "Submit"
+                )}
               </Button>
             </div>
           </div>
