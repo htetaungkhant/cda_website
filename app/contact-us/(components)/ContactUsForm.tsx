@@ -112,7 +112,7 @@ export function ContactUsForm({ className }: BookingFormProps) {
             href="https://maps.app.goo.gl/zgBMgAQ3sWVNVPQf6"
             rel="noopener noreferrer"
             target="_blank"
-            className="w-full lg:w-1/2 relative"
+            className="w-full lg:w-1/2 lg:min-w-1/2 relative"
           >
             <Image
               src="/google-map.png"
