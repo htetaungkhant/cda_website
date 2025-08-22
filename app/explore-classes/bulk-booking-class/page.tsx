@@ -1,13 +1,32 @@
 import React from "react";
+
 import { PiSealCheckFill } from "react-icons/pi";
+import { toast } from "sonner";
 
 import ReasonCardsSection from "@/components/ReasonCardsSection";
 import TopUniformSection from "@/components/TopUniformSection";
 import ContactUsBanner from "@/components/ContactUsBanner";
 import UniformPaddingSection from "@/components/UniformPaddingSection";
 import { PricingCardStyle1 } from "@/components/PricingCard";
+import { courseService } from "@/services/server/course-service";
+import { Course } from "@/types/course";
 
-const BulkBookingClass = () => {
+export default async function BulkBookingClass() {
+  let bulkBookingCourses: Course[] = [];
+  let error: string | null = null;
+
+  try {
+    const courses = await courseService.getAllCourses();
+    bulkBookingCourses = courses?.filter(
+      (course) => course.category === "bulk booking"
+    );
+  } catch (err) {
+    console.error("Failed to fetch pricings:", err);
+    error = "Failed to load pricings. Please try again later.";
+    toast.error(error);
+    bulkBookingCourses = [];
+  }
+
   return (
     <>
       <TopUniformSection title="Bulk Booking Class">
@@ -101,32 +120,32 @@ const BulkBookingClass = () => {
           At CDA, we offer straightforward, no-surprise pricing — tailored
           packages to match your goals, experience, and learning style.
         </p>
-        <div className="sm:mx-auto grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-8">
-          {/* Pricing Card */}
-          <PricingCardStyle1
-            transmissionType="Manual"
-            price="£370"
-            save="£30"
-            features={[
-              "5 consecutive weekday lessons",
-              "DVSA-certified instructor",
-              "Fixed time slots",
-              "Practical test not included",
-            ]}
-          />
-          {/* Pricing Card */}
-          <PricingCardStyle1
-            transmissionType="Automatic"
-            price="£390"
-            save="£30"
-            features={[
-              "5 consecutive weekday lessons",
-              "DVSA-certified instructor",
-              "Fixed time slots",
-              "Practical test not included",
-            ]}
-          />
-        </div>
+        {bulkBookingCourses.length > 0 ? (
+          <div className="sm:mx-auto grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-8">
+            {/* Pricing Card */}
+            {bulkBookingCourses[0] && (
+              <PricingCardStyle1
+                drivingMode={bulkBookingCourses[0].drivingMode}
+                price={`£${bulkBookingCourses[0]?.primaryPrice}`}
+                save={`£${bulkBookingCourses[0]?.secondaryPrice}`}
+                features={bulkBookingCourses[0]?.descriptionList}
+              />
+            )}
+            {/* Pricing Card */}
+            {bulkBookingCourses[1] && (
+              <PricingCardStyle1
+                drivingMode={bulkBookingCourses[1].drivingMode}
+                price={`£${bulkBookingCourses[1]?.primaryPrice}`}
+                save={`£${bulkBookingCourses[1]?.secondaryPrice}`}
+                features={bulkBookingCourses[1]?.descriptionList}
+              />
+            )}
+          </div>
+        ) : (
+          <p className="mt-8 mb-1 text-center text-lg font-medium text-gray-500">
+            No pricing information available.
+          </p>
+        )}
       </UniformPaddingSection>
 
       {/* Contact Us Banner */}
@@ -135,6 +154,4 @@ const BulkBookingClass = () => {
       </UniformPaddingSection>
     </>
   );
-};
-
-export default BulkBookingClass;
+}

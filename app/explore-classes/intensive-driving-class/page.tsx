@@ -1,314 +1,76 @@
 import React from "react";
 
+import { toast } from "sonner";
+
 import TopUniformSection from "@/components/TopUniformSection";
 import UniformPaddingSection from "@/components/UniformPaddingSection";
 import ContactUsBanner from "@/components/ContactUsBanner";
-import { CoursePackage } from "@/types/course";
+import { Course } from "@/types/course";
 import CoursePackages from "./(components)/CoursePackages";
+import { courseService } from "@/services/server/course-service";
 
-const dummyManualPackages: CoursePackage[] = [
-  {
-    id: "manual-40-hours",
-    title: "Bronze Package",
-    courseTiming: 40,
-    subTitle: "Ideal for complete beginners",
-    practicalTestPrice: 2400,
-    noPracticalTestPrice: 2300,
-    description:
-      "A full foundational course for learners starting from scratch. Covers everything from car control to road awareness in a structured, supportive way.",
-    courseDescription:
-      "Our 40-Hours course is perfect for driver learners with a passion for driving. Whether you’ve had some hands-on experience with short drives with a parent or simply practiced moving a car on a driveway, this course will build on that foundation. It’s also ideal for confident beginners who want to sharpen their skills in a supportive environment.",
-    courseRequirements: [
-      {
-        title: "Experience Level:",
-        description: "None or minimal driving experience",
-      },
-      {
-        title: "Course Duration:",
-        description: "4–6 weeks",
-      },
-    ],
-    features: [
-      {
-        image: "/15.svg",
-        title: "Manual car training with expert guidance",
-      },
-      {
-        image: "/3.svg",
-        title: "Thorough preparation for the practical driving test",
-      },
-      {
-        image: "/22.svg",
-        title: "Flexible, hands-on instruction",
-      },
-    ],
-    color: "bronze",
-  },
-  {
-    id: "manual-10-hours",
-    title: "Extended Package",
-    courseTiming: 30,
-    subTitle: "Suitable for early-stage learners",
-    practicalTestPrice: "£1,850",
-    noPracticalTestPrice: "£1,750",
-    description:
-      "Designed for learners with some prior experience who want more time to build confidence, refine control, and prepare thoroughly for the driving test.",
-    courseDescription:
-      "Ideal for partly-trained learner drivers with upper intermediate experience who need a focused practice on specific areas, such as mastering the manoeuvres or dealing with complex traffic conditions or independent driving using road signs or Sat-Nav.",
-    courseRequirements: [
-      {
-        title: "Experience Level:",
-        description: "At least 20 hours of previous driving experience.",
-      },
-      {
-        title: "Course Duration:",
-        description: "3–4 weeks.",
-      },
-    ],
-    features: [
-      {
-        image: "/15.svg",
-        title: "Manual car training with expert guidance",
-      },
-      {
-        image: "/3.svg",
-        title: "Thorough preparation for the practical driving test",
-      },
-      {
-        image: "/22.svg",
-        title: "Flexible, hands-on instruction",
-      },
-    ],
-    color: "extended",
-  },
-  {
-    id: "manual-30-hours",
-    title: "Silver Package",
-    courseTiming: 20,
-    subTitle: "For partly-trained drivers",
-    practicalTestPrice: "£1,300",
-    noPracticalTestPrice: "£1,200",
-    description:
-      "Ideal for learners who’ve already had about 20 hours of lessons. Focuses on polishing skills, correcting mistakes, and building test readiness.",
-    courseDescription:
-      "Ideal for partly-trained learner drivers with intermediate experience who need focused practice to refine their skills. Perfect for those aiming to boost confidence and address specific areas for improvement after recently failed practical driving tests.",
-    courseRequirements: [
-      {
-        title: "Experience Level:",
-        description: "At least 20 hours of previous driving experience.",
-      },
-      {
-        title: "Course Duration:",
-        description: "3–4 weeks.",
-      },
-    ],
-    features: [
-      {
-        image: "/15.svg",
-        title: "Manual car training with expert guidance",
-      },
-      {
-        image: "/3.svg",
-        title: "Thorough preparation for the practical driving test",
-      },
-      {
-        image: "/22.svg",
-        title: "Flexible, hands-on instruction",
-      },
-    ],
-    color: "silver",
-  },
-  {
-    id: "manual-20-hours",
-    title: "GOLD REFRESHER PACKAGE",
-    courseTiming: 10,
-    subTitle: "For experienced or returning drivers",
-    practicalTestPrice: 750,
-    noPracticalTestPrice: 650,
-    description:
-      "Designed for confident drivers or those returning to driving after a break. Ideal for foreign licence holders or learners who recently failed their test and need focused preparation.",
-    courseDescription:
-      "Ideal for foreign licence holders who previously drove in the UK and either recently failed their practical driving test or planning to take one. This course is designed to assess your current driving skills, identify any habits that may need adjustment, and help you adapt to UK driving standards. Training covers navigating complex traffic situations, spiral roundabouts, dual carriageways, countryside roads, and all essential manoeuvres.",
-    courseRequirements: [
-      {
-        title: "Experience Level:",
-        description: "Experienced drivers who want to improve a specific area.",
-      },
-      {
-        title: "Course Duration:",
-        description: "4–6 Days.",
-      },
-    ],
-    features: [
-      {
-        image: "/15.svg",
-        title: "Manual car training with expert guidance",
-      },
-      {
-        image: "/3.svg",
-        title: "Thorough preparation for the practical driving test",
-      },
-      {
-        image: "/22.svg",
-        title: "Flexible, hands-on instruction",
-      },
-    ],
-    color: "gold",
-  },
-];
+export default async function IntensiveDrivingClass() {
+  let intensiveManualCourses: Course[] = [];
+  let intensiveAutomaticCourses: Course[] = [];
+  let error: string | null = null;
 
-const dummyAutomaticPackages: CoursePackage[] = [
-  {
-    id: "automatic-40-hours",
-    title: "Bronze Package",
-    courseTiming: 40,
-    subTitle: "Ideal for complete beginners",
-    practicalTestPrice: 2480,
-    noPracticalTestPrice: 2380,
-    description:
-      "A complete driving foundation course for those with little to no prior experience. Builds strong core skills and road awareness from the ground up.",
-    courseDescription:
-      "Our 40-Hours course is perfect for driver learners with a passion for driving. Whether you’ve had some hands-on experience with short drives with a parent or simply practiced moving a car on a driveway, this course will build on that foundation. It’s also ideal for confident beginners who want to sharpen their skills in a supportive environment.",
-    courseRequirements: [
-      {
-        title: "Experience Level:",
-        description: "None or minimal driving experience",
-      },
-      {
-        title: "Course Duration:",
-        description: "4–6 weeks",
-      },
-    ],
-    features: [
-      {
-        image: "/15.svg",
-        title: "Automatic car training with expert guidance",
-      },
-      {
-        image: "/3.svg",
-        title: "Thorough preparation for the practical driving test",
-      },
-      {
-        image: "/22.svg",
-        title: "Flexible, hands-on instruction",
-      },
-    ],
-    color: "bronze",
-  },
-  {
-    id: "automatic-10-hours",
-    title: "Extended Package",
-    courseTiming: 30,
-    subTitle: "Suitable for early-stage learners",
-    practicalTestPrice: "£1,910",
-    noPracticalTestPrice: "£1,810",
-    description:
-      "For learners with some basic experience looking to progress confidently toward test readiness with more time behind the wheel.",
-    courseDescription:
-      "Ideal for partly-trained learner drivers with upper intermediate experience who need a focused practice on specific areas, such as mastering the manoeuvres or dealing with complex traffic conditions or independent driving using road signs or Sat-Nav.",
-    courseRequirements: [
-      {
-        title: "Experience Level:",
-        description: "At least 20 hours of previous driving experience.",
-      },
-      {
-        title: "Course Duration:",
-        description: "4–5 weeks.",
-      },
-    ],
-    features: [
-      {
-        image: "/15.svg",
-        title: "Automatic car training with expert guidance",
-      },
-      {
-        image: "/3.svg",
-        title: "Thorough preparation for the practical driving test",
-      },
-      {
-        image: "/22.svg",
-        title: "Flexible, hands-on instruction",
-      },
-    ],
-    color: "extended",
-  },
-  {
-    id: "automatic-30-hours",
-    title: "Silver Package",
-    courseTiming: 20,
-    subTitle: "For partly-trained drivers",
-    practicalTestPrice: "£1,340",
-    noPracticalTestPrice: "£1,240",
-    description:
-      "Best for learners who’ve already completed ~20 hours of lessons. Focuses on refining skills, correcting errors, and preparing for the test.",
-    courseDescription:
-      "Ideal for partly-trained learner drivers with intermediate experience who need focused practice to refine their skills. Perfect for those aiming to boost confidence and address specific areas for improvement after recently failed practical driving tests.",
-    courseRequirements: [
-      {
-        title: "Experience Level:",
-        description: "At least 20 hours of previous driving experience.",
-      },
-      {
-        title: "Course Duration:",
-        description: "3–4 weeks.",
-      },
-    ],
-    features: [
-      {
-        image: "/15.svg",
-        title: "Automatic car training with expert guidance",
-      },
-      {
-        image: "/3.svg",
-        title: "Thorough preparation for the practical driving test",
-      },
-      {
-        image: "/22.svg",
-        title: "Flexible, hands-on instruction",
-      },
-    ],
-    color: "silver",
-  },
-  {
-    id: "automatic-20-hours",
-    title: "GOLD REFRESHER PACKAGE",
-    courseTiming: 10,
-    subTitle: "For experienced or returning drivers",
-    practicalTestPrice: 770,
-    noPracticalTestPrice: 670,
-    description:
-      "Designed for confident drivers or those returning to driving after a break. Ideal for foreign licence holders or learners who recently failed their test and need focused preparation.",
-    courseDescription:
-      "Ideal for foreign licence holders who previously drove in the UK and either recently failed their practical driving test or planning to take one. This course is designed to assess your current driving skills, identify any habits that may need adjustment, and help you adapt to UK driving standards. Training covers navigating complex traffic situations, spiral roundabouts, dual carriageways, countryside roads, and all essential manoeuvres.",
-    courseRequirements: [
-      {
-        title: "Experience Level:",
-        description: "Experienced drivers who want to improve a specific area.",
-      },
-      {
-        title: "Course Duration:",
-        description: "4–6 Days.",
-      },
-    ],
-    features: [
-      {
-        image: "/15.svg",
-        title: "Automatic car training with expert guidance",
-      },
-      {
-        image: "/3.svg",
-        title: "Thorough preparation for the practical driving test",
-      },
-      {
-        image: "/22.svg",
-        title: "Flexible, hands-on instruction",
-      },
-    ],
-    color: "gold",
-  },
-];
+  try {
+    const courses = await courseService.getAllCourses();
+    const intensiveCourses = courses?.filter(
+      (course) => course.category === "intensive"
+    );
 
-const IntensiveDrivingClass = () => {
+    // Manual Courses
+    intensiveManualCourses =
+      intensiveCourses
+        ?.filter((course) => course.drivingMode === "manual")
+        ?.map((course) => ({
+          ...course,
+          features: [
+            {
+              image: "/15.svg",
+              title: "Manual car training with expert guidance",
+            },
+            {
+              image: "/3.svg",
+              title: "Thorough preparation for the practical driving test",
+            },
+            {
+              image: "/22.svg",
+              title: "Flexible, hands-on instruction",
+            },
+          ],
+        })) || [];
+
+    // Automatic Courses
+    intensiveAutomaticCourses =
+      intensiveCourses
+        ?.filter((course) => course.drivingMode === "automatic")
+        ?.map((course) => ({
+          ...course,
+          features: [
+            {
+              image: "/15.svg",
+              title: "Automatic car training with expert guidance",
+            },
+            {
+              image: "/3.svg",
+              title: "Thorough preparation for the practical driving test",
+            },
+            {
+              image: "/22.svg",
+              title: "Flexible, hands-on instruction",
+            },
+          ],
+        })) || [];
+  } catch (err) {
+    console.error("Failed to fetch courses:", err);
+    error = "Failed to load courses. Please try again later.";
+    toast.error(error);
+    intensiveManualCourses = [];
+    intensiveAutomaticCourses = [];
+  }
+
   return (
     <>
       <TopUniformSection title="Intensive Driving">
@@ -344,7 +106,7 @@ const IntensiveDrivingClass = () => {
         description="At Cambridge Driving Academy, we go beyond lessons — we ensure a safe,
         flexible, and personalized driving experience that sets you up for
         success."
-        coursePackages={dummyManualPackages}
+        courses={intensiveManualCourses}
       />
 
       {/* Automatic Intensive Course Packages */}
@@ -353,7 +115,7 @@ const IntensiveDrivingClass = () => {
         description="At Cambridge Driving Academy, we go beyond lessons — we ensure a safe,
         flexible, and personalized driving experience that sets you up for
         success."
-        coursePackages={dummyAutomaticPackages}
+        courses={intensiveAutomaticCourses}
       />
 
       {/* Contact Us Banner */}
@@ -362,6 +124,4 @@ const IntensiveDrivingClass = () => {
       </UniformPaddingSection>
     </>
   );
-};
-
-export default IntensiveDrivingClass;
+}

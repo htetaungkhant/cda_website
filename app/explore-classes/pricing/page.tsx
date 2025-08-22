@@ -1,10 +1,27 @@
 import React from "react";
+
 import { PiSealCheckFill } from "react-icons/pi";
+import { toast } from "sonner";
 
 import TopUniformSection from "@/components/TopUniformSection";
 import { PricingCardStyle2 } from "@/components/PricingCard";
+import { courseService } from "@/services/server/course-service";
+import { Course } from "@/types/course";
 
-const Pricing = () => {
+export default async function Pricing() {
+  let pricings: Course[] = [];
+  let error: string | null = null;
+
+  try {
+    const courses = await courseService.getAllCourses();
+    pricings = courses?.filter((course) => course.category === "standard");
+  } catch (err) {
+    console.error("Failed to fetch pricings:", err);
+    error = "Failed to load pricings. Please try again later.";
+    toast.error(error);
+    pricings = [];
+  }
+
   return (
     <>
       <TopUniformSection title="Pricing">
@@ -15,28 +32,32 @@ const Pricing = () => {
           <p className="max-lg:text-center text-lg lg:text-xl">
             (Beginners and Partly-Trained Students)
           </p>
-          <div className="sm:mx-auto grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-8">
-            {/* Pricing Card */}
-            <PricingCardStyle2
-              transmissionType="Manual"
-              price="£80"
-              save="£84"
-              features={[
-                "Weekdays – 2 Hour Driving Lesson",
-                "Weekends & Evenings - 2 Hour",
-              ]}
-            />
-            {/* Pricing Card */}
-            <PricingCardStyle2
-              transmissionType="Automatic"
-              price="£84"
-              save="£88"
-              features={[
-                "Weekdays – 2 Hour Driving Lesson",
-                "Weekends & Evenings - 2 Hour",
-              ]}
-            />
-          </div>
+          {pricings.length > 0 ? (
+            <div className="sm:mx-auto grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-8">
+              {/* Pricing Card */}
+              {pricings[0] && (
+                <PricingCardStyle2
+                  drivingMode={pricings[0]?.drivingMode}
+                  price={`£${pricings[0]?.primaryPrice}`}
+                  save={`£${pricings[0]?.secondaryPrice}`}
+                  features={pricings[0]?.descriptionList}
+                />
+              )}
+              {/* Pricing Card */}
+              {pricings[1] && (
+                <PricingCardStyle2
+                  drivingMode={pricings[1]?.drivingMode}
+                  price={`£${pricings[1]?.primaryPrice}`}
+                  save={`£${pricings[1]?.secondaryPrice}`}
+                  features={pricings[1]?.descriptionList}
+                />
+              )}
+            </div>
+          ) : (
+            <p className="mt-8 mb-1 text-center text-lg font-medium text-gray-500">
+              No pricing information available.
+            </p>
+          )}
         </div>
         <div className="mt-8 lg:mt-16 mx-auto max-w-235 border border-[#000000B2] rounded-xl shadow-[0px_4px_10px_0px_rgba(0,0,0,0.25)] overflow-hidden">
           <h1 className="text-center text-white text-xl lg:text-2xl font-semibold px-4 py-2 md:py-3 bg-[#660B0B]">
@@ -61,10 +82,6 @@ const Pricing = () => {
           </ul>
         </div>
       </TopUniformSection>
-
-      {/* Pricing Cards Section */}
     </>
   );
-};
-
-export default Pricing;
+}

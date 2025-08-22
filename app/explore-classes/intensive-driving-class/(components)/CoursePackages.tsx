@@ -5,19 +5,24 @@ import { FaArrowLeft, FaArrowRight } from "react-icons/fa6";
 import UniformPaddingSection from "@/components/UniformPaddingSection";
 import { PricingCardStyle3 } from "@/components/PricingCard";
 import { cn } from "@/lib/shared/utils";
-import { CoursePackage } from "@/types/course";
+import { Course } from "@/types/course";
 
 interface CoursePackagesProps {
   title: string;
   description?: string;
-  coursePackages: CoursePackage[];
+  courses: (Course & {
+    features?: {
+      image: string;
+      title: string;
+    }[];
+  })[];
   className?: string;
 }
 
 export default function CoursePackages({
   title,
   description,
-  coursePackages,
+  courses,
   className,
 }: CoursePackagesProps) {
   const mobileScrollContainerRef1 = useRef<HTMLDivElement | null>(null);
@@ -55,22 +60,25 @@ export default function CoursePackages({
       <h1 className="text-2xl md:text-3xl lg:text-4xl max-lg:text-center">
         <strong>{title}</strong>
       </h1>
-      {description && <p className="max-lg:text-center text-xs md:text-sm lg:text-base text-[#585858]">{description}</p>}
-      {coursePackages?.length > 0 && (
+      {description && (
+        <p className="max-lg:text-center text-xs md:text-sm lg:text-base text-[#585858]">
+          {description}
+        </p>
+      )}
+      {courses?.length > 0 && (
         <div className="mx-auto grid grid-cols-1 gap-4 lg:gap-8">
           <div
             ref={mobileScrollContainerRef1}
             className="flex lg:flex-wrap gap-4 lg:gap-8 select-none [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none] max-lg:overflow-x-auto"
             style={{ touchAction: "pan-y" }} // overscrollBehavior: "contain"
           >
-            {coursePackages.map((coursePackage, index) => (
+            {courses.map((course, index) => (
               <PricingCardStyle3
-                key={`${coursePackage.id}-${index}`}
-                {...coursePackage}
+                key={`${course.id}-${index}`}
+                {...course}
                 className={cn(
                   "min-w-70 w-70 min-[375px]:min-w-84 min-[375px]:w-84 sm:min-w-88 sm:w-88 lg:w-[48%]",
-                  index > Math.ceil(coursePackages.length / 2) - 1 &&
-                    "max-lg:hidden"
+                  index > Math.ceil(courses.length / 2) - 1 && "max-lg:hidden"
                 )}
               />
             ))}
@@ -80,16 +88,16 @@ export default function CoursePackages({
             className="flex lg:hidden gap-4 select-none [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none] overflow-x-auto"
             style={{ touchAction: "pan-y" }} // overscrollBehavior: "contain"
           >
-            {coursePackages
-              .slice(Math.ceil(coursePackages.length / 2))
-              .map((coursePackage, index) => (
+            {courses
+              .slice(Math.ceil(courses.length / 2))
+              .map((course, index) => (
                 <PricingCardStyle3
-                  key={`${coursePackage.id}-${index}`}
-                  {...coursePackage}
+                  key={`${course.id}-${index}`}
+                  {...course}
                   className="min-w-70 w-70 min-[375px]:min-w-84 min-[375px]:w-84 sm:min-w-88 sm:w-88"
                 />
               ))}
-            {coursePackages.length % 2 !== 0 && (
+            {courses.length % 2 !== 0 && (
               <div className="min-w-70 w-70 min-[375px]:min-w-84 min-[375px]:w-84 sm:min-w-88 sm:w-88" />
             )}
           </div>
@@ -100,8 +108,8 @@ export default function CoursePackages({
       <div
         className={cn(
           "relative flex justify-center lg:hidden",
-          coursePackages.length <= 4 && "md:hidden",
-          coursePackages.length <= 2 && "hidden"
+          courses.length <= 4 && "md:hidden",
+          courses.length <= 2 && "hidden"
         )}
       >
         <button
