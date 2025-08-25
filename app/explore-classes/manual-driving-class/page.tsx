@@ -1,4 +1,4 @@
-import React from "react";
+import { toast } from "sonner";
 
 import TopUniformSection from "@/components/TopUniformSection";
 import ReasonCardsSection from "@/components/ReasonCardsSection";
@@ -7,8 +7,39 @@ import UniformPaddingSection from "@/components/UniformPaddingSection";
 import ContactUsBanner from "@/components/ContactUsBanner";
 import { ButtonStyle1 } from "@/components/Button";
 import { CardStyle1 } from "@/components/Card";
+import { Instructor } from "@/types/instructor";
+import { instructorService } from "@/services/server/instructor-service";
 
-const ManualDrivingClass = () => {
+export const dynamic = 'force-dynamic';
+
+export default async function ManualDrivingClass() {
+  let recentInstructors: Instructor[] = [];
+  let error: string | null = null;
+
+  try {
+    const instructors = await instructorService.getAllInstructors();
+    const automaticInstructors =
+      instructors?.filter(
+        (instructor) => instructor.drivingMode === "automatic"
+      ) || [];
+
+    const manualInstructors =
+      instructors?.filter(
+        (instructor) => instructor.drivingMode === "manual"
+      ) || [];
+
+    // get 2 manual instructors and 3 automatic instructors randomly
+    recentInstructors = [
+      ...manualInstructors.sort(() => 0.5 - Math.random()).slice(0, 2),
+      ...automaticInstructors.sort(() => 0.5 - Math.random()).slice(0, 3),
+    ];
+  } catch (err) {
+    console.error("Error fetching instructors:", err);
+    error = "Failed to fetch instructors. Please try again later.";
+    toast.error(error);
+    recentInstructors = [];
+  }
+
   return (
     <>
       <TopUniformSection title="Manual Driving">
@@ -120,7 +151,7 @@ const ManualDrivingClass = () => {
       </UniformPaddingSection>
 
       {/* Instructor Cards Section */}
-      <InstructorCardsSection />
+      <InstructorCardsSection instructors={recentInstructors} />
 
       {/* Contact Us Banner */}
       <UniformPaddingSection className="my-4 lg:my-8">
@@ -128,6 +159,4 @@ const ManualDrivingClass = () => {
       </UniformPaddingSection>
     </>
   );
-};
-
-export default ManualDrivingClass;
+}

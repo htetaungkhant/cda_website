@@ -8,6 +8,8 @@ import { PricingCardStyle2 } from "@/components/PricingCard";
 import { courseService } from "@/services/server/course-service";
 import { Course } from "@/types/course";
 
+export const dynamic = 'force-dynamic';
+
 export default async function Pricing() {
   let pricings: Course[] = [];
   let error: string | null = null;

@@ -9,6 +9,8 @@ import { Course } from "@/types/course";
 import CoursePackages from "./(components)/CoursePackages";
 import { courseService } from "@/services/server/course-service";
 
+export const dynamic = 'force-dynamic';
+
 export default async function IntensiveDrivingClass() {
   let intensiveManualCourses: Course[] = [];
   let intensiveAutomaticCourses: Course[] = [];

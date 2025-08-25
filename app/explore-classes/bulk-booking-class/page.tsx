@@ -11,6 +11,8 @@ import { PricingCardStyle1 } from "@/components/PricingCard";
 import { courseService } from "@/services/server/course-service";
 import { Course } from "@/types/course";
 
+export const dynamic = 'force-dynamic';
+
 export default async function BulkBookingClass() {
   let bulkBookingCourses: Course[] = [];
   let error: string | null = null;

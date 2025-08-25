@@ -9,6 +9,8 @@ import { instructorService } from "@/services/server/instructor-service";
 import { Instructor } from "@/types/instructor";
 import { toast } from "sonner";
 
+export const dynamic = 'force-dynamic';
+
 export default async function Home() {
   let recentInstructors: Instructor[] = [];
   let error: string | null = null;
