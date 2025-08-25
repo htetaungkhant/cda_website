@@ -65,7 +65,7 @@ export default function CoursePackages({
           {description}
         </p>
       )}
-      {courses?.length > 0 && (
+      {courses?.length > 0 ? (
         <div className="mx-auto grid grid-cols-1 gap-4 lg:gap-8">
           <div
             ref={mobileScrollContainerRef1}
@@ -102,6 +102,8 @@ export default function CoursePackages({
             )}
           </div>
         </div>
+      ) : (
+        <p>No courses available</p>
       )}
 
       {/* Mobile Navigation Arrows */}
