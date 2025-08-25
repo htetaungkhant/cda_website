@@ -36,6 +36,7 @@ export const InstructorCard: React.FC<
           height={128}
           alt={name}
           className="w-full h-full object-cover rounded-t-2xl"
+          priority
         />
       </div>
       <div
