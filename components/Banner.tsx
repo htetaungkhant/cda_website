@@ -59,7 +59,13 @@ const Banner = () => {
             behind the wheel, our manual driving lessons are made for you. Learn
             with certified instructors at your pace.
           </p>
-          <ButtonStyle1 className="mt-4">Book Now</ButtonStyle1>
+          <ButtonStyle1
+            href="https://www.totaldrive.app/a/onlinebooking.php?175552249746771"
+            target="_blank"
+            className="mt-4"
+          >
+            Book Now
+          </ButtonStyle1>
         </div>
       </div>
 
@@ -82,7 +88,13 @@ const Banner = () => {
             perfect for fast learning and effortless city driving — zero
             stalling, all confidence.
           </p>
-          <ButtonStyle1 className="mt-4">Book Now</ButtonStyle1>
+          <ButtonStyle1
+            href="https://www.totaldrive.app/a/onlinebooking.php?175552249746771"
+            target="_blank"
+            className="mt-4"
+          >
+            Book Now
+          </ButtonStyle1>
         </div>
       </div>
 
@@ -104,7 +116,13 @@ const Banner = () => {
             Pressed for time? Our intensive crash courses are designed to get
             you on the road quickly — ideal for learners needing rapid results.
           </p>
-          <ButtonStyle1 className="mt-4">Book Now</ButtonStyle1>
+          <ButtonStyle1
+            href="https://www.totaldrive.app/a/onlinebooking.php?175552249746771"
+            target="_blank"
+            className="mt-4"
+          >
+            Book Now
+          </ButtonStyle1>
         </div>
       </div>
 

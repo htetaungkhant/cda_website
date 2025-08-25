@@ -5,8 +5,38 @@ import InfoCardsSection from "@/components/InfoCardsSection";
 import InstructorCardsSection from "@/components/InstructorCardsSection";
 import ReasonCardsSection from "@/components/ReasonCardsSection";
 import TestimonialsSection from "@/components/TestimonialsSection";
+import { instructorService } from "@/services/server/instructor-service";
+import { Instructor } from "@/types/instructor";
+import { toast } from "sonner";
 
-export default function Home() {
+export default async function Home() {
+  let recentInstructors: Instructor[] = [];
+  let error: string | null = null;
+
+  try {
+    const instructors = await instructorService.getAllInstructors();
+    const automaticInstructors =
+      instructors?.filter(
+        (instructor) => instructor.drivingMode === "automatic"
+      ) || [];
+
+    const manualInstructors =
+      instructors?.filter(
+        (instructor) => instructor.drivingMode === "manual"
+      ) || [];
+
+    // get 2 manual instructors and 3 automatic instructors randomly
+    recentInstructors = [
+      ...manualInstructors.sort(() => 0.5 - Math.random()).slice(0, 2),
+      ...automaticInstructors.sort(() => 0.5 - Math.random()).slice(0, 3),
+    ];
+  } catch (err) {
+    console.error("Error fetching instructors:", err);
+    error = "Failed to fetch instructors. Please try again later.";
+    toast.error(error);
+    recentInstructors = [];
+  }
+
   return (
     <>
       <Banner />
@@ -48,7 +78,9 @@ export default function Home() {
       />
 
       {/* Instructor Cards Section */}
-      <InstructorCardsSection />
+      {recentInstructors.length >= 4 && (
+        <InstructorCardsSection instructors={recentInstructors} />
+      )}
 
       {/* IG Gallery Section */}
       <IgGallery />

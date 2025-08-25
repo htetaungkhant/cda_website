@@ -10,92 +10,17 @@ import { Instructor } from "@/types/instructor";
 import { ButtonStyle1 } from "./Button";
 import UniformPaddingSection from "./UniformPaddingSection";
 
-const dummyData: Instructor[] = [
-  {
-    id: "1",
-    image: {
-      id: "1",
-      image: "/dummy-data/4.jpg",
-      thumbnail: "/dummy-data/4.jpg",
-    },
-    name: "Ahmad Siddiqi",
-    drivingMode: "manual",
-    description: "Experienced driving instructor",
-    link: "#",
-    totalDriveUrl: "#",
-    noOfBookings: 10,
-    createdAt: "2023-01-01",
-    updatedAt: "2023-01-01",
-  },
-  {
-    id: "2",
-    image: {
-      id: "2",
-      image: "/dummy-data/5.jpg",
-      thumbnail: "/dummy-data/5.jpg",
-    },
-    name: "Behzad Yacubi",
-    drivingMode: "automatic",
-    description: "Skilled driving instructor",
-    link: "#",
-    totalDriveUrl: "#",
-    noOfBookings: 8,
-    createdAt: "2023-01-01",
-    updatedAt: "2023-01-01",
-  },
-  {
-    id: "3",
-    image: {
-      id: "3",
-      image: "/dummy-data/6.jpg",
-      thumbnail: "/dummy-data/6.jpg",
-    },
-    name: "Elnara Babayeva",
-    drivingMode: "automatic",
-    description: "Skilled driving instructor",
-    link: "#",
-    totalDriveUrl: "#",
-    noOfBookings: 8,
-    createdAt: "2023-01-01",
-    updatedAt: "2023-01-01",
-  },
-  {
-    id: "4",
-    image: {
-      id: "4",
-      image: "/dummy-data/7.jpg",
-      thumbnail: "/dummy-data/7.jpg",
-    },
-    name: "Dunya Nori",
-    drivingMode: "manual",
-    description: "Skilled driving instructor",
-    link: "#",
-    totalDriveUrl: "#",
-    noOfBookings: 8,
-    createdAt: "2023-01-01",
-    updatedAt: "2023-01-01",
-  },
-  {
-    id: "5",
-    image: {
-      id: "5",
-      image: "/dummy-data/8.jpg",
-      thumbnail: "/dummy-data/8.jpg",
-    },
-    name: "Ghulam Mohd.",
-    drivingMode: "automatic",
-    description: "Skilled driving instructor",
-    link: "#",
-    totalDriveUrl: "#",
-    noOfBookings: 8,
-    createdAt: "2023-01-01",
-    updatedAt: "2023-01-01",
-  },
-];
-
 export const InstructorCard: React.FC<
   Instructor & { responsive?: boolean; className?: string }
-> = ({ id, image, name, drivingMode, responsive = false, className }) => {
+> = ({
+  id,
+  image,
+  name,
+  drivingMode,
+  totalDriveUrl,
+  responsive = false,
+  className,
+}) => {
   return (
     <div
       className={cn(
@@ -148,23 +73,25 @@ export const InstructorCard: React.FC<
           </span>
         </p>
         <div className="flex justify-center gap-2 sm:gap-3 xl:gap-6 py-2">
-          <button
+          <a
+            href={totalDriveUrl}
+            target="_blank"
             className={cn(
-              "whitespace-nowrap flex-1 bg-[var(--custom-primary)] font-medium text-white rounded-sm cursor-pointer hover:shadow-md",
+              "whitespace-nowrap flex-1 bg-[var(--custom-primary)] font-medium text-white text-center rounded-sm cursor-pointer hover:shadow-md",
               responsive
                 ? "text-[7px] px-1.5 py-1.5 min-[375px]:text-[10px] min-sm:text-xs min-sm:py-2 min-sm:px-4"
                 : "text-xs py-2 px-4"
             )}
           >
             Book Now
-          </button>
+          </a>
           <Link
             href={{
               pathname: `/our-team/${name.replaceAll(" ", "-").toLowerCase()}`,
               query: { unique: id },
             }}
             className={cn(
-              "whitespace-nowrap flex-1 bg-[var(--custom-primary)] font-medium text-white rounded-sm cursor-pointer hover:shadow-md",
+              "whitespace-nowrap flex-1 bg-[var(--custom-primary)] font-medium text-white text-center rounded-sm cursor-pointer hover:shadow-md",
               responsive
                 ? "text-[7px] px-1.5 py-1.5 min-[375px]:text-[10px] min-sm:text-xs min-sm:py-2 min-sm:px-4"
                 : "text-xs py-2 px-4"
@@ -178,7 +105,9 @@ export const InstructorCard: React.FC<
   );
 };
 
-const InstructorCardsSection = () => {
+const InstructorCardsSection: React.FC<{ instructors: Instructor[] }> = ({
+  instructors,
+}) => {
   const timerRef = useRef<NodeJS.Timeout | null>(null);
   const mobileScrollContainerRef = useRef<HTMLDivElement | null>(null);
   const hoveredLayerRef = useRef<HTMLDivElement | null>(null);
@@ -233,7 +162,7 @@ const InstructorCardsSection = () => {
       <div className="relative max-lg:hidden">
         <div className="max-lg:hidden flex transform transition-all duration-500">
           {/* Instructor Cards */}
-          {dummyData.map((instructor, index) => (
+          {instructors.map((instructor, index) => (
             <div
               key={`${instructor.name}-${index}`}
               ref={(el) => {
@@ -273,12 +202,24 @@ const InstructorCardsSection = () => {
                   </span>
                 </p>
                 <div className="flex flex-wrap justify-center gap-3 xl:gap-6 py-2">
-                  <button className="whitespace-nowrap flex-1 bg-[var(--custom-primary)] font-medium text-xs lg:text-sm text-white py-2 px-4 rounded-sm cursor-pointer">
+                  <a
+                    href={instructor.totalDriveUrl}
+                    target="_blank"
+                    className="whitespace-nowrap flex-1 bg-[var(--custom-primary)] font-medium text-xs lg:text-sm text-white text-center py-2 px-4 rounded-sm cursor-pointer"
+                  >
                     Book Now
-                  </button>
-                  <button className="whitespace-nowrap flex-1 bg-[var(--custom-primary)] font-medium text-xs lg:text-sm text-white py-2 px-4 rounded-sm cursor-pointer">
+                  </a>
+                  <Link
+                    href={{
+                      pathname: `/our-team/${instructor.name
+                        .replaceAll(" ", "-")
+                        .toLowerCase()}`,
+                      query: { unique: instructor.id },
+                    }}
+                    className="whitespace-nowrap flex-1 bg-[var(--custom-primary)] font-medium text-xs lg:text-sm text-white text-center py-2 px-4 rounded-sm cursor-pointer"
+                  >
                     View Details
-                  </button>
+                  </Link>
                 </div>
               </div>
             </div>
@@ -298,7 +239,7 @@ const InstructorCardsSection = () => {
           {/* blur overlay */}
           <div className="absolute inset-0 bg-white/20 backdrop-blur-md rounded-3xl" />
           {/* Instructor Cards */}
-          {dummyData.map((instructor, index) => (
+          {instructors.map((instructor, index) => (
             <div
               key={`${instructor.name}-${index}`}
               className={cn(
@@ -328,12 +269,24 @@ const InstructorCardsSection = () => {
                   </span>
                 </p>
                 <div className="flex flex-wrap justify-center gap-3 xl:gap-6 py-2">
-                  <button className="whitespace-nowrap flex-1 bg-[var(--custom-primary)] font-medium text-xs lg:text-sm text-white py-2 px-4 rounded-sm cursor-pointer">
+                  <a
+                    href={instructor.totalDriveUrl}
+                    target="_blank"
+                    className="whitespace-nowrap flex-1 bg-[var(--custom-primary)] font-medium text-xs lg:text-sm text-white text-center py-2 px-4 rounded-sm cursor-pointer"
+                  >
                     Book Now
-                  </button>
-                  <button className="whitespace-nowrap flex-1 bg-[var(--custom-primary)] font-medium text-xs lg:text-sm text-white py-2 px-4 rounded-sm cursor-pointer">
+                  </a>
+                  <Link
+                    href={{
+                      pathname: `/our-team/${instructor.name
+                        .replaceAll(" ", "-")
+                        .toLowerCase()}`,
+                      query: { unique: instructor.id },
+                    }}
+                    className="whitespace-nowrap flex-1 bg-[var(--custom-primary)] font-medium text-xs lg:text-sm text-white text-center py-2 px-4 rounded-sm cursor-pointer"
+                  >
                     View Details
-                  </button>
+                  </Link>
                 </div>
               </div>
             </div>
@@ -349,7 +302,7 @@ const InstructorCardsSection = () => {
           style={{ touchAction: "pan-y" }}
         >
           {/* Instructor Cards */}
-          {dummyData.map((instructor, index) => (
+          {instructors.map((instructor, index) => (
             <InstructorCard
               key={`${instructor.name}-${index}`}
               {...instructor}

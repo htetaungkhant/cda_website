@@ -144,7 +144,12 @@ const Header = () => {
         </nav>
 
         <div className="max-lg:hidden">
-          <ButtonStyle1>Book Now</ButtonStyle1>
+          <ButtonStyle1
+            href="https://www.totaldrive.app/a/onlinebooking.php?175552249746771"
+            target="_blank"
+          >
+            Book Now
+          </ButtonStyle1>
         </div>
       </div>
 
