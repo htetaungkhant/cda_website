@@ -155,13 +155,15 @@ const CommonBookingForm: React.FC<CommonBookingFormProps> = ({ className }) => {
                     I agree to the{" "}
                     <Link
                       href="/terms-conditions"
+                      target="_blank"
                       className="text-yellow-500 font-medium hover:underline"
                     >
-                      terms & conditions
+                      Terms & Conditions
                     </Link>{" "}
                     &{" "}
                     <Link
                       href="/privacy-policy"
+                      target="_blank"
                       className="text-yellow-500 font-medium hover:underline"
                     >
                       Privacy Policy
