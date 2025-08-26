@@ -186,7 +186,12 @@ const Footer = () => {
               <ul className="mt-4 flex flex-col gap-1 text-[8px] sm:text-[10px] md:text-xs lg:text-sm text-[var(--custom-primary)]">
                 <li className="flex gap-1">
                   <MdEmail className="w-3 min-w-3 h-3 md:w-4 md:min-w-4 md:h-4 text-[#E2D5B4]" />
-                  <span>support@cambridge.academy</span>
+                  <a
+                    href="mailto:support@cambridge.academy"
+                    className="hover:underline"
+                  >
+                    support@cambridge.academy
+                  </a>
                 </li>
                 <li className="flex gap-1">
                   <FaCalendarDays className="w-2.5 h-2.5 md:w-3 md:h-3 lg:w-4 lg:min-w-4 lg:h-4 text-[#E2D5B4]" />
@@ -202,9 +207,14 @@ const Footer = () => {
                 </li>
                 <li className="flex gap-1">
                   <FaLocationDot className="w-4 h-4 md:h-6 md:w-6 lg:h-8 lg:w-8 lg:min-w-3 -mt-1 text-[#E2D5B4]" />
-                  <span>
+                  <a
+                    href="https://www.google.com/maps/place/Cambridge+Driving+Academy/@52.218965,0.139653,10z/data=!4m15!1m8!3m7!1s0x47d870f6b8b15949:0xe4646c6d8649454d!2s11+Kinross+Rd,+Chesterton,+Cambridge+CB4+1QU,+UK!3b1!8m2!3d52.2189646!4d0.1396526!16s%2Fg%2F11c0_ckcgp!3m5!1s0x47d8710ab2ecfe95:0x8cb000cee85efed5!8m2!3d52.2189652!4d0.1396524!16s%2Fg%2F11rgfxkw1j?hl=en-US&entry=ttu&g_ep=EgoyMDI1MDgxOS4wIKXMDSoASAFQAw%3D%3D"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="hover:underline"
+                  >
                     11 Kinross Rd, Chesterton, Cambridge CB4 1QU, United Kingdom
-                  </span>
+                  </a>
                 </li>
               </ul>
             </div>

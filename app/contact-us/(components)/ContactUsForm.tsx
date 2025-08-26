@@ -109,7 +109,7 @@ export function ContactUsForm({ className }: BookingFormProps) {
       >
         <div className="flex flex-col lg:flex-row">
           <Link
-            href="https://maps.app.goo.gl/zgBMgAQ3sWVNVPQf6"
+            href="https://www.google.com/maps/place/Cambridge+Driving+Academy/@52.218965,0.139653,10z/data=!4m15!1m8!3m7!1s0x47d870f6b8b15949:0xe4646c6d8649454d!2s11+Kinross+Rd,+Chesterton,+Cambridge+CB4+1QU,+UK!3b1!8m2!3d52.2189646!4d0.1396526!16s%2Fg%2F11c0_ckcgp!3m5!1s0x47d8710ab2ecfe95:0x8cb000cee85efed5!8m2!3d52.2189652!4d0.1396524!16s%2Fg%2F11rgfxkw1j?hl=en-US&entry=ttu&g_ep=EgoyMDI1MDgxOS4wIKXMDSoASAFQAw%3D%3D"
             rel="noopener noreferrer"
             target="_blank"
             className="w-full lg:w-1/2 lg:min-w-1/2 relative"
