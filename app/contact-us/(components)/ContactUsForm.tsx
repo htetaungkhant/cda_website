@@ -70,7 +70,7 @@ export function ContactUsForm({ className }: BookingFormProps) {
 
       await execute(async () => {
         const result = await contactService.createInquiry(modifiedData);
-        toast.success("Contact created successfully!");
+        toast.success("Contact request received successfully");
         form.reset();
         return result;
       });
