@@ -211,7 +211,7 @@ export function ContactUsForm({ className }: BookingFormProps) {
                           placeholder="Phone number"
                           disabled={loading}
                           className="rounded-[4px] focus-within:border-gray-600 border-[0.5px]"
-                          inputClassName="flex-1 max-sm:text-xs!"
+                          inputClassName="w-full flex-1 max-sm:text-xs!"
                         />
                       </FormControl>
                       <FormMessage className="-mt-1 text-[10px] sm:text-xs" />
