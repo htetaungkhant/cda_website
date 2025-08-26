@@ -206,10 +206,17 @@ export function PricingCardStyle3({
                 cardColor === "silver" &&
                   "bg-gradient-to-r from-[#7C7C7E] to-[#484847]",
                 cardColor === "gold" &&
-                  "bg-gradient-to-r from-[#A17301] to-[#3B2A00]"
+                  "bg-gradient-to-r from-[#A17301] to-[#3B2A00]",
+                cardColor === "white" &&
+                  "bg-gradient-to-r from-[#FFFFFF] to-[#EAEAEA]"
               )}
             >
-              <h1 className="mx-auto max-w-9/10 p-1 text-center text-base min-[375px]:text-lg md:text-xl lg:text-2xl uppercase whitespace-nowrap">
+              <h1
+                className={cn(
+                  "mx-auto max-w-9/10 p-1 text-center text-base min-[375px]:text-lg md:text-xl lg:text-2xl uppercase whitespace-nowrap",
+                  cardColor === "white" && "text-black"
+                )}
+              >
                 <span>{name}</span>
                 {timeInHours && (
                   <>
@@ -219,8 +226,18 @@ export function PricingCardStyle3({
                 )}
               </h1>
               {suitability && (
-                <h4 className="flex items-center justify-center gap-2 whitespace-nowrap text-xs min-[375px]:text-sm lg:text-base">
-                  <TbWheel className="w-5 min-w-5 h-5 text-white border-3 border-white rounded-full" />
+                <h4
+                  className={cn(
+                    "flex items-center justify-center gap-2 whitespace-nowrap text-xs min-[375px]:text-sm lg:text-base",
+                    cardColor === "white" && "text-black"
+                  )}
+                >
+                  <TbWheel
+                    className={cn(
+                      "w-5 min-w-5 h-5 text-white border-3 border-white rounded-full",
+                      cardColor === "white" && "text-black border-black"
+                    )}
+                  />
                   <span>{suitability}</span>
                 </h4>
               )}
@@ -233,7 +250,8 @@ export function PricingCardStyle3({
                 cardColor === "silver" &&
                   "bg-gradient-to-r from-[#A8A9AD] to-[#C0C0C0]",
                 cardColor === "gold" &&
-                  "bg-gradient-to-r from-[#FFB700] to-[#FFD700]"
+                  "bg-gradient-to-r from-[#FFB700] to-[#FFD700]",
+                cardColor === "white" && "bg-white"
               )}
             >
               <p className="flex-1 py-1 text-xs min-[375px]:text-sm lg:text-base line-clamp-3">
@@ -273,7 +291,9 @@ export function PricingCardStyle3({
             cardColor === "silver" &&
               "bg-gradient-to-r from-[#626262] to-[#C0C0C0]",
             cardColor === "gold" &&
-              "bg-gradient-to-r from-[#B78300] via-[#C37F00] to-[#FFD700]"
+              "bg-gradient-to-r from-[#B78300] via-[#C37F00] to-[#FFD700]",
+            cardColor === "white" &&
+              "text-black bg-gradient-to-r from-[#FFFFFF] to-[#EAEAEA]"
           )}
         >
           <DialogClose asChild>
@@ -299,7 +319,12 @@ export function PricingCardStyle3({
             </DialogTitle>
             {suitability && (
               <h4 className="flex items-center justify-center gap-2 whitespace-nowrap text-sm lg:text-base font-semibold mt-1">
-                <TbWheel className="w-5 min-w-5 h-5 text-white border-3 border-white rounded-full" />
+                <TbWheel
+                  className={cn(
+                    "w-5 min-w-5 h-5 border-3 border-white rounded-full",
+                    cardColor === "white" && "text-black border-black"
+                  )}
+                />
                 <span>{suitability}</span>
               </h4>
             )}
@@ -307,7 +332,12 @@ export function PricingCardStyle3({
               <h2 className="font-black text-base sm:text-lg md:text-xl lg:text-2xl">
                 Course Description:
               </h2>
-              <DialogDescription className="text-white text-xs md:text-sm lg:text-base">
+              <DialogDescription
+                className={cn(
+                  "text-white text-xs md:text-sm lg:text-base",
+                  cardColor === "white" && "text-black"
+                )}
+              >
                 {descriptionList?.filter(Boolean)?.join(" ")}
               </DialogDescription>
               {experience && duration && (
@@ -449,7 +479,7 @@ export function PricingCardStyle3({
               </div>
             </div>
             <div className="mt-4 lg:mt-6 flex flex-col rounded-2xl overflow-hidden border border-black shadow-md">
-              <h1 className="p-2 lg:p-3 text-lg lg:text-xl text-center font-semibold uppercase bg-[#660B0B]">
+              <h1 className="p-2 lg:p-3 text-lg lg:text-xl text-white text-center font-semibold uppercase bg-[#660B0B]">
                 Important Disclaimer
               </h1>
               <p className="px-2 py-1 lg:px-3 lg:py-2 flex gap-1 lg:gap-2 bg-white text-[#585858]">
