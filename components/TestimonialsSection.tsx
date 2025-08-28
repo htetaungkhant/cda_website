@@ -8,6 +8,7 @@ import { PiSealCheckFill } from "react-icons/pi";
 import googleSvg from "@/public/google-logo.svg";
 import { cn } from "@/lib/shared/utils";
 import UniformPaddingSection from "./UniformPaddingSection";
+import { ButtonStyle1 } from "./Button";
 
 const dummyData = [
   {
@@ -223,6 +224,15 @@ const TestimonialsSection = () => {
         >
           <FaArrowRight className="text-[#545454]" />
         </button>
+      </div>
+
+      <div className="flex justify-center mt-2">
+        <ButtonStyle1
+          href="https://www.google.com/maps/place/Cambridge+Driving+Academy/@52.218965,0.139653,10z/data=!4m17!1m8!3m7!1s0x47d870f6b8b15949:0xe4646c6d8649454d!2s11+Kinross+Rd,+Chesterton,+Cambridge+CB4+1QU,+UK!3b1!8m2!3d52.2189646!4d0.1396526!16s%2Fg%2F11c0_ckcgp!3m7!1s0x47d8710ab2ecfe95:0x8cb000cee85efed5!8m2!3d52.2189652!4d0.1396524!9m1!1b1!16s%2Fg%2F11rgfxkw1j?hl=en-US&entry=ttu&g_ep=EgoyMDI1MDgyNS4wIKXMDSoASAFQAw%3D%3D"
+          target="_blank"
+        >
+          View All
+        </ButtonStyle1>
       </div>
     </UniformPaddingSection>
   );

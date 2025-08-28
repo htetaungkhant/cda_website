@@ -328,6 +328,7 @@ const InstructorCardsSection: React.FC<{ instructors: Instructor[] }> = ({
           <FaArrowRight className="text-[#545454]" />
         </button>
       </div>
+
       <div className="flex justify-center mt-4">
         <ButtonStyle1 href="/our-team">View All</ButtonStyle1>
       </div>
