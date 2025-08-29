@@ -3,9 +3,9 @@ import { NextResponse } from "next/server";
 import { chatbotService } from "@/services/server/chatbot-service";
 
 export async function POST(req: Request) {
-  const { prompt } = await req.json();
+  const { messages } = await req.json();
   try {
-    const response = await chatbotService.sendMessage(prompt);
+    const response = await chatbotService.sendMessage(messages);
     if (!response || !response.response) {
       return NextResponse.json(
         { error: "No response from chatbot" },

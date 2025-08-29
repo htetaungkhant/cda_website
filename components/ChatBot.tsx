@@ -97,7 +97,7 @@ const ChatBot = () => {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ prompt: content }),
+        body: JSON.stringify({ messages: [{ role: "user", content }] }),
       });
 
       if (!response.ok) throw new Error("Failed to get response");
@@ -240,7 +240,7 @@ const ChatBot = () => {
                         message.type === "bot" && "-left-2.5 top-0"
                       )}
                     />
-                    <span>{message.content}</span>
+                    <span className="break-all">{message.content}</span>
                   </div>
                 </div>
               </div>

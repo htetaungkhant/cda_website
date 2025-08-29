@@ -1,7 +1,13 @@
 import { API_ENDPOINTS } from "@/lib/shared/constants";
 
 export const chatbotService = {
-  async sendMessage(message: string): Promise<{ response: string }> {
+  async sendMessage(
+    messages: {
+      role: "user" | "bot";
+      content: string;
+    }[]
+  ): Promise<{ response: string }> {
+    console.log("Sending messages to chatbot:", messages);
     try {
       const url = `${process.env.CHATBOT_URL}${API_ENDPOINTS.CHATBOT}`;
 
@@ -10,7 +16,7 @@ export const chatbotService = {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ prompt: message }),
+        body: JSON.stringify({ messages }),
         cache: "no-store",
       });
 
