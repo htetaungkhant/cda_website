@@ -31,7 +31,9 @@ export default function ContactUsBanner({ className }: ContactUsBannerProps) {
         />
         <p className="font-medium text-sm md:text-base">📞 01223 974630</p>
       </div>
-      <ButtonStyle2 className="w-fit mt-1">Contact Us</ButtonStyle2>
+      <ButtonStyle2 href="/contact-us" className="w-fit mt-1">
+        Contact Us
+      </ButtonStyle2>
     </div>
   );
 }
