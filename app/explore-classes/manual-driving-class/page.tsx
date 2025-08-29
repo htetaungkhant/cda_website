@@ -10,7 +10,7 @@ import { CardStyle1 } from "@/components/Card";
 import { Instructor } from "@/types/instructor";
 import { instructorService } from "@/services/server/instructor-service";
 
-export const dynamic = 'force-dynamic';
+export const dynamic = "force-dynamic";
 
 export default async function ManualDrivingClass() {
   let recentInstructors: Instructor[] = [];
@@ -62,7 +62,12 @@ export default async function ManualDrivingClass() {
               here to guide you every step of the way.
             </p>
             <div className="lg:px-5 flex justify-center lg:justify-end mt-4 lg:mt-6">
-              <ButtonStyle1>Book Now</ButtonStyle1>
+              <ButtonStyle1
+                href="https://www.totaldrive.app/a/onlinebooking.php?175552249746771"
+                target="_blank"
+              >
+                Book Now
+              </ButtonStyle1>
             </div>
           </div>
         </div>
