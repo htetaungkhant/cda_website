@@ -7,7 +7,7 @@ import { FaYoutube } from "react-icons/fa6";
 
 import TopUniformSection from "@/components/TopUniformSection";
 import { instructorService } from "@/services/server/instructor-service";
-import BookingForm from "../(components)/BookingForm";
+// import BookingForm from "../(components)/BookingForm";
 
 interface InstructorDetailsProps {
   params: Promise<{ instructorName: string }>;
@@ -75,7 +75,13 @@ export default async function InstructorDetails({
           </div>
         </div>
 
-        <BookingForm className="mx-auto my-8 lg:my-10" />
+        <iframe
+          src={instructor?.totalDriveUrl}
+          // frameBorder="0"
+          className="w-full max-w-280 h-[700px] md:h-[650px] xl:h-[500px] mx-auto my-8 lg:my-10 rounded-xl border border-[var(--custom-primary)]"
+        ></iframe>
+
+        {/* <BookingForm className="mx-auto my-8 lg:my-10" /> */}
       </TopUniformSection>
     </>
   );
