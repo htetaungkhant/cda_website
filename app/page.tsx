@@ -1,3 +1,5 @@
+import { toast } from "sonner";
+
 import Banner from "@/components/Banner";
 import CourseCardsSection from "@/components/CourseCardsSection";
 import IgGallery from "@/components/IgGallery";
@@ -5,15 +7,18 @@ import InfoCardsSection from "@/components/InfoCardsSection";
 import InstructorCardsSection from "@/components/InstructorCardsSection";
 import ReasonCardsSection from "@/components/ReasonCardsSection";
 import TestimonialsSection from "@/components/TestimonialsSection";
+import { googleService } from "@/services/server/google-service";
 import { instructorService } from "@/services/server/instructor-service";
+import { GoogleReview } from "@/types/google";
 import { Instructor } from "@/types/instructor";
-import { toast } from "sonner";
 
-export const dynamic = 'force-dynamic';
+export const dynamic = "force-dynamic";
 
 export default async function Home() {
   let recentInstructors: Instructor[] = [];
-  let error: string | null = null;
+  let instructorsError: string | null = null;
+  let googleReviews: GoogleReview[] = [];
+  let googleReviewsError: string | null = null;
 
   try {
     const instructors = await instructorService.getAllInstructors();
@@ -34,9 +39,19 @@ export default async function Home() {
     ];
   } catch (err) {
     console.error("Error fetching instructors:", err);
-    error = "Failed to fetch instructors. Please try again later.";
-    toast.error(error);
+    instructorsError = "Failed to fetch instructors. Please try again later.";
+    toast.error(instructorsError);
     recentInstructors = [];
+  }
+
+  try {
+    googleReviews = await googleService.get5Reviews();
+  } catch (err) {
+    console.error("Error fetching Google reviews:", err);
+    googleReviewsError =
+      "Failed to fetch Google reviews. Please try again later.";
+    toast.error(googleReviewsError);
+    googleReviews = [];
   }
 
   return (
@@ -88,7 +103,9 @@ export default async function Home() {
       <IgGallery />
 
       {/* Testimonial Section */}
-      <TestimonialsSection />
+      {googleReviews.length >= 4 && (
+        <TestimonialsSection testimonials={googleReviews} />
+      )}
 
       <section className="w-full h-8" />
     </>

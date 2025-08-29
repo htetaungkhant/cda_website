@@ -7,53 +7,15 @@ import { PiSealCheckFill } from "react-icons/pi";
 
 import googleSvg from "@/public/google-logo.svg";
 import { cn } from "@/lib/shared/utils";
+import { GoogleReview } from "@/types/google";
 import UniformPaddingSection from "./UniformPaddingSection";
 import { ButtonStyle1 } from "./Button";
 
-const dummyData = [
-  {
-    image: "/dummy-data/3.png",
-    name: "Bella Pellegrini",
-    date: "2024-09-05",
-    rating: 5,
-    review:
-      "I had an amazing experience with the driving class. The instructors were professional and the lessons were very informative.",
-  },
-  {
-    image: "/dummy-data/3.png",
-    name: "John Doe",
-    date: "2024-09-06",
-    rating: 4.5,
-    review:
-      "I did a 26 hour intensive course (spread over 6 days) with Ahmad and passed on my first attempt. I couldn't recommend CDA more!",
-  },
-  {
-    image: "/dummy-data/3.png",
-    name: "Jane Smith",
-    date: "2024-09-07",
-    rating: 3,
-    review:
-      "The instructors were very patient and helpful. I highly recommend this class!",
-  },
-  {
-    image: "/dummy-data/3.png",
-    name: "Alice Johnson",
-    date: "2024-09-08",
-    rating: 4.5,
-    review:
-      "Great experience! The class was well-structured and the instructors were very knowledgeable.",
-  },
-  {
-    image: "/dummy-data/3.png",
-    name: "Bob Williams",
-    date: "2024-09-09",
-    rating: 5,
-    review:
-      "I learned so much in this class. The instructors were very professional and made the learning process enjoyable.",
-  },
-];
-
-const TestimonialsSection = () => {
+const TestimonialsSection = ({
+  testimonials,
+}: {
+  testimonials: GoogleReview[];
+}) => {
   const mobileScrollContainerRef = useRef<HTMLDivElement | null>(null);
   const [startX, setStartX] = useState(0);
   const [scrollLeft, setScrollLeft] = useState(0);
@@ -136,12 +98,12 @@ const TestimonialsSection = () => {
           style={{ touchAction: "pan-y" }}
         >
           {/* Testimonial Cards */}
-          {dummyData.map((testimonial, index) => (
+          {testimonials.map((testimonial, index) => (
             <div
-              key={`${testimonial.name}-${index}`}
-              className="relative min-w-[87vw] sm:min-w-80 h-64 xl:h-68 bg-gradient-to-b from-[#FCB521] to-[#FF8800] rounded-xl overflow-hidden"
+              key={`${testimonial.author_name}-${index}`}
+              className="relative min-w-[87vw] sm:min-w-80 h-64 xl:h-70 bg-gradient-to-b from-[#FCB521] to-[#FF8800] rounded-xl overflow-hidden"
             >
-              <div className="absolute inset-[1px] rounded-xl flex flex-col gap-2 md:gap-3 xl:gap-5 p-4 max-[330px]:p-2 xl:p-6 bg-white">
+              <div className="absolute inset-[1px] rounded-xl flex flex-col gap-2 md:gap-3 xl:gap-4 p-4 max-[330px]:p-2 xl:p-6 bg-white">
                 <Image
                   src={googleSvg}
                   width={30}
@@ -151,18 +113,19 @@ const TestimonialsSection = () => {
                 />
                 <div className="flex gap-3">
                   <Image
-                    src={testimonial.image}
+                    src={testimonial.profile_photo_url}
                     width={70}
                     height={70}
                     className="w-14 h-14 lg:w-16 lg:h-16 rounded-full object-cover"
                     alt="google-avatar"
+                    priority
                   />
                   <div className="py-1.5 flex flex-col justify-between gap-1">
                     <h3 className="text-base lg:text-lg font-semibold">
-                      {testimonial.name}
+                      {testimonial.author_name}
                     </h3>
                     <p className="text-xs lg:text-sm text-gray-600">
-                      {testimonial.date}
+                      {testimonial.relative_time_description}
                     </p>
                   </div>
                 </div>
@@ -183,12 +146,12 @@ const TestimonialsSection = () => {
                   </div>
                   <PiSealCheckFill className="text-blue-500 w-4 h-4" />
                 </div>
-                <p className="text-sm text-gray-700 line-clamp-4 xl:line-clamp-3">
-                  {testimonial.review}
+                <p className="text-sm text-gray-700 line-clamp-4">
+                  {testimonial.text}
                 </p>
                 <div className="flex-1 flex items-end">
                   <a
-                    href="#"
+                    href="https://www.google.com/maps/place/Cambridge+Driving+Academy/@52.218965,0.139653,10z/data=!4m17!1m8!3m7!1s0x47d870f6b8b15949:0xe4646c6d8649454d!2s11+Kinross+Rd,+Chesterton,+Cambridge+CB4+1QU,+UK!3b1!8m2!3d52.2189646!4d0.1396526!16s%2Fg%2F11c0_ckcgp!3m7!1s0x47d8710ab2ecfe95:0x8cb000cee85efed5!8m2!3d52.2189652!4d0.1396524!9m1!1b1!16s%2Fg%2F11rgfxkw1j?hl=en-US&entry=ttu&g_ep=EgoyMDI1MDgyNS4wIKXMDSoASAFQAw%3D%3D"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="cursor-pointer text-gray-600 text-sm hover:underline"
@@ -206,10 +169,10 @@ const TestimonialsSection = () => {
       <div
         className={cn(
           "relative flex justify-center",
-          dummyData.length === 1 && "hidden",
-          dummyData.length <= 4 && "xl:hidden",
-          dummyData.length <= 3 && "lg:hidden",
-          dummyData.length <= 2 && "md:hidden"
+          testimonials.length === 1 && "hidden",
+          testimonials.length <= 4 && "xl:hidden",
+          testimonials.length <= 3 && "lg:hidden",
+          testimonials.length <= 2 && "md:hidden"
         )}
       >
         <button
