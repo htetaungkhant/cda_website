@@ -7,7 +7,6 @@ export const chatbotService = {
       content: string;
     }[]
   ): Promise<{ response: string }> {
-    console.log("Sending messages to chatbot:", messages);
     try {
       const url = `${process.env.CHATBOT_URL}${API_ENDPOINTS.CHATBOT}`;
 
