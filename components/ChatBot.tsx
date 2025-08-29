@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
-import { Send, X } from "lucide-react";
+import { Send, UserRound, X } from "lucide-react";
 
 import { cn } from "@/lib/shared/utils";
 import { Popover, PopoverContent, PopoverTrigger } from "./ui/popover";
@@ -177,22 +177,22 @@ const ChatBot = () => {
         </PopoverTrigger>
 
         <PopoverContent
-          className="hidden w-[300px] md:w-[300px] xl:w-[350px] 2xl:w-[400px] p-0 overflow-hidden z-150"
+          className="w-[300px] md:w-[300px] xl:w-[350px] 2xl:w-[400px] p-0 overflow-hidden z-150"
           side="top"
           align="end"
           sideOffset={16}
         >
           {/* Header */}
-          <div className="bg-[#E6E8FF] p-3 flex items-center gap-3 relative">
+          <div className="bg-[#FFDA45] p-3 flex items-center gap-3 relative">
             <Image
               width={40}
               height={40}
               src="/logo-icon-white-bg.jpg"
-              alt="Bufo Bot"
+              alt="RoadieBot"
               className="w-12 h-12 p-2 object-contain bg-white rounded-lg"
             />
             <div>
-              <h3 className="font-bold text-lg lg:text-xl">Bufo Bot</h3>
+              <h3 className="font-bold text-lg lg:text-xl">RoadieBot</h3>
             </div>
             <button
               onClick={() => setIsOpen(false)}
@@ -205,7 +205,7 @@ const ChatBot = () => {
           {/* Messages */}
           <div
             ref={messagesContainerRef}
-            className="p-4 h-[300px] 2xl:h-[400px] overflow-y-auto space-y-4"
+            className="text-xs lg:text-sm p-4 h-[300px] 2xl:h-[400px] overflow-y-auto space-y-4"
           >
             {messages.map((message, idx) => (
               <div
@@ -215,20 +215,40 @@ const ChatBot = () => {
                 }`}
               >
                 <div
-                  className={`max-w-[80%] p-3 rounded-lg ${
-                    message.type === "user"
-                      ? "bg-primary text-white"
-                      : "bg-[#E6E8FF]"
-                  }`}
+                  className={cn(
+                    "max-w-[80%] flex gap-2.5 items-start",
+                    message.type === "user" ? "flex-row-reverse" : "flex-row"
+                  )}
                 >
-                  {message.content}
+                  {message.type === "bot" ? (
+                    <Image
+                      width={40}
+                      height={40}
+                      src="/logo-icon-white-bg.jpg"
+                      alt="RoadieBot"
+                      className="w-6 h-6 lg:w-8 lg:h-8 p-1 object-contain bg-white rounded-full border border-[var(--custom-primary)]"
+                    />
+                  ) : (
+                    <UserRound className="w-6 h-6 lg:w-8 lg:h-8 p-1 object-contain bg-[var(--custom-primary)] text-white rounded-full" />
+                  )}
+                  <div className="p-3 rounded-lg bg-[#FFDA45] relative">
+                    <div
+                      className={cn(
+                        "absolute w-0 h-0 border-l-[12px] border-l-transparent border-t-[12px] border-t-[#FFDA45] border-r-[12px] border-r-transparent transform",
+                        message.type === "user" &&
+                          "-top-[1.5px] -right-2 rotate-135",
+                        message.type === "bot" && "-left-2.5 top-0"
+                      )}
+                    />
+                    <span>{message.content}</span>
+                  </div>
                 </div>
               </div>
             ))}
 
             {isApiWorking && (
               <div className="flex justify-start">
-                <div className="max-w-[80%] p-3 rounded-lg bg-[#E6E8FF] animate-pulse">
+                <div className="max-w-[80%] p-3 rounded-lg bg-[#FFDA45] animate-pulse">
                   Please wait...
                 </div>
               </div>
@@ -236,12 +256,12 @@ const ChatBot = () => {
 
             {/* Quick Actions */}
             {messages.length === 1 && (
-              <div className="grid gap-2">
+              <div className="grid gap-1">
                 {quickActions.map((action, idx) => (
                   <Button
                     key={idx}
                     variant="outline"
-                    className="w-full justify-start text-left h-auto whitespace-normal"
+                    className="text-xs w-fit rounded-full justify-start text-left h-auto whitespace-normal"
                     onClick={() => handleSendMessage(action)}
                     disabled={isLoading}
                   >

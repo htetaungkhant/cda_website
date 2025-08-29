@@ -1,0 +1,28 @@
+import { API_ENDPOINTS } from "@/lib/shared/constants";
+
+export const chatbotService = {
+  async sendMessage(message: string): Promise<{ response: string }> {
+    try {
+      const url = `${process.env.CHATBOT_URL}${API_ENDPOINTS.CHATBOT}`;
+
+      const res = await fetch(url, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ prompt: message }),
+        cache: "no-store",
+      });
+
+      if (!res.ok) {
+        const text = await res.text().catch(() => "");
+        throw new Error(text || `Request failed with status ${res.status}`);
+      }
+
+      return (await res.json()) as { response: string };
+    } catch (error) {
+      console.error("Failed to send message to chatbot:", error);
+      throw error;
+    }
+  },
+};

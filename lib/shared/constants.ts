@@ -17,6 +17,9 @@ export const API_ENDPOINTS = {
   DELETE_INQUIRY: "/contactUs/delete",
   UPDATE_INQUIRY: "/contactUs/update",
   INQUIRY_BY_ID: "/contactUs/:id",
+
+  // Chatbot endpoints
+  CHATBOT: "/chat",
 } as const;
 
 export const TOKEN_STORAGE_KEYS = {
