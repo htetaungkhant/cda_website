@@ -121,7 +121,7 @@ const TestimonialsSection = ({
                     priority
                   />
                   <div className="py-1.5 flex flex-col justify-between gap-1">
-                    <h3 className="text-base lg:text-lg font-semibold">
+                    <h3 className="max-w-42 whitespace-nowrap overflow-hidden text-ellipsis text-base lg:text-lg font-semibold">
                       {testimonial.author_name}
                     </h3>
                     <p className="text-xs lg:text-sm text-gray-600">
