@@ -240,7 +240,8 @@ const ChatBot = () => {
                         message.type === "bot" && "-left-2.5 top-0"
                       )}
                     />
-                    <span className="break-all">{message.content}</span>
+                    {/* <span className="break-all">{message.content}</span> */}
+                    <span>{message.content}</span>
                   </div>
                 </div>
               </div>
