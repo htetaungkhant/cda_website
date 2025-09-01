@@ -43,7 +43,28 @@ const ChatBot = () => {
 
   const streamResponse = (response: string) => {
     let index = 0;
-    const content = response;
+    let content = response;
+
+    if (response.includes("__REDIRECT_TO__:")) {
+      // Extract URL using regex
+      const urlPattern = /https?:\/\/[^\s]+/;
+      const match = response.match(urlPattern);
+      if (match) {
+        const link = match[0].trim();
+        window.open(link, "_blank");
+        content = `Redirecting you to <a href="${link}" target="_blank" style="color: blue; text-decoration: underline;">${link}</a>`;
+        setMessages((prev) => [
+          ...prev,
+          {
+            type: "bot",
+            content,
+            isComplete: true,
+          },
+        ]);
+        setIsLoading(false);
+        return;
+      }
+    }
 
     // Add initial empty message
     setMessages((prev) => [
@@ -241,7 +262,9 @@ const ChatBot = () => {
                       )}
                     />
                     {/* <span className="break-all">{message.content}</span> */}
-                    <span>{message.content}</span>
+                    <span
+                      dangerouslySetInnerHTML={{ __html: message.content }}
+                    />
                   </div>
                 </div>
               </div>
