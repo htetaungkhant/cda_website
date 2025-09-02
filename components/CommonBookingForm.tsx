@@ -24,11 +24,17 @@ const formSchema = z.object({
   firstName: z.string().min(2, {
     message: "First name must be at least 2 characters.",
   }),
-  mobileNumber: z.string().min(10, {
-    message: "Please enter a valid mobile number.",
-  }),
   emailId: z.string().email({
     message: "Please enter a valid email address.",
+  }),
+  address: z.string().min(10, {
+    message: "Address must be at least 10 characters.",
+  }),
+  postcode: z.string().min(4, {
+    message: "Postcode must be at least 4 characters.",
+  }),
+  mobileNumber: z.string().min(10, {
+    message: "Please enter a valid mobile number.",
   }),
   agreeToTerms: z.boolean().refine((value) => value === true, {
     message: "You must agree to the terms and conditions.",
@@ -44,8 +50,10 @@ const CommonBookingForm: React.FC<CommonBookingFormProps> = ({ className }) => {
     resolver: zodResolver(formSchema),
     defaultValues: {
       firstName: "",
-      mobileNumber: "",
       emailId: "",
+      address: "",
+      postcode: "",
+      mobileNumber: "",
       agreeToTerms: true,
     },
   });
@@ -102,6 +110,48 @@ const CommonBookingForm: React.FC<CommonBookingFormProps> = ({ className }) => {
                     <Input
                       type="email"
                       placeholder="waltergray.matter@gmail.com"
+                      {...field}
+                      className="max-sm:text-xs border-gray-300 rounded-sm p-2 sm:px-4 sm:py-3 text-gray-800 placeholder:text-gray-500 focus:border-gray-400 focus:ring-0 focus-visible:ring-0"
+                    />
+                  </FormControl>
+                  <FormMessage className="-mt-1 text-[10px] sm:text-xs" />
+                </FormItem>
+              )}
+            />
+          </div>
+
+          {/* Address and Postcode Row */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-4">
+            <FormField
+              control={form.control}
+              name="address"
+              render={({ field }) => (
+                <FormItem className="flex flex-col">
+                  <FormLabel className="text-gray-600 font-medium whitespace-nowrap text-xs sm:text-sm">
+                    Address
+                  </FormLabel>
+                  <FormControl>
+                    <Input
+                      placeholder="123 Main St"
+                      {...field}
+                      className="max-sm:text-xs border-gray-300 rounded-sm p-2 sm:px-4 sm:py-3 text-gray-800 placeholder:text-gray-500 focus:border-gray-400 focus:ring-0 focus-visible:ring-0"
+                    />
+                  </FormControl>
+                  <FormMessage className="-mt-1 text-[10px] sm:text-xs" />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name="postcode"
+              render={({ field }) => (
+                <FormItem className="flex flex-col">
+                  <FormLabel className="text-gray-600 font-medium whitespace-nowrap text-xs sm:text-sm">
+                    Postcode
+                  </FormLabel>
+                  <FormControl>
+                    <Input
+                      placeholder="12345"
                       {...field}
                       className="max-sm:text-xs border-gray-300 rounded-sm p-2 sm:px-4 sm:py-3 text-gray-800 placeholder:text-gray-500 focus:border-gray-400 focus:ring-0 focus-visible:ring-0"
                     />
