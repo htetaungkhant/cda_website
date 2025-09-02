@@ -32,10 +32,19 @@ export default async function Home() {
         (instructor) => instructor.drivingMode === "manual"
       ) || [];
 
-    // get 2 manual instructors and 3 automatic instructors randomly
+    const bothInstructors =
+      instructors?.filter(
+        (instructor) =>
+          instructor.drivingMode === "both" ||
+          instructor.drivingMode === "automatic" ||
+          instructor.drivingMode === "manual"
+      ) || [];
+
+    // get 2 manual instructors, 2 automatic instructors and 1 both instructor randomly
     recentInstructors = [
       ...manualInstructors.sort(() => 0.5 - Math.random()).slice(0, 2),
-      ...automaticInstructors.sort(() => 0.5 - Math.random()).slice(0, 3),
+      ...automaticInstructors.sort(() => 0.5 - Math.random()).slice(0, 2),
+      ...bothInstructors.sort(() => 0.5 - Math.random()).slice(0, 1),
     ];
   } catch (err) {
     console.error("Error fetching instructors:", err);
