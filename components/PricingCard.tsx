@@ -69,7 +69,29 @@ export function PricingCardStyle1({
             </li>
           ))}
         </ul>
-        <ButtonStyle3 className="w-full">Book Now</ButtonStyle3>
+        <Dialog modal>
+          <DialogTrigger asChild>
+            <ButtonStyle3 className="w-full">Book Now</ButtonStyle3>
+          </DialogTrigger>
+          <DialogContent
+            // overlay={false}
+            showCloseButton={false}
+            className="p-0 sm:max-w-[70vw] w-[90vw] md:w-[75vw] lg:w-[60vw] lg:max-w-200 rounded-3xl border-none"
+          >
+            <DialogTitle className="hidden" />
+            <DialogDescription className="hidden" />
+            <DialogClose asChild>
+              <Image
+                src="/cross-icon-black.png"
+                alt="Close"
+                width={24}
+                height={24}
+                className="absolute top-3 right-3 cursor-pointer"
+              />
+            </DialogClose>
+            <CommonBookingForm />
+          </DialogContent>
+        </Dialog>
       </div>
     </div>
   );
