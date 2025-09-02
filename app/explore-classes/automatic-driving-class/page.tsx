@@ -7,6 +7,7 @@ import UniformPaddingSection from "@/components/UniformPaddingSection";
 import ContactUsBanner from "@/components/ContactUsBanner";
 import { ButtonStyle1 } from "@/components/Button";
 import { CardStyle1 } from "@/components/Card";
+import { DrivingMode } from "@/types/global";
 import { Instructor } from "@/types/instructor";
 import { instructorService } from "@/services/server/instructor-service";
 
@@ -18,20 +19,21 @@ export default async function AutomaticDrivingClass() {
 
   try {
     const instructors = await instructorService.getAllInstructors();
-    const automaticInstructors =
+    const filteredInstructors =
       instructors?.filter(
-        (instructor) => instructor.drivingMode === "automatic"
+        (instructor) =>
+          instructor.drivingMode === "automatic" ||
+          instructor.drivingMode === "both"
       ) || [];
 
-    const manualInstructors =
-      instructors?.filter(
-        (instructor) => instructor.drivingMode === "manual"
-      ) || [];
-
-    // get 2 manual instructors and 3 automatic instructors randomly
     recentInstructors = [
-      ...manualInstructors.sort(() => 0.5 - Math.random()).slice(0, 2),
-      ...automaticInstructors.sort(() => 0.5 - Math.random()).slice(0, 3),
+      ...filteredInstructors
+        .sort(() => 0.5 - Math.random())
+        .slice(0, 5)
+        .map((instructor) => ({
+          ...instructor,
+          drivingMode: "automatic" as DrivingMode,
+        })),
     ];
   } catch (err) {
     console.error("Error fetching instructors:", err);
