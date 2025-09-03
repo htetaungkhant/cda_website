@@ -60,7 +60,7 @@ const Banner = () => {
             with certified instructors at your pace.
           </p>
           <ButtonStyle1
-            href="https://www.totaldrive.app/a/onlinebooking.php?175552249746771"
+            href="https://www.totaldrive.app/a/onlinebooking.php?173468681946771&all=true"
             target="_blank"
             className="mt-4"
           >
@@ -89,7 +89,7 @@ const Banner = () => {
             stalling, all confidence.
           </p>
           <ButtonStyle1
-            href="https://www.totaldrive.app/a/onlinebooking.php?175552249746771"
+            href="https://www.totaldrive.app/a/onlinebooking.php?173468681946771&all=true"
             target="_blank"
             className="mt-4"
           >
@@ -117,7 +117,7 @@ const Banner = () => {
             you on the road quickly — ideal for learners needing rapid results.
           </p>
           <ButtonStyle1
-            href="https://www.totaldrive.app/a/onlinebooking.php?175552249746771"
+            href="https://www.totaldrive.app/a/onlinebooking.php?173468681946771&all=true"
             target="_blank"
             className="mt-4"
           >

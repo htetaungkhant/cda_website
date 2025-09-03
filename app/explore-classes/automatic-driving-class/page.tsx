@@ -66,7 +66,7 @@ export default async function AutomaticDrivingClass() {
             </p>
             <div className="lg:px-5 flex justify-center lg:justify-end mt-4 lg:mt-6">
               <ButtonStyle1
-                href="https://www.totaldrive.app/a/onlinebooking.php?175552249746771"
+                href="https://www.totaldrive.app/a/onlinebooking.php?173468681946771&all=true"
                 target="_blank"
               >
                 Book Now

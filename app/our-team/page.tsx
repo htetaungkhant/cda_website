@@ -18,12 +18,16 @@ export default async function OurTeam() {
     const instructors = await instructorService.getAllInstructors();
     automaticInstructors =
       instructors?.filter(
-        (instructor) => instructor.drivingMode === "automatic"
+        (instructor) =>
+          instructor.drivingMode === "automatic" ||
+          instructor.drivingMode === "both"
       ) || [];
 
     manualInstructors =
       instructors?.filter(
-        (instructor) => instructor.drivingMode === "manual"
+        (instructor) =>
+          instructor.drivingMode === "manual" ||
+          instructor.drivingMode === "both"
       ) || [];
   } catch (err) {
     console.error("Error fetching instructors:", err);
