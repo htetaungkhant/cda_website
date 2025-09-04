@@ -1,10 +1,10 @@
 "use client";
 import React, { useState } from "react";
+import Image from "next/image";
 
 import { Instructor } from "@/types/instructor";
 import { InstructorCard } from "@/components/InstructorCardsSection";
-import { ButtonStyle1 } from "@/components/Button";
-import Image from "next/image";
+// import { ButtonStyle1 } from "@/components/Button";
 
 interface CardsSectionProps {
   manualInstructors: Instructor[];
@@ -76,7 +76,7 @@ const CardsSection = ({
       </div>
 
       {/* View More Button */}
-      {activeTab === "manual" && manualInstructors?.length > 0 && (
+      {/* {activeTab === "manual" && manualInstructors?.length > 0 && (
         <div className="my-8 flex justify-center">
           <ButtonStyle1>View More</ButtonStyle1>
         </div>
@@ -85,7 +85,7 @@ const CardsSection = ({
         <div className="my-8 flex justify-center">
           <ButtonStyle1>View More</ButtonStyle1>
         </div>
-      )}
+      )} */}
     </>
   );
 };

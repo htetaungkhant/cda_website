@@ -62,13 +62,15 @@ export const InstructorCard: React.FC<
           />
           <span
             className={cn(
-              "whitespace-nowrap line-clamp-1",
+              "whitespace-nowrap line-clamp-1 text-ellipsis",
               responsive
                 ? "text-[10px] min-[375px]:text-xs min-sm:text-sm"
                 : "text-sm"
             )}
           >
-            {drivingMode === "manual"
+            {drivingMode === "both"
+              ? "Automatic & Manual"
+              : drivingMode === "manual"
               ? "Manual Instructor"
               : "Automatic Instructor"}
           </span>
