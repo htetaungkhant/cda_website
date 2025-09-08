@@ -8,8 +8,10 @@ import InstructorCardsSection from "@/components/InstructorCardsSection";
 import ReasonCardsSection from "@/components/ReasonCardsSection";
 import TestimonialsSection from "@/components/TestimonialsSection";
 import { googleService } from "@/services/server/google-service";
+import { instagramService } from "@/services/server/instagram-service";
 import { instructorService } from "@/services/server/instructor-service";
 import { GoogleReview } from "@/types/google";
+import { InstagramPost } from "@/types/instagram";
 import { Instructor } from "@/types/instructor";
 
 export const dynamic = "force-dynamic";
@@ -19,6 +21,8 @@ export default async function Home() {
   let instructorsError: string | null = null;
   let googleReviews: GoogleReview[] = [];
   let googleReviewsError: string | null = null;
+  let instagramPosts: InstagramPost[] = [];
+  let instagramError: string | null = null;
 
   try {
     const instructors = await instructorService.getAllInstructors();
@@ -61,6 +65,15 @@ export default async function Home() {
       "Failed to fetch Google reviews. Please try again later.";
     toast.error(googleReviewsError);
     googleReviews = [];
+  }
+
+  try {
+    instagramPosts = await instagramService.getUserMedia(8);
+  } catch (err) {
+    console.error("Error fetching Instagram posts:", err);
+    instagramError = "Failed to fetch Instagram posts. Please try again later.";
+    toast.error(instagramError);
+    instagramPosts = [];
   }
 
   return (
@@ -109,7 +122,7 @@ export default async function Home() {
       )}
 
       {/* IG Gallery Section */}
-      <IgGallery />
+      {instagramPosts.length >= 4 && <IgGallery posts={instagramPosts} />}
 
       {/* Testimonial Section */}
       {googleReviews.length >= 4 && (
