@@ -75,7 +75,7 @@ const CheckoutForm: React.FC<CheckoutFormProps> = ({
       const { error } = await stripe.confirmPayment({
         elements,
         clientSecret: stripeMetaFromAPI?.sessionId?.client_secret,
-        // redirect: "if_required",
+        redirect: "if_required",
         confirmParams: {
           return_url: window.location.href,
         },
