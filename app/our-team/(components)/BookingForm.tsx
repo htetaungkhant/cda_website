@@ -28,8 +28,8 @@ import {
 
 // Form validation schema
 const formSchema = z.object({
-  firstName: z.string().min(2, {
-    message: "First name must be at least 2 characters.",
+  fullName: z.string().min(2, {
+    message: "Full name must be at least 2 characters.",
   }),
   surname: z.string().min(2, {
     message: "Surname must be at least 2 characters.",
@@ -65,7 +65,7 @@ const BookingForm: React.FC<BookingFormProps> = ({ className }) => {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      firstName: "",
+      fullName: "",
       surname: "",
       mobileNumber: "",
       emailId: "",
@@ -96,15 +96,15 @@ const BookingForm: React.FC<BookingFormProps> = ({ className }) => {
         </h1>
 
         <div className="px-2 py-4 sm:px-3 md:px-6 md:py-6 space-y-5">
-          {/* First Name and Surname Row */}
+          {/* Full Name and Surname Row */}
           <div className="grid grid-cols-2 gap-2 sm:gap-4">
             <FormField
               control={form.control}
-              name="firstName"
+              name="fullName"
               render={({ field }) => (
                 <FormItem className="flex flex-col">
                   <FormLabel className="text-gray-600 font-medium whitespace-nowrap text-xs sm:text-sm">
-                    First Name
+                    Full Name
                   </FormLabel>
                   <FormControl>
                     <Input
