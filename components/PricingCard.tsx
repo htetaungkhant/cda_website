@@ -1,5 +1,5 @@
 "use client";
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import Image from "next/image";
 import { PiSealCheckFill } from "react-icons/pi";
 import { TbWheel } from "react-icons/tb";
@@ -9,7 +9,6 @@ import { FaArrowLeft, FaArrowRight } from "react-icons/fa6";
 import { cn } from "@/lib/shared/utils";
 import { Course } from "@/types/course";
 import { DrivingMode } from "@/types/global";
-import { ButtonStyle3 } from "./Button";
 import {
   Dialog,
   DialogClose,
@@ -17,11 +16,13 @@ import {
   DialogDescription,
   DialogTitle,
   DialogTrigger,
-} from "./ui/dialog";
+} from "@/components/ui/dialog";
+import { ButtonStyle3 } from "./Button";
 import { CardStyle1 } from "./Card";
 import CommonBookingForm from "./CommonBookingForm";
 
 interface PricingCardStyle1Props {
+  id: string;
   drivingMode: DrivingMode;
   price: string;
   save: string;
@@ -30,12 +31,15 @@ interface PricingCardStyle1Props {
 }
 
 export function PricingCardStyle1({
+  id,
   drivingMode,
   price,
   save,
   features,
   className,
 }: PricingCardStyle1Props) {
+  const [isOpen, setIsOpen] = useState(false);
+
   return (
     <div
       className={cn(
@@ -69,7 +73,7 @@ export function PricingCardStyle1({
             </li>
           ))}
         </ul>
-        <Dialog modal>
+        <Dialog modal open={isOpen} onOpenChange={setIsOpen}>
           <DialogTrigger asChild>
             <ButtonStyle3 className="w-full">Book Now</ButtonStyle3>
           </DialogTrigger>
@@ -89,7 +93,7 @@ export function PricingCardStyle1({
                 className="absolute top-3 right-3 cursor-pointer"
               />
             </DialogClose>
-            <CommonBookingForm />
+            <CommonBookingForm id={id} onSuccess={() => setIsOpen(false)} />
           </DialogContent>
         </Dialog>
       </div>
@@ -160,6 +164,7 @@ interface PricingCardStyle3Props extends Course {
 }
 
 export function PricingCardStyle3({
+  id,
   cardColor,
   name,
   timeInHours,
@@ -173,6 +178,8 @@ export function PricingCardStyle3({
   className,
 }: PricingCardStyle3Props) {
   const mobileScrollContainerRef = useRef<HTMLDivElement | null>(null);
+  const [isBooking1Open, setIsBooking1Open] = useState(false);
+  const [isBooking2Open, setIsBooking2Open] = useState(false);
 
   const handleLeftArrowClick = () => {
     if (mobileScrollContainerRef.current) {
@@ -440,7 +447,11 @@ export function PricingCardStyle3({
                       : primaryPrice}
                   </h1>
                   <p>Includes practical test</p>
-                  <Dialog modal>
+                  <Dialog
+                    modal
+                    open={isBooking1Open}
+                    onOpenChange={setIsBooking1Open}
+                  >
                     <DialogTrigger asChild>
                       <ButtonStyle3 className="w-full lg:max-w-7/10 mx-auto">
                         Book Now
@@ -462,7 +473,10 @@ export function PricingCardStyle3({
                           className="absolute top-3 right-3 cursor-pointer"
                         />
                       </DialogClose>
-                      <CommonBookingForm />
+                      <CommonBookingForm
+                        id={id}
+                        onSuccess={() => setIsBooking1Open(false)}
+                      />
                     </DialogContent>
                   </Dialog>
                 </div>
@@ -473,7 +487,11 @@ export function PricingCardStyle3({
                       : secondaryPrice}
                   </h1>
                   <p>Without practical test</p>
-                  <Dialog modal>
+                  <Dialog
+                    modal
+                    open={isBooking2Open}
+                    onOpenChange={setIsBooking2Open}
+                  >
                     <DialogTrigger asChild>
                       <ButtonStyle3 className="w-full lg:max-w-7/10 mx-auto">
                         Book Now
@@ -494,7 +512,10 @@ export function PricingCardStyle3({
                           className="absolute top-3 right-3 cursor-pointer"
                         />
                       </DialogClose>
-                      <CommonBookingForm />
+                      <CommonBookingForm
+                        id={id}
+                        onSuccess={() => setIsBooking2Open(false)}
+                      />
                     </DialogContent>
                   </Dialog>
                 </div>

@@ -20,6 +20,9 @@ export const API_ENDPOINTS = {
 
   // Chatbot endpoints
   CHATBOT: "/chat",
+
+  // Payment endpoints
+  CREATE_PAYMENT_INTENT: "/payment/stripe",
 } as const;
 
 export const TOKEN_STORAGE_KEYS = {

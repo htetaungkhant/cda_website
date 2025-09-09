@@ -7,11 +7,11 @@ import ReasonCardsSection from "@/components/ReasonCardsSection";
 import TopUniformSection from "@/components/TopUniformSection";
 import ContactUsBanner from "@/components/ContactUsBanner";
 import UniformPaddingSection from "@/components/UniformPaddingSection";
-import { PricingCardStyle1 } from "@/components/PricingCard";
 import { courseService } from "@/services/server/course-service";
 import { Course } from "@/types/course";
+import PricingCardsSection from "./(components)/PricingCardsSection";
 
-export const dynamic = 'force-dynamic';
+export const dynamic = "force-dynamic";
 
 export default async function BulkBookingClass() {
   let bulkBookingCourses: Course[] = [];
@@ -114,41 +114,9 @@ export default async function BulkBookingClass() {
       />
 
       {/* Pricing Cards Section */}
-      <UniformPaddingSection className="flex flex-col gap-4 text-black">
-        <h1 className="text-2xl md:text-3xl lg:text-4xl max-lg:text-center">
-          <strong>Our Pricings</strong>
-        </h1>
-        <p className="max-lg:text-center text-xs md:text-sm lg:text-base text-[#585858]">
-          At CDA, we offer straightforward, no-surprise pricing — tailored
-          packages to match your goals, experience, and learning style.
-        </p>
-        {bulkBookingCourses.length > 0 ? (
-          <div className="sm:mx-auto grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-8">
-            {/* Pricing Card */}
-            {bulkBookingCourses[0] && (
-              <PricingCardStyle1
-                drivingMode={bulkBookingCourses[0].drivingMode}
-                price={`£${bulkBookingCourses[0]?.primaryPrice}`}
-                save={`£${bulkBookingCourses[0]?.secondaryPrice}`}
-                features={bulkBookingCourses[0]?.descriptionList}
-              />
-            )}
-            {/* Pricing Card */}
-            {bulkBookingCourses[1] && (
-              <PricingCardStyle1
-                drivingMode={bulkBookingCourses[1].drivingMode}
-                price={`£${bulkBookingCourses[1]?.primaryPrice}`}
-                save={`£${bulkBookingCourses[1]?.secondaryPrice}`}
-                features={bulkBookingCourses[1]?.descriptionList}
-              />
-            )}
-          </div>
-        ) : (
-          <p className="mt-8 mb-1 text-center text-lg font-medium text-gray-500">
-            No pricing information available.
-          </p>
-        )}
-      </UniformPaddingSection>
+      {bulkBookingCourses.length > 0 && (
+        <PricingCardsSection bulkBookingCourses={bulkBookingCourses} />
+      )}
 
       {/* Contact Us Banner */}
       <UniformPaddingSection className="my-4 lg:my-8">

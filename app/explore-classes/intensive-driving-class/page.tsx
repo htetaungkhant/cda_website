@@ -6,10 +6,10 @@ import TopUniformSection from "@/components/TopUniformSection";
 import UniformPaddingSection from "@/components/UniformPaddingSection";
 import ContactUsBanner from "@/components/ContactUsBanner";
 import { Course } from "@/types/course";
-import CoursePackages from "./(components)/CoursePackages";
 import { courseService } from "@/services/server/course-service";
+import CoursePackages from "./(components)/CoursePackages";
 
-export const dynamic = 'force-dynamic';
+export const dynamic = "force-dynamic";
 
 export default async function IntensiveDrivingClass() {
   let intensiveManualCourses: Course[] = [];
@@ -102,22 +102,9 @@ export default async function IntensiveDrivingClass() {
         </div>
       </TopUniformSection>
 
-      {/* Manual Intensive Course Packages */}
       <CoursePackages
-        title="Manual Intensive Course Packages"
-        description="At Cambridge Driving Academy, we go beyond lessons — we ensure a safe,
-        flexible, and personalized driving experience that sets you up for
-        success."
-        courses={intensiveManualCourses}
-      />
-
-      {/* Automatic Intensive Course Packages */}
-      <CoursePackages
-        title="Automatic Intensive Course Packages"
-        description="At Cambridge Driving Academy, we go beyond lessons — we ensure a safe,
-        flexible, and personalized driving experience that sets you up for
-        success."
-        courses={intensiveAutomaticCourses}
+        intensiveAutomaticCourses={intensiveAutomaticCourses}
+        intensiveManualCourses={intensiveManualCourses}
       />
 
       {/* Contact Us Banner */}
