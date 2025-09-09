@@ -66,7 +66,6 @@ export function ContactUsForm({ className }: BookingFormProps) {
           .replace(data.mobileNumber.dialCode, "")}`,
         courseCategory: data.course,
       };
-      console.log("Modified form data:", modifiedData);
 
       await execute(async () => {
         const result = await contactService.createInquiry(modifiedData);
