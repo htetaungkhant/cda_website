@@ -127,12 +127,14 @@ const CheckoutForm: React.FC<CheckoutFormProps> = ({
 interface CommonBookingFormProps {
   id: string;
   onSuccess?: () => void | Promise<void>;
+  withTest?: boolean;
   className?: string;
 }
 
 const CommonBookingForm: React.FC<CommonBookingFormProps> = ({
   id,
   onSuccess,
+  withTest = false,
   className,
 }) => {
   const { loading, execute } = useAsyncOperation();
@@ -160,8 +162,7 @@ const CommonBookingForm: React.FC<CommonBookingFormProps> = ({
         email: values.emailId,
         phone: values.mobileNumber,
         postalCode: values.postcode,
-        // withTest: process.env.NODE_ENV === "development" ? true : undefined,
-        withTest: true,
+        withTest,
       };
 
       await execute(async () => {

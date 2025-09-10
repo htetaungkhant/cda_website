@@ -476,6 +476,7 @@ export function PricingCardStyle3({
                       <CommonBookingForm
                         id={id}
                         onSuccess={() => setIsBooking1Open(false)}
+                        withTest={true}
                       />
                     </DialogContent>
                   </Dialog>
