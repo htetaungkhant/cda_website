@@ -160,7 +160,8 @@ const CommonBookingForm: React.FC<CommonBookingFormProps> = ({
         email: values.emailId,
         phone: values.mobileNumber,
         postalCode: values.postcode,
-        withTest: process.env.NODE_ENV === "development" ? true : undefined,
+        // withTest: process.env.NODE_ENV === "development" ? true : undefined,
+        withTest: true,
       };
 
       await execute(async () => {
