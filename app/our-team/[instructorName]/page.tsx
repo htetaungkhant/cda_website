@@ -58,22 +58,24 @@ export default async function InstructorDetails({
             </p>
           </div>
         </div>
-        <div className="mt-4 lg:mt-10 py-3 lg:py-5 xl:py-6">
-          <div className="flex justify-center items-center max-w-250 mx-auto h-82 md:h-108 rounded-2xl overflow-hidden relative bg-[url('/yt-banner.png')] bg-cover bg-center">
-            {/* Overlay */}
-            <div className="absolute inset-0 bg-black opacity-30"></div>
+        {instructor?.link && (
+          <div className="mt-4 lg:mt-10 py-3 lg:py-5 xl:py-6">
+            <div className="flex justify-center items-center max-w-250 mx-auto h-82 md:h-108 rounded-2xl overflow-hidden relative bg-[url('/yt-banner.png')] bg-cover bg-center">
+              {/* Overlay */}
+              <div className="absolute inset-0 bg-black opacity-30"></div>
 
-            <Link
-              href={instructor?.link}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="relative z-10 flex items-center justify-center "
-            >
-              <span className="absolute w-10 h-10 bg-white" />
-              <FaYoutube className="text-red-500 cursor-pointer hover:text-red-600 transition-colors z-10 w-24 h-24 lg:w-32 lg:h-32" />
-            </Link>
+              <Link
+                href={instructor?.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="relative z-10 flex items-center justify-center "
+              >
+                <span className="absolute w-10 h-10 bg-white" />
+                <FaYoutube className="text-red-500 cursor-pointer hover:text-red-600 transition-colors z-10 w-24 h-24 lg:w-32 lg:h-32" />
+              </Link>
+            </div>
           </div>
-        </div>
+        )}
 
         <iframe
           src={instructor?.totalDriveUrl}
