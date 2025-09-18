@@ -77,7 +77,7 @@ export const InstructorCard: React.FC<
         </p>
         <div className="flex justify-center gap-2 sm:gap-3 xl:gap-6 py-2">
           <a
-            href={totalDriveUrl}
+            href={totalDriveUrl || "#"}
             target="_blank"
             className={cn(
               "whitespace-nowrap flex-1 bg-[var(--custom-primary)] font-medium text-white text-center rounded-sm cursor-pointer hover:shadow-md",
@@ -206,7 +206,7 @@ const InstructorCardsSection: React.FC<{ instructors: Instructor[] }> = ({
                 </p>
                 <div className="flex flex-wrap justify-center gap-3 xl:gap-6 py-2">
                   <a
-                    href={instructor.totalDriveUrl}
+                    href={instructor.totalDriveUrl || "#"}
                     target="_blank"
                     className="whitespace-nowrap flex-1 bg-[var(--custom-primary)] font-medium text-xs lg:text-sm text-white text-center py-2 px-4 rounded-sm cursor-pointer"
                   >
@@ -273,7 +273,7 @@ const InstructorCardsSection: React.FC<{ instructors: Instructor[] }> = ({
                 </p>
                 <div className="flex flex-wrap justify-center gap-3 xl:gap-6 py-2">
                   <a
-                    href={instructor.totalDriveUrl}
+                    href={instructor.totalDriveUrl || "#"}
                     target="_blank"
                     className="whitespace-nowrap flex-1 bg-[var(--custom-primary)] font-medium text-xs lg:text-sm text-white text-center py-2 px-4 rounded-sm cursor-pointer"
                   >

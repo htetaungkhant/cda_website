@@ -77,11 +77,13 @@ export default async function InstructorDetails({
           </div>
         )}
 
-        <iframe
-          src={instructor?.totalDriveUrl}
-          // frameBorder="0"
-          className="w-full max-w-280 h-[700px] md:h-[650px] xl:h-[500px] mx-auto my-8 lg:my-10 rounded-xl border border-[var(--custom-primary)]"
-        ></iframe>
+        {instructor?.totalDriveUrl && (
+          <iframe
+            src={instructor?.totalDriveUrl}
+            // frameBorder="0"
+            className="w-full max-w-280 h-[700px] md:h-[650px] xl:h-[500px] mx-auto my-8 lg:my-10 rounded-xl border border-[var(--custom-primary)]"
+          ></iframe>
+        )}
 
         {/* <BookingForm className="mx-auto my-8 lg:my-10" /> */}
       </TopUniformSection>
