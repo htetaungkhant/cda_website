@@ -1,5 +1,3 @@
-import { toast } from "sonner";
-
 import Banner from "@/components/Banner";
 import CourseCardsSection from "@/components/CourseCardsSection";
 import IgGallery from "@/components/IgGallery";
@@ -53,7 +51,6 @@ export default async function Home() {
   } catch (err) {
     console.error("Error fetching instructors:", err);
     instructorsError = "Failed to fetch instructors. Please try again later.";
-    toast.error(instructorsError);
     recentInstructors = [];
   }
 
@@ -63,7 +60,6 @@ export default async function Home() {
     console.error("Error fetching Google reviews:", err);
     googleReviewsError =
       "Failed to fetch Google reviews. Please try again later.";
-    toast.error(googleReviewsError);
     googleReviews = [];
   }
 
@@ -72,7 +68,6 @@ export default async function Home() {
   } catch (err) {
     console.error("Error fetching Instagram posts:", err);
     instagramError = "Failed to fetch Instagram posts. Please try again later.";
-    toast.error(instagramError);
     instagramPosts = [];
   }
 
@@ -99,7 +94,7 @@ export default async function Home() {
         secondCard={{
           title: "Personalised Learning Plans",
           description:
-            "Personalized lessons are designed to meet your unique needs, whether you’re a beginner or experienced driver.",
+            "Personalized lessons are designed to meet your unique needs, whether you're a beginner or experienced driver.",
           icon: "/6.svg",
         }}
         thirdCard={{
@@ -117,15 +112,17 @@ export default async function Home() {
       />
 
       {/* Instructor Cards Section */}
-      {recentInstructors.length >= 4 && (
+      {recentInstructors.length >= 4 && !instructorsError && (
         <InstructorCardsSection instructors={recentInstructors} />
       )}
 
       {/* IG Gallery Section */}
-      {instagramPosts.length >= 4 && <IgGallery posts={instagramPosts} />}
+      {instagramPosts.length >= 4 && !instagramError && (
+        <IgGallery posts={instagramPosts} />
+      )}
 
-      {/* Testimonial Section */}
-      {googleReviews.length >= 4 && (
+      {/* Testimonial Section - Only show if we have reviews and no error */}
+      {googleReviews.length >= 4 && !googleReviewsError && (
         <TestimonialsSection testimonials={googleReviews} />
       )}
 
