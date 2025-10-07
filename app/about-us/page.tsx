@@ -12,14 +12,15 @@ const AboutUs = () => {
   return (
     <>
       <TopUniformSection title="About Us">
-        <div className="mt-8 grid grid-cols-2 gap-6 text-[#585858] max-lg:grid-cols-1 max-lg:mt-4 max-lg:gap-3">
-          <div className="flex flex-col gap-6 max-lg:gap-3">
+        {/* <div className="mt-8 grid grid-cols-2 gap-6 text-[#585858] max-lg:grid-cols-1 max-lg:mt-4 max-lg:gap-3"> */}
+        <div className="mt-8 text-[#585858]">
+          <div className="lg:w-[50%] lg:pr-6 lg:float-left flex flex-col gap-6 max-lg:gap-3">
             <Image
               src={AboutUsImg1}
               width={720}
               height={658}
               alt="About Us 1"
-              className="rounded-2xl w-full h-full max-h-104 object-cover max-lg:max-h-84"
+              className="aspect-square rounded-2xl w-full h-full object-cover xl:max-h-100"
             />
             <div className="grid grid-cols-2 gap-6 max-lg:gap-3">
               <Image
@@ -27,42 +28,95 @@ const AboutUs = () => {
                 width={336}
                 height={309}
                 alt="About Us 2"
-                className="rounded-2xl w-full h-full max-h-50 object-cover max-lg:max-h-40"
+                className="aspect-square rounded-2xl w-full h-full object-cover xl:max-h-50"
               />
               <Image
                 src={AboutUsImg3}
                 width={336}
                 height={309}
                 alt="About Us 3"
-                className="rounded-2xl w-full h-full max-h-50 object-cover max-lg:max-h-40"
+                className="aspect-square rounded-2xl w-full h-full object-cover xl:max-h-50"
               />
             </div>
           </div>
-          <div className="flex flex-col gap-6 lg:text-lg max-lg:gap-3">
+          <p className="max-lg:mt-3 lg:text-lg xl:text-xl">
+            Born in a time of challenge, built on values, and driven by results.
+            <span className="block py-1 lg:py-2" />
+            Cambridge Driving Academy was founded during the lockdown, in a time
+            when the world paused and many began to rethink the future.
+            <span className="block py-1 lg:py-2" />
+            By 2023, just two years after opening our doors, we achieved the
+            highest driving test pass rate in Cambridge, outpacing even the most
+            established names in the industry. Our success wasn’t by chance, it
+            was the result of our commitment to excellence, integrity, and a
+            learner-first approach.
+            <span className="block py-1 lg:py-2" />
+            From day one, our approach has been different. CDA is teaching
+            real-world skills, developing true confidence, and making sure every
+            student feels supported and ready, not just for a test day, but for
+            every journey that follows.
+            <span className="block py-1 lg:py-2" />
+            Our instructors are at the heart of this difference. Each one is
+            carefully selected and continuously trained to ensure they bring not
+            only technical expertise but also patience, professionalism, and a
+            genuine passion for teaching. We believe that when learners feel at
+            ease and understood, they learn faster, better, and with lasting
+            confidence.
+            <span className="block py-1 lg:py-2" />
+            CDA fleet is equipped with modern tuition cars. Our ADIs are using
+            modern teaching methods and client-centred instruction style,
+            because no two learners are the same. Whether you&apos;re a complete
+            beginner or coming back after time away, we’ll meet you where you
+            are and help you get where you want to be!
+            <span className="block py-1 lg:py-2" />
+            When you choose Cambridge Driving Academy, you&apos;re not just
+            signing up for driving lessons. You&apos;re joining a driving school
+            that was built differently and proudly stands by that difference.
+          </p>
+          {/* <div className="flex flex-col lg:gap-6 xl:gap-8 lg:text-lg max-lg:gap-3">
             <p>
-              At Cambridge Driving Academy (CDA), we believe that learning to
-              drive goes far beyond simply passing a test. It’s about building
-              lifelong skills, developing road awareness, and gaining the
-              confidence to drive safely and responsibly in any situation.
-              Whether you&apos;re a complete beginner or someone looking to
-              refresh their skills, we’re here to guide you every step of the
-              way.
+              Born in a time of challenge, built on values, and driven by
+              results.
             </p>
             <p>
-              Our team of experienced and certified instructors is passionate
-              about road safety and committed to providing personalized, patient
-              instruction tailored to each student&apos;s unique learning style.
-              Over the years, CDA has earned a reputation as a trusted name in
-              driving education across the Cambridge area.
+              Cambridge Driving Academy was founded during the lockdown, in a
+              time when the world paused and many began to rethink the future.
             </p>
             <p>
-              We pride ourselves on our structured, supportive approach and the
-              strong relationships we build with our learners. With flexible
-              lesson plans, modern dual-controlled vehicles, and a student-first
-              mindset, CDA ensures you are fully prepared not just for the test,
-              but for a lifetime of safe driving.
+              By 2023, just two years after opening our doors, we achieved the
+              highest driving test pass rate in Cambridge, outpacing even the
+              most established names in the industry. Our success wasn’t by
+              chance, it was the result of our commitment to excellence,
+              integrity, and a learner-first approach.
             </p>
-          </div>
+            <p>
+              From day one, our approach has been different. CDA is teaching
+              real-world skills, developing true confidence, and making sure
+              every student feels supported and ready, not just for a test day,
+              but for every journey that follows.
+            </p>
+            <p>
+              Our instructors are at the heart of this difference. Each one is
+              carefully selected and continuously trained to ensure they bring
+              not only technical expertise but also patience, professionalism,
+              and a genuine passion for teaching. We believe that when learners
+              feel at ease and understood, they learn faster, better, and with
+              lasting confidence.
+            </p>
+            <p>
+              CDA fleet is equipped with modern tuition cars. Our ADIs are using
+              modern teaching methods and client-centred instruction style,
+              because no two learners are the same. Whether you&apos;re a
+              complete beginner or coming back after time away, we’ll meet you
+              where you are and help you get where you want to be!
+            </p>
+            <p>
+              When you choose Cambridge Driving Academy, you&apos;re not just
+              signing up for driving lessons. You&apos;re joining a driving
+              school that was built differently and proudly stands by
+              that difference.
+            </p>
+          </div> */}
         </div>
       </TopUniformSection>
       <UniformPaddingSection className="px-0 max-lg:px-0">
