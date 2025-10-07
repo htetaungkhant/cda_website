@@ -73,50 +73,6 @@ const AboutUs = () => {
             signing up for driving lessons. You&apos;re joining a driving school
             that was built differently and proudly stands by that difference.
           </p>
-          {/* <div className="flex flex-col lg:gap-6 xl:gap-8 lg:text-lg max-lg:gap-3">
-            <p>
-              Born in a time of challenge, built on values, and driven by
-              results.
-            </p>
-            <p>
-              Cambridge Driving Academy was founded during the lockdown, in a
-              time when the world paused and many began to rethink the future.
-            </p>
-            <p>
-              By 2023, just two years after opening our doors, we achieved the
-              highest driving test pass rate in Cambridge, outpacing even the
-              most established names in the industry. Our success wasn’t by
-              chance, it was the result of our commitment to excellence,
-              integrity, and a learner-first approach.
-            </p>
-            <p>
-              From day one, our approach has been different. CDA is teaching
-              real-world skills, developing true confidence, and making sure
-              every student feels supported and ready, not just for a test day,
-              but for every journey that follows.
-            </p>
-            <p>
-              Our instructors are at the heart of this difference. Each one is
-              carefully selected and continuously trained to ensure they bring
-              not only technical expertise but also patience, professionalism,
-              and a genuine passion for teaching. We believe that when learners
-              feel at ease and understood, they learn faster, better, and with
-              lasting confidence.
-            </p>
-            <p>
-              CDA fleet is equipped with modern tuition cars. Our ADIs are using
-              modern teaching methods and client-centred instruction style,
-              because no two learners are the same. Whether you&apos;re a
-              complete beginner or coming back after time away, we’ll meet you
-              where you are and help you get where you want to be!
-            </p>
-            <p>
-              When you choose Cambridge Driving Academy, you&apos;re not just
-              signing up for driving lessons. You&apos;re joining a driving
-              school that was built differently and proudly stands by
-              that difference.
-            </p>
-          </div> */}
         </div>
       </TopUniformSection>
       <UniformPaddingSection className="px-0 max-lg:px-0">
