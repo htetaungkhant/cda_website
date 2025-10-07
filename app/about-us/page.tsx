@@ -12,7 +12,6 @@ const AboutUs = () => {
   return (
     <>
       <TopUniformSection title="About Us">
-        {/* <div className="mt-8 grid grid-cols-2 gap-6 text-[#585858] max-lg:grid-cols-1 max-lg:mt-4 max-lg:gap-3"> */}
         <div className="mt-8 text-[#585858]">
           <div className="lg:w-[50%] lg:pr-6 lg:float-left flex flex-col gap-6 max-lg:gap-3">
             <Image
