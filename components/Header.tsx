@@ -130,6 +130,16 @@ const Header = () => {
             </li>
             <li>
               <Link
+                href="/cdapedia"
+                className={
+                  pathname === "/cdapedia" ? "text-[var(--custom-primary)]" : ""
+                }
+              >
+                CDAPEDIA
+              </Link>
+            </li>
+            <li>
+              <Link
                 href="/contact-us"
                 className={
                   pathname === "/contact-us"
