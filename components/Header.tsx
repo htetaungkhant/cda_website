@@ -46,7 +46,7 @@ const Header = () => {
           />
         </button>
         <nav className="max-lg:hidden">
-          <ul className="flex gap-8 text-sm font-semibold">
+          <ul className="flex gap-6 xl:gap-8 text-sm font-semibold">
             <li>
               <Link
                 href="/about-us"
