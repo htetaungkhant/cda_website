@@ -1,20 +1,26 @@
 "use client";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { FaArrowRightLong } from "react-icons/fa6";
+import { FaArrowRightLong, FaCaretDown, FaCaretUp } from "react-icons/fa6";
 import { RxHamburgerMenu, RxCross2 } from "react-icons/rx";
 import { FaPhoneAlt } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
 
 import Logo from "@/public/logo.png";
+import { cn } from "@/lib/shared/utils";
 import { ButtonStyle1 } from "./Button";
 import HeaderDropdown from "./HeaderDropdown";
 
 const Header = () => {
   const pathname = usePathname();
+
+  const ignoreRef1 = useRef<HTMLElement>(null);
+  const ignoreRef2 = useRef<HTMLElement>(null);
+
   const [hamburgerDisplay, setHamburgerDisplay] = useState(false);
+  const [openSubMenu, setOpenSubMenu] = useState(false);
 
   const handleHamburgerClick = () => {
     setHamburgerDisplay(!hamburgerDisplay);
@@ -170,10 +176,12 @@ const Header = () => {
                   subMenuHrefs={[
                     "/explore-classes/manual-driving-class",
                     "/explore-classes/automatic-driving-class",
-                    "/explore-classes/intensive-driving-class",
+                    "/explore-classes/manual-intensive-driving-class",
+                    "/explore-classes/automatic-intensive-driving-class",
                     "/explore-classes/bulk-booking-class",
                     "/explore-classes/pricing",
                   ]}
+                  ignoreRefs={[ignoreRef1]}
                 >
                   <ul className="px-2 py-2 text-xs font-medium">
                     <li className="flex items-center rounded-md text-black hover:bg-gray-100 cursor-pointer">
@@ -194,14 +202,36 @@ const Header = () => {
                         <FaArrowRightLong className="w-4 h-4" />
                       </Link>
                     </li>
-                    <li className="flex rounded-md text-black hover:bg-gray-100 cursor-pointer">
-                      <Link
-                        href="/explore-classes/intensive-driving-class"
-                        className="flex items-center justify-between w-full px-2 py-2 whitespace-nowrap"
+                    <li className="group/header-submenu w-full flex items-center justify-between text-black hover:bg-gray-100 rounded-md whitespace-nowrap relative cursor-default">
+                      <div
+                        ref={ignoreRef1 as React.RefObject<HTMLDivElement>}
+                        className="px-2 py-2 flex items-center justify-between w-full"
                       >
-                        INTENSIVE DRIVING CLASS
+                        <span>INTENSIVE DRIVING CLASS</span>
                         <FaArrowRightLong className="w-4 h-4" />
-                      </Link>
+                      </div>
+                      <div className="hidden group-hover/header-submenu:block absolute left-full top-0 w-64">
+                        <ul className="ml-3 px-1 py-1 bg-white rounded-md border border-[var(--custom-primary)]">
+                          <li className="flex rounded-md text-black hover:bg-gray-100">
+                            <Link
+                              href="/explore-classes/manual-intensive-driving-class"
+                              className="flex items-center justify-between w-full px-2 py-2 whitespace-nowrap"
+                            >
+                              MANUAL INTENSIVE CLASS
+                              <FaArrowRightLong className="w-4 h-4" />
+                            </Link>
+                          </li>
+                          <li className="flex rounded-md text-black hover:bg-gray-100">
+                            <Link
+                              href="/explore-classes/automatic-intensive-driving-class"
+                              className="flex items-center justify-between w-full px-2 py-2 whitespace-nowrap"
+                            >
+                              AUTOMATIC INTENSIVE CLASS
+                              <FaArrowRightLong className="w-4 h-4" />
+                            </Link>
+                          </li>
+                        </ul>
+                      </div>
                     </li>
                     <li className="flex rounded-md text-black hover:bg-gray-100 cursor-pointer">
                       <Link
@@ -264,222 +294,254 @@ const Header = () => {
 
       {/* mobile navigation */}
       <div
-        className={`lg:hidden flex flex-col items-center justify-center absolute top-0 left-0 rounded-b-4xl space-y-7 w-full pt-24 py-6 bg-linear-to-r from-[#A8A9AD] to-[#FFFFFF] ${
+        className={cn(
+          "lg:hidden flex flex-col items-center justify-start absolute top-0 left-0 rounded-b-4xl w-full py-6 bg-linear-to-r from-[#A8A9AD] to-[#FFFFFF] transition-transform duration-300 ease-in-out max-h-screen overflow-y-auto select-none [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]",
           hamburgerDisplay ? "translate-y-0" : "-translate-y-full"
-        } transition-transform duration-300 ease-in-out`}
+        )}
       >
-        <ul className="flex flex-col gap-6 text-sm font-semibold">
-          <li className="text-center">
-            <Link
-              onClick={() => setHamburgerDisplay(false)}
-              href="/"
-              className={
-                pathname === "/" ? "text-[var(--custom-primary)] font-bold" : ""
-              }
-            >
-              HOME
-            </Link>
-          </li>
-          <li className="text-center">
-            <Link
-              onClick={() => setHamburgerDisplay(false)}
-              href="/about-us"
-              className={
-                pathname === "/about-us"
-                  ? "text-[var(--custom-primary)] font-bold"
-                  : ""
-              }
-            >
-              ABOUT US
-            </Link>
-          </li>
-          <li className="text-center">
-            <Link
-              onClick={() => setHamburgerDisplay(false)}
-              href="/our-team"
-              className={
-                pathname === "/our-team"
-                  ? "text-[var(--custom-primary)] font-bold"
-                  : ""
-              }
-            >
-              OUR TEAM
-            </Link>
-          </li>
-          <li>
-            <HeaderDropdown
-              title="EXPLORE CLASSES"
-              titleHref="/explore-classes"
-              subMenuHrefs={[
-                "/explore-classes/manual-driving-class",
-                "/explore-classes/automatic-driving-class",
-                "/explore-classes/intensive-driving-class",
-                "/explore-classes/bulk-booking-class",
-                "/explore-classes/pricing",
-              ]}
-              onTitleClick={() => setHamburgerDisplay(false)}
-            >
-              <ul className="px-2 py-2 text-xs font-medium">
-                <li className="flex items-center rounded-md text-black cursor-pointer">
-                  <Link
-                    onClick={() => setHamburgerDisplay(false)}
-                    href="/explore-classes/manual-driving-class"
-                    className="flex items-center justify-between gap-4 w-full px-2 py-2 whitespace-nowrap"
-                  >
-                    MANUAL DRIVING CLASS
-                    <FaArrowRightLong className="w-4 h-4" />
-                  </Link>
-                </li>
-                <li className="flex rounded-md text-black cursor-pointer">
-                  <Link
-                    onClick={() => setHamburgerDisplay(false)}
-                    href="/explore-classes/automatic-driving-class"
-                    className="flex items-center justify-between gap-4 w-full px-2 py-2 whitespace-nowrap"
-                  >
-                    AUTOMATIC DRIVING CLASS
-                    <FaArrowRightLong className="w-4 h-4" />
-                  </Link>
-                </li>
-                <li className="flex rounded-md text-black cursor-pointer">
-                  <Link
-                    onClick={() => setHamburgerDisplay(false)}
-                    href="/explore-classes/intensive-driving-class"
-                    className="flex items-center justify-between gap-4 w-full px-2 py-2 whitespace-nowrap"
+        <div className="mt-18 space-y-7 flex flex-col items-center">
+          <ul className="flex flex-col gap-6 text-sm font-semibold">
+            <li className="text-center">
+              <Link
+                onClick={() => setHamburgerDisplay(false)}
+                href="/"
+                className={
+                  pathname === "/"
+                    ? "text-[var(--custom-primary)] font-bold"
+                    : ""
+                }
+              >
+                HOME
+              </Link>
+            </li>
+            <li className="text-center">
+              <Link
+                onClick={() => setHamburgerDisplay(false)}
+                href="/about-us"
+                className={
+                  pathname === "/about-us"
+                    ? "text-[var(--custom-primary)] font-bold"
+                    : ""
+                }
+              >
+                ABOUT US
+              </Link>
+            </li>
+            <li className="text-center">
+              <Link
+                onClick={() => setHamburgerDisplay(false)}
+                href="/our-team"
+                className={
+                  pathname === "/our-team"
+                    ? "text-[var(--custom-primary)] font-bold"
+                    : ""
+                }
+              >
+                OUR TEAM
+              </Link>
+            </li>
+            <li>
+              <HeaderDropdown
+                title="EXPLORE CLASSES"
+                titleHref="/explore-classes"
+                subMenuHrefs={[
+                  "/explore-classes/manual-driving-class",
+                  "/explore-classes/automatic-driving-class",
+                  "/explore-classes/intensive-driving-class",
+                  "/explore-classes/bulk-booking-class",
+                  "/explore-classes/pricing",
+                ]}
+                onTitleClick={() => setHamburgerDisplay(false)}
+                ignoreRefs={[ignoreRef2]}
+              >
+                <ul className="px-2 py-2 text-xs font-medium">
+                  <li className="flex items-center rounded-md text-black cursor-pointer">
+                    <Link
+                      onClick={() => setHamburgerDisplay(false)}
+                      href="/explore-classes/manual-driving-class"
+                      className="flex items-center justify-between gap-4 w-full px-2 py-2 whitespace-nowrap"
+                    >
+                      MANUAL DRIVING CLASS
+                      <FaArrowRightLong className="w-4 h-4" />
+                    </Link>
+                  </li>
+                  <li className="flex rounded-md text-black cursor-pointer">
+                    <Link
+                      onClick={() => setHamburgerDisplay(false)}
+                      href="/explore-classes/automatic-driving-class"
+                      className="flex items-center justify-between gap-4 w-full px-2 py-2 whitespace-nowrap"
+                    >
+                      AUTOMATIC DRIVING CLASS
+                      <FaArrowRightLong className="w-4 h-4" />
+                    </Link>
+                  </li>
+                  <li
+                    ref={ignoreRef2 as React.RefObject<HTMLLIElement>}
+                    onClick={() => setOpenSubMenu(!openSubMenu)}
+                    className="flex items-center justify-between gap-4 w-full px-2 py-2 whitespace-nowrap text-black rounded-md cursor-pointer"
                   >
                     INTENSIVE DRIVING CLASS
-                    <FaArrowRightLong className="w-4 h-4" />
-                  </Link>
-                </li>
-                <li className="flex rounded-md text-black cursor-pointer">
-                  <Link
-                    onClick={() => setHamburgerDisplay(false)}
-                    href="/explore-classes/bulk-booking-class"
-                    className="flex items-center justify-between gap-4 w-full px-2 py-2 whitespace-nowrap"
+                    {openSubMenu ? <FaCaretUp /> : <FaCaretDown />}
+                  </li>
+                  <li
+                    className={cn(
+                      "hidden rounded-md text-black cursor-pointer",
+                      openSubMenu && "flex"
+                    )}
                   >
-                    BULK BOOKING CLASS
-                    <FaArrowRightLong className="w-4 h-4" />
-                  </Link>
-                </li>
-                <li className="flex rounded-md text-black cursor-pointer">
-                  <Link
-                    onClick={() => setHamburgerDisplay(false)}
-                    href="/explore-classes/pricing"
-                    className="flex items-center justify-between gap-4 w-full px-2 py-2 whitespace-nowrap"
+                    <Link
+                      onClick={() => setHamburgerDisplay(false)}
+                      href="/explore-classes/manual-intensive-driving-class"
+                      className="flex items-center justify-between gap-4 w-full px-2 py-2 whitespace-nowrap"
+                    >
+                      MANUAL INTENSIVE CLASS
+                    </Link>
+                  </li>
+                  <li
+                    className={cn(
+                      "hidden rounded-md text-black cursor-pointer",
+                      openSubMenu && "flex"
+                    )}
                   >
-                    PRICING
-                    <FaArrowRightLong className="w-4 h-4" />
-                  </Link>
-                </li>
-              </ul>
-            </HeaderDropdown>
-          </li>
-          <li className="text-center">
-            <Link
-              onClick={() => setHamburgerDisplay(false)}
-              href="/contact-us"
-              className={
-                pathname === "/contact-us"
-                  ? "text-[var(--custom-primary)] font-bold"
-                  : ""
-              }
-            >
-              CONTACT US
-            </Link>
-          </li>
-        </ul>
+                    <Link
+                      onClick={() => setHamburgerDisplay(false)}
+                      href="/explore-classes/automatic-intensive-driving-class"
+                      className="flex items-center justify-between gap-4 w-full px-2 py-2 whitespace-nowrap"
+                    >
+                      AUTOMATIC INTENSIVE CLASS
+                    </Link>
+                  </li>
+                  <li className="flex rounded-md text-black cursor-pointer">
+                    <Link
+                      onClick={() => setHamburgerDisplay(false)}
+                      href="/explore-classes/bulk-booking-class"
+                      className="flex items-center justify-between gap-4 w-full px-2 py-2 whitespace-nowrap"
+                    >
+                      BULK BOOKING CLASS
+                      <FaArrowRightLong className="w-4 h-4" />
+                    </Link>
+                  </li>
+                  <li className="flex rounded-md text-black cursor-pointer">
+                    <Link
+                      onClick={() => setHamburgerDisplay(false)}
+                      href="/explore-classes/pricing"
+                      className="flex items-center justify-between gap-4 w-full px-2 py-2 whitespace-nowrap"
+                    >
+                      PRICING
+                      <FaArrowRightLong className="w-4 h-4" />
+                    </Link>
+                  </li>
+                </ul>
+              </HeaderDropdown>
+            </li>
+            <li className="text-center">
+              <Link
+                onClick={() => setHamburgerDisplay(false)}
+                href="/contact-us"
+                className={
+                  pathname === "/contact-us"
+                    ? "text-[var(--custom-primary)] font-bold"
+                    : ""
+                }
+              >
+                CONTACT US
+              </Link>
+            </li>
+          </ul>
 
-        <ButtonStyle1 onClick={() => setHamburgerDisplay(false)}>
-          Book Now
-        </ButtonStyle1>
+          <ButtonStyle1 onClick={() => setHamburgerDisplay(false)}>
+            Book Now
+          </ButtonStyle1>
 
-        <ul className="flex flex-col items-center gap-2 text-xs">
-          <li className="flex gap-1 items-center">
-            <FaPhoneAlt className="w-3 h-3" />
-            <span>+44 1223 974630</span>
-          </li>
-          <li className="flex gap-1 items-center">
-            <MdEmail className="w-3.5 h-3.5" />
-            <a
-              href="mailto:support@cambridge.academy"
-              className="hover:underline"
-            >
-              info@cambridgedriving.academy
-            </a>
-          </li>
-          {/* social icons */}
-          <div className="flex gap-2 items-center">
-            {/* tiktok */}
-            <Link
-              href="https://www.tiktok.com/@cambridgedriving?_t=8qOhWSvcEAT&_r=1"
-              target="_blank"
-              rel="noreferrer"
-            >
-              <Image
-                src="/tiktok.svg"
-                alt="TikTok"
-                width={16}
-                height={16}
-                className="w-4 h-4 object-contain"
-              />
-            </Link>
-            {/* facebook */}
-            <Link
-              href="https://www.facebook.com/cambridgedrivingacademy"
-              target="_blank"
-              rel="noreferrer"
-            >
-              <Image
-                src="/facebook.svg"
-                alt="Facebook"
-                width={16}
-                height={16}
-                className="w-4 h-4 object-contain"
-              />
-            </Link>
-            {/* instagram */}
-            <Link
-              href="https://www.instagram.com/cambridgedriving/"
-              target="_blank"
-              rel="noreferrer"
-            >
-              <Image
-                src="/instagram.svg"
-                alt="Instagram"
-                width={16}
-                height={16}
-                className="w-4 h-4 object-contain"
-              />
-            </Link>
-            {/* youtube */}
-            <Link
-              href="https://www.youtube.com/@cambridgedrivingacademy"
-              target="_blank"
-              rel="noreferrer"
-            >
-              <Image
-                src="/youtube.svg"
-                alt="YouTube"
-                width={16}
-                height={16}
-                className="w-4 h-4 object-contain"
-              />
-            </Link>
-            {/* twitter */}
-            <Link
-              href="https://x.com/sadisafi5"
-              target="_blank"
-              rel="noreferrer"
-            >
-              <Image
-                src="/x.svg"
-                alt="x"
-                width={16}
-                height={16}
-                className="w-4 h-4 object-contain"
-              />
-            </Link>
-          </div>
-        </ul>
+          <ul className="flex flex-col items-center gap-2 text-xs">
+            <li className="flex gap-1 items-center">
+              <FaPhoneAlt className="w-3 h-3" />
+              <span>+44 1223 974630</span>
+            </li>
+            <li className="flex gap-1 items-center">
+              <MdEmail className="w-3.5 h-3.5" />
+              <a
+                href="mailto:support@cambridge.academy"
+                className="hover:underline"
+              >
+                info@cambridgedriving.academy
+              </a>
+            </li>
+            {/* social icons */}
+            <div className="flex gap-2 items-center">
+              {/* tiktok */}
+              <Link
+                href="https://www.tiktok.com/@cambridgedriving?_t=8qOhWSvcEAT&_r=1"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <Image
+                  src="/tiktok.svg"
+                  alt="TikTok"
+                  width={16}
+                  height={16}
+                  className="w-4 h-4 object-contain"
+                />
+              </Link>
+              {/* facebook */}
+              <Link
+                href="https://www.facebook.com/cambridgedrivingacademy"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <Image
+                  src="/facebook.svg"
+                  alt="Facebook"
+                  width={16}
+                  height={16}
+                  className="w-4 h-4 object-contain"
+                />
+              </Link>
+              {/* instagram */}
+              <Link
+                href="https://www.instagram.com/cambridgedriving/"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <Image
+                  src="/instagram.svg"
+                  alt="Instagram"
+                  width={16}
+                  height={16}
+                  className="w-4 h-4 object-contain"
+                />
+              </Link>
+              {/* youtube */}
+              <Link
+                href="https://www.youtube.com/@cambridgedrivingacademy"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <Image
+                  src="/youtube.svg"
+                  alt="YouTube"
+                  width={16}
+                  height={16}
+                  className="w-4 h-4 object-contain"
+                />
+              </Link>
+              {/* twitter */}
+              <Link
+                href="https://x.com/sadisafi5"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <Image
+                  src="/x.svg"
+                  alt="x"
+                  width={16}
+                  height={16}
+                  className="w-4 h-4 object-contain"
+                />
+              </Link>
+            </div>
+          </ul>
+        </div>
       </div>
     </header>
   );

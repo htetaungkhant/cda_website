@@ -10,6 +10,7 @@ interface HeaderDropdownProps {
   title: string;
   titleHref?: string;
   subMenuHrefs?: string[];
+  ignoreRefs?: React.RefObject<HTMLElement | null>[];
   onTitleClick?: () => void;
   children: ReactNode;
 }
@@ -18,6 +19,7 @@ const HeaderDropdown = ({
   title,
   titleHref,
   subMenuHrefs,
+  ignoreRefs,
   onTitleClick,
   children,
 }: HeaderDropdownProps) => {
@@ -31,22 +33,22 @@ const HeaderDropdown = ({
     }
   };
 
-  const handleOutsideClick = (event: MouseEvent) => {
-    if (
-      dropdownRef.current &&
-      caretRef.current &&
-      !caretRef.current.contains(event.target as Node)
-    ) {
-      dropdownRef.current.classList.add("hidden");
-    }
-  };
-
   useEffect(() => {
+    const handleOutsideClick = (event: MouseEvent) => {
+      if (
+        dropdownRef.current &&
+        caretRef.current &&
+        !caretRef.current.contains(event.target as Node) &&
+        !ignoreRefs?.some((ref) => ref.current?.contains(event.target as Node))
+      ) {
+        dropdownRef.current.classList.add("hidden");
+      }
+    };
     document.addEventListener("click", handleOutsideClick);
     return () => {
       document.removeEventListener("click", handleOutsideClick);
     };
-  }, []);
+  }, [ignoreRefs]);
 
   return (
     <div className="relative z-10">
