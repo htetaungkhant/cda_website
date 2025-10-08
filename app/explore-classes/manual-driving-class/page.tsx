@@ -54,7 +54,7 @@ export default async function ManualDrivingClass() {
             <h1 className="font-semibold text-lg lg:text-xl underline">
               Learn Manual Transmission with Expert Instructors
             </h1>
-            <p className="text-sm lg:text-base">
+            <p className="text-sm lg:text-base xl:text-lg">
               Learning to drive a manual car gives you complete control and a
               deeper understanding of how your vehicle operates. At Cambridge
               Driving Academy, our manual transmission driving lessons are

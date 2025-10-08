@@ -37,7 +37,7 @@ export default async function BulkBookingClass() {
             <h1 className="font-semibold text-lg lg:text-xl underline">
               Learn More, Save More
             </h1>
-            <p className="text-sm lg:text-base">
+            <p className="text-sm lg:text-base xl:text-lg">
               Our Bulk Booking option is perfect for students who want to commit
               to consistent training while saving on lesson costs. Get exclusive
               discounts and flexible scheduling when you book lessons in bulk.
@@ -45,34 +45,34 @@ export default async function BulkBookingClass() {
               allowing for more practice between sessions and a more measured
               learning pace.
             </p>
-            <ul className="mt-1 lg:mt-3 list-none py-1 md:py-2 grid grid-cols-1 gap-3 lg:gap-5">
+            <ul className="mt-1 lg:mt-2 list-none py-1 md:py-2 grid grid-cols-1 gap-2 lg:gap-4">
               <li className="py-1 md:py-1.5 flex items-center gap-1 md:gap-2.5">
                 <PiSealCheckFill className="text-[var(--custom-primary)] min-w-4 min-h-4 md:min-w-6 md:min-h-6" />
-                <span className="text-sm lg:text-base">
+                <span className="text-sm lg:text-base xl:text-lg">
                   5 consecutive weekday lessons
                 </span>
               </li>
               <li className="py-1 md:py-1.5 flex items-center gap-1 md:gap-2.5">
                 <PiSealCheckFill className="text-[var(--custom-primary)] min-w-4 min-h-4 md:min-w-6 md:min-h-6" />
-                <span className="text-sm lg:text-base">
+                <span className="text-sm lg:text-base xl:text-lg">
                   Guaranteed time slots with your instructor
                 </span>
               </li>
               <li className="py-1 md:py-1.5 flex items-center gap-1 md:gap-2.5">
                 <PiSealCheckFill className="text-[var(--custom-primary)] min-w-4 min-h-4 md:min-w-6 md:min-h-6" />
-                <span className="text-sm lg:text-base">
+                <span className="text-sm lg:text-base xl:text-lg">
                   Discounted flat-rate pricing
                 </span>
               </li>
               <li className="py-1 md:py-1.5 flex items-center gap-1 md:gap-2.5">
                 <PiSealCheckFill className="text-[var(--custom-primary)] min-w-4 min-h-4 md:min-w-6 md:min-h-6" />
-                <span className="text-sm lg:text-base">
+                <span className="text-sm lg:text-base xl:text-lg">
                   Available for manual and automatic transmissions
                 </span>
               </li>
               <li className="py-1 md:py-1.5 flex items-center gap-1 md:gap-2.5">
                 <PiSealCheckFill className="text-[var(--custom-primary)] min-w-4 min-h-4 md:min-w-6 md:min-h-6" />
-                <span className="text-sm lg:text-base">
+                <span className="text-sm lg:text-base xl:text-lg">
                   Helps you build momentum and progress faster
                 </span>
               </li>

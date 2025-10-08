@@ -54,7 +54,7 @@ export default async function AutomaticDrivingClass() {
             <h1 className="font-semibold text-lg lg:text-xl underline">
               Learn to Drive with Expert Automatic Driving Instructors
             </h1>
-            <p className="text-sm lg:text-base">
+            <p className="text-sm lg:text-base xl:text-lg">
               At Cambridge Driving Academy, our automatic driving lessons
               provide a smooth and stress-free learning experience, perfect for
               learners who prefer simplicity behind the wheel. Automatic

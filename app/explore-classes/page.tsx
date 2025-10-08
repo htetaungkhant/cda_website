@@ -16,7 +16,7 @@ const ExploreClasses = () => {
             <h1 className="font-semibold text-lg lg:text-xl underline">
               Expert Driving Lessons in Cambridge
             </h1>
-            <p className="text-sm lg:text-base">
+            <p className="text-sm lg:text-base xl:text-lg">
               At Cambridge Driving Academy, we’re committed to helping you
               become a confident, responsible driver. Our expert instructors
               provide step-by-step guidance tailored to your learning style,
@@ -28,61 +28,63 @@ const ExploreClasses = () => {
               anywhere in the UK.
             </p>
             <ul className="list-none px-2 md:px-4 py-1 md:py-2 grid grid-cols-2 gap-2">
-              <li className="py-1 md:py-1.5 flex items-center gap-1 md:gap-2.5">
+              <li className="py-1 md:py-1.5 flex items-center gap-1 md:gap-2">
                 <PiSealCheckFill className="text-[var(--custom-primary)] min-w-4 min-h-4 md:min-w-6 md:min-h-6" />
-                <span className="text-sm lg:text-base">
+                <span className="text-sm lg:text-base xl:text-lg">
                   Expert, DVSA-Approved Instructors
                 </span>
               </li>
               <li className="py-1 md:py-1.5 flex items-center gap-1 md:gap-2.5">
                 <PiSealCheckFill className="text-[var(--custom-primary)] min-w-4 min-h-4 md:min-w-6 md:min-h-6" />
-                <span className="text-sm lg:text-base">
+                <span className="text-sm lg:text-base xl:text-lg">
                   Affordable Packages
                 </span>
               </li>
               <li className="py-1 md:py-1.5 flex items-center gap-1 md:gap-2.5">
                 <PiSealCheckFill className="text-[var(--custom-primary)] min-w-4 min-h-4 md:min-w-6 md:min-h-6" />
-                <span className="text-sm lg:text-base">
+                <span className="text-sm lg:text-base xl:text-lg">
                   Personalized Lessons
                 </span>
               </li>
               <li className="py-1 md:py-1.5 flex items-center gap-1 md:gap-2.5">
                 <PiSealCheckFill className="text-[var(--custom-primary)] min-w-4 min-h-4 md:min-w-6 md:min-h-6" />
-                <span className="text-sm lg:text-base">High Pass Rates</span>
+                <span className="text-sm lg:text-base xl:text-lg">
+                  High Pass Rates
+                </span>
               </li>
               <li className="py-1 md:py-1.5 flex items-center gap-1 md:gap-2.5">
                 <PiSealCheckFill className="text-[var(--custom-primary)] min-w-4 min-h-4 md:min-w-6 md:min-h-6" />
-                <span className="text-sm lg:text-base">
+                <span className="text-sm lg:text-base xl:text-lg">
                   Comprehensive Training
                 </span>
               </li>
               <li className="py-1 md:py-1.5 flex items-center gap-1 md:gap-2.5">
                 <PiSealCheckFill className="text-[var(--custom-primary)] min-w-4 min-h-4 md:min-w-6 md:min-h-6" />
-                <span className="text-sm lg:text-base">
+                <span className="text-sm lg:text-base xl:text-lg">
                   Defensive Driving Focus
                 </span>
               </li>
               <li className="py-1 md:py-1.5 flex items-center gap-1 md:gap-2.5">
                 <PiSealCheckFill className="text-[var(--custom-primary)] min-w-4 min-h-4 md:min-w-6 md:min-h-6" />
-                <span className="text-sm lg:text-base">
+                <span className="text-sm lg:text-base xl:text-lg">
                   Flexible Scheduling
                 </span>
               </li>
               <li className="py-1 md:py-1.5 flex items-center gap-1 md:gap-2.5">
                 <PiSealCheckFill className="text-[var(--custom-primary)] min-w-4 min-h-4 md:min-w-6 md:min-h-6" />
-                <span className="text-sm lg:text-base">
+                <span className="text-sm lg:text-base xl:text-lg">
                   Test Preparation Support
                 </span>
               </li>
               <li className="py-1 md:py-1.5 flex items-center gap-1 md:gap-2.5">
                 <PiSealCheckFill className="text-[var(--custom-primary)] min-w-4 min-h-4 md:min-w-6 md:min-h-6" />
-                <span className="text-sm lg:text-base">
+                <span className="text-sm lg:text-base xl:text-lg">
                   Modern, Safe Vehicles
                 </span>
               </li>
               <li className="py-1 md:py-1.5 flex items-center gap-1 md:gap-2.5">
                 <PiSealCheckFill className="text-[var(--custom-primary)] min-w-4 min-h-4 md:min-w-6 md:min-h-6" />
-                <span className="text-sm lg:text-base">
+                <span className="text-sm lg:text-base xl:text-lg">
                   Friendly Learning Environment
                 </span>
               </li>
