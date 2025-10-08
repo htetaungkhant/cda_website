@@ -39,9 +39,11 @@ export default async function BulkBookingClass() {
             </h1>
             <p className="text-sm lg:text-base">
               Our Bulk Booking option is perfect for students who want to commit
-              to consistent training while saving on lesson costs. Book five
-              consecutive weekday driving lessons in advance at a discounted
-              rate — keeping your learning steady, focused, and cost-effective.
+              to consistent training while saving on lesson costs. Get exclusive
+              discounts and flexible scheduling when you book lessons in bulk.
+              Bulk booking lessons spread out fewer hours over a longer time,
+              allowing for more practice between sessions and a more measured
+              learning pace.
             </p>
             <ul className="mt-1 lg:mt-3 list-none py-1 md:py-2 grid grid-cols-1 gap-3 lg:gap-5">
               <li className="py-1 md:py-1.5 flex items-center gap-1 md:gap-2.5">
