@@ -52,7 +52,7 @@ export default async function ManualIntensiveDrivingClass() {
   return (
     <>
       <TopUniformSection title="Intensive Driving">
-        <div className="mt-4 lg:mt-8">
+        <div className="mt-4 lg:mt-8 text-[#585858]">
           <div className="max-lg:mx-auto pl-0 pr-3 min-[375px]:pr-10 xl:pr-15 py-2 w-full lg:w-[50%] lg:float-left h-80 md:h-90 max-h-100 aspect-square relative">
             <div className="w-full h-full bg-[url('/explore-classes-3.png')] bg-cover bg-center rounded-xl shadow-lg"></div>
             <div className="absolute right-0 min-[375px]:right-2.5 lg:right-5 bottom-6 lg:bottom-8 w-32 h-32 lg:w-40 lg:h-40 bg-[url('/explore-classes-2.png')] bg-cover bg-center rounded-xl shadow-lg"></div>
