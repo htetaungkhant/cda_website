@@ -52,29 +52,40 @@ export default async function AutomaticIntensiveDrivingClass() {
   return (
     <>
       <TopUniformSection title="Intensive Driving">
-        <div className="mt-4 lg:mt-8 grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-4">
-          <div className="max-lg:max-w-180 min-w-68 min-[375px]:max-lg:min-w-84 max-lg:w-full max-lg:mx-auto px-0 min-[375px]:px-6 xl:px-10 relative">
-            <div className="w-full h-100 sm:h-120 lg:h-full lg:min-h-100 bg-[url('/explore-classes-3.png')] bg-cover bg-center rounded-xl shadow-lg"></div>
-            <div className="absolute -right-3 min-[375px]:right-0 bottom-4 lg:bottom-6 w-32 h-32 lg:w-40 lg:h-40 bg-[url('/explore-classes-2.png')] bg-cover bg-center rounded-xl shadow-lg"></div>
+        <div className="mt-4 lg:mt-8">
+          <div className="max-lg:mx-auto pl-0 pr-3 min-[375px]:pr-10 xl:pr-15 py-2 w-full lg:w-[50%] lg:float-left h-80 md:h-90 max-h-100 aspect-square relative">
+            <div className="w-full h-full bg-[url('/explore-classes-3.png')] bg-cover bg-center rounded-xl shadow-lg"></div>
+            <div className="absolute right-0 min-[375px]:right-2.5 lg:right-5 bottom-6 lg:bottom-8 w-32 h-32 lg:w-40 lg:h-40 bg-[url('/explore-classes-2.png')] bg-cover bg-center rounded-xl shadow-lg"></div>
           </div>
-          <div className="flex flex-col gap-2 text-[#585858]">
-            <h1 className="font-semibold text-lg lg:text-xl underline">
-              Learn to Drive with Expert Intensive Driving Instructors
-            </h1>
-            <p className="text-sm lg:text-base">
-              Our Intensive Driving Course is specifically designed for students
-              who need to book their practical driving test and gain extensive
-              on-road practice to build confidence and skill. The goal is to
-              help learners become proficient and fully prepared to pass the
-              practical test on their first attempt.
-            </p>
-            <p className="text-sm lg:text-base">
-              We offer four levels of intensive courses for both manual and
-              automatic vehicles i-e of 40 hours, 30 hours, 20 hours & 10 hours,
-              tailored to match different stages of driving experience: Manual
-              Intensive Course Packages
-            </p>
-          </div>
+          <h1 className="max-lg:mt-8 font-semibold text-lg lg:text-xl underline">
+            Learn to Drive with Expert Intensive Driving Instructors
+          </h1>
+          <p className="mt-1 text-sm md:text-base lg:text-lg">
+            These are our highly concentrated, regular, and frequent lessons
+            that improve knowledge retention and build confidence faster than
+            traditional weekly lessons. Ideal for those with limited time but
+            who are committed to learning quickly.
+            <span className="block py-1 lg:py-2" />
+            CDA’s Intensive Driving Courses provide an accelerated and focused
+            approach to learning to drive. With condensed lessons, learners can
+            immerse themselves in a concentrated learning environment and
+            develop their driving skills and knowledge quickly. While intensive
+            courses differ from normal driving lessons in terms of timeframe,
+            lesson structure, and intensity level, they offer benefits such as
+            time efficiency, focused learning, progress monitoring, and test
+            readiness.
+            <span className="block py-1 lg:py-2" />
+            Before choosing an intensive course, consider factors such as your
+            experience level, learning style, availability, commitment, and
+            driving test readiness. By making an informed decision, you can
+            embark on an intensive driving course that suits your needs and
+            helps you become a skilled and confident driver.
+            <span className="block py-1 lg:py-2" />
+            We offer four levels of intensive courses for both manual and
+            automatic vehicles i-e of 40 hours (Bronze), 30 hours (Silver), 20
+            hours (Silver) & 10 hours (Gold), tailored to match different stages
+            of driving experience on both manual and automatic transmissions.
+          </p>
         </div>
       </TopUniformSection>
 
