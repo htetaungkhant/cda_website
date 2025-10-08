@@ -100,7 +100,7 @@ const CoursesGrid: React.FC<CoursesGridProps> = ({
         <strong>{title}</strong>
       </h1>
       {description && (
-        <p className="max-lg:text-center text-xs md:text-sm lg:text-base text-[#585858]">
+        <p className="max-lg:text-center text-xs md:text-sm lg:text-base xl:text-lg text-[#585858]">
           {description}
         </p>
       )}
