@@ -7,12 +7,11 @@ import UniformPaddingSection from "@/components/UniformPaddingSection";
 import ContactUsBanner from "@/components/ContactUsBanner";
 import { Course } from "@/types/course";
 import { courseService } from "@/services/server/course-service";
-import CoursePackages from "./(components)/CoursePackages";
+import CoursesGrid from "../(components)/CourseGrid";
 
 export const dynamic = "force-dynamic";
 
-export default async function IntensiveDrivingClass() {
-  let intensiveManualCourses: Course[] = [];
+export default async function AutomaticIntensiveDrivingClass() {
   let intensiveAutomaticCourses: Course[] = [];
   let error: string | null = null;
 
@@ -21,28 +20,6 @@ export default async function IntensiveDrivingClass() {
     const intensiveCourses = courses?.filter(
       (course) => course.category === "intensive"
     );
-
-    // Manual Courses
-    intensiveManualCourses =
-      intensiveCourses
-        ?.filter((course) => course.drivingMode === "manual")
-        ?.map((course) => ({
-          ...course,
-          features: [
-            {
-              image: "/15.svg",
-              title: "Manual car training with expert guidance",
-            },
-            {
-              image: "/3.svg",
-              title: "Thorough preparation for the practical driving test",
-            },
-            {
-              image: "/22.svg",
-              title: "Flexible, hands-on instruction",
-            },
-          ],
-        })) || [];
 
     // Automatic Courses
     intensiveAutomaticCourses =
@@ -69,7 +46,6 @@ export default async function IntensiveDrivingClass() {
     console.error("Failed to fetch courses:", err);
     error = "Failed to load courses. Please try again later.";
     toast.error(error);
-    intensiveManualCourses = [];
     intensiveAutomaticCourses = [];
   }
 
@@ -102,10 +78,19 @@ export default async function IntensiveDrivingClass() {
         </div>
       </TopUniformSection>
 
-      <CoursePackages
-        intensiveAutomaticCourses={intensiveAutomaticCourses}
-        intensiveManualCourses={intensiveManualCourses}
-      />
+      {intensiveAutomaticCourses && intensiveAutomaticCourses.length > 0 ? (
+        <CoursesGrid
+          title="Automatic Intensive Course Packages"
+          description="At Cambridge Driving Academy, we go beyond lessons — we ensure a safe,
+        flexible, and personalized driving experience that sets you up for
+        success."
+          courses={intensiveAutomaticCourses}
+        />
+      ) : (
+        <p className="text-center text-sm text-gray-500 my-8">
+          No automatic intensive driving courses available at the moment.
+        </p>
+      )}
 
       {/* Contact Us Banner */}
       <UniformPaddingSection className="my-4 lg:my-8">

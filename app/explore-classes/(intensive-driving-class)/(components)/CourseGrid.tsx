@@ -29,6 +29,44 @@ const CoursesGrid: React.FC<CoursesGridProps> = ({
   const mobileScrollContainerRef1 = useRef<HTMLDivElement | null>(null);
   const mobileScrollContainerRef2 = useRef<HTMLDivElement | null>(null);
 
+  useEffect(() => {
+    const handleStripeCallback = async () => {
+      if (stripePromise) {
+        const stripe = await stripePromise;
+        if (stripe) {
+          const clientSecretFromURL = new URLSearchParams(
+            window.location.search
+          ).get("payment_intent_client_secret");
+
+          if (!clientSecretFromURL) {
+            return;
+          }
+
+          const { paymentIntent } = await stripe.retrievePaymentIntent(
+            clientSecretFromURL
+          );
+
+          switch (paymentIntent?.status) {
+            case "succeeded":
+              toast.success("Payment succeeded!");
+              break;
+            case "processing":
+              toast.info("Your payment is processing.");
+              break;
+            case "requires_payment_method":
+              toast.error("Your payment was not successful, please try again.");
+              break;
+            default:
+              toast.error("Something went wrong.");
+              break;
+          }
+        }
+      }
+    };
+
+    handleStripeCallback();
+  }, []);
+
   const scrollContainer = (direction: "left" | "right") => {
     const refs = [mobileScrollContainerRef1, mobileScrollContainerRef2];
     const gap = 16;
@@ -132,71 +170,4 @@ const CoursesGrid: React.FC<CoursesGridProps> = ({
   );
 };
 
-interface CoursePackagesProps {
-  intensiveManualCourses: Course[];
-  intensiveAutomaticCourses: Course[];
-}
-export default function CoursePackages({
-  intensiveManualCourses,
-  intensiveAutomaticCourses,
-}: CoursePackagesProps) {
-  useEffect(() => {
-    const handleStripeCallback = async () => {
-      if (stripePromise) {
-        const stripe = await stripePromise;
-        if (stripe) {
-          const clientSecretFromURL = new URLSearchParams(
-            window.location.search
-          ).get("payment_intent_client_secret");
-
-          if (!clientSecretFromURL) {
-            return;
-          }
-
-          const { paymentIntent } = await stripe.retrievePaymentIntent(
-            clientSecretFromURL
-          );
-
-          switch (paymentIntent?.status) {
-            case "succeeded":
-              toast.success("Payment succeeded!");
-              break;
-            case "processing":
-              toast.info("Your payment is processing.");
-              break;
-            case "requires_payment_method":
-              toast.error("Your payment was not successful, please try again.");
-              break;
-            default:
-              toast.error("Something went wrong.");
-              break;
-          }
-        }
-      }
-    };
-
-    handleStripeCallback();
-  }, []);
-
-  return (
-    <>
-      {/* Manual Intensive Course Packages */}
-      <CoursesGrid
-        title="Manual Intensive Course Packages"
-        description="At Cambridge Driving Academy, we go beyond lessons — we ensure a safe,
-        flexible, and personalized driving experience that sets you up for
-        success."
-        courses={intensiveManualCourses}
-      />
-
-      {/* Automatic Intensive Course Packages */}
-      <CoursesGrid
-        title="Automatic Intensive Course Packages"
-        description="At Cambridge Driving Academy, we go beyond lessons — we ensure a safe,
-        flexible, and personalized driving experience that sets you up for
-        success."
-        courses={intensiveAutomaticCourses}
-      />
-    </>
-  );
-}
+export default CoursesGrid;
