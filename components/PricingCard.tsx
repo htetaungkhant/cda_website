@@ -106,6 +106,7 @@ interface PricingCardStyle2Props {
   price: string;
   save: string;
   features: string[];
+  noHeader?: boolean;
   className?: string;
 }
 
@@ -114,6 +115,7 @@ export function PricingCardStyle2({
   price,
   save,
   features,
+  noHeader = false,
   className,
 }: PricingCardStyle2Props) {
   return (
@@ -123,17 +125,29 @@ export function PricingCardStyle2({
         className
       )}
     >
-      <h1 className="px-2 py-2 lg:px-3 lg:py-3 flex items-center justify-center gap-2 text-white text-lg md:text-xl lg:text-2xl font-semibold uppercase bg-[#302204]">
-        <TbWheel className="w-5 min-w-5 h-5 text-white border-3 border-white rounded-full" />
-        <span>{drivingMode} Transmission</span>
-      </h1>
+      {!noHeader && (
+        <h1 className="px-2 py-2 lg:px-3 lg:py-3 flex items-center justify-center gap-2 text-white text-lg md:text-xl lg:text-2xl font-semibold uppercase bg-[#302204]">
+          <TbWheel className="w-5 min-w-5 h-5 text-white border-3 border-white rounded-full" />
+          <span>{drivingMode} Transmission</span>
+        </h1>
+      )}
       <div className="p-1.5 md:p-2">
-        <div className="flex">
-          <div className="flex-1 flex flex-col gap-1 justify-center items-center p-1.5 md:p-3 bg-[#F8B624] border border-[#794911] rounded-bl-2xl">
+        <div className="flex text-black">
+          <div
+            className={cn(
+              "flex-1 flex flex-col gap-1 justify-center items-center p-1.5 md:p-3 bg-[#F8B624] border border-[#794911] rounded-bl-2xl",
+              noHeader && "rounded-tl-2xl"
+            )}
+          >
             <span className="font-bold text-2xl md:text-4xl">{price}</span>
             <p className="text-xs sm:text-sm md:text-base">Weekdays</p>
           </div>
-          <div className="flex-1 flex flex-col gap-1 justify-center items-center p-1.5 md:p-3 bg-[#F8B624] border border-[#794911] rounded-br-2xl">
+          <div
+            className={cn(
+              "flex-1 flex flex-col gap-1 justify-center items-center p-1.5 md:p-3 bg-[#F8B624] border border-[#794911] rounded-br-2xl",
+              noHeader && "rounded-tr-2xl"
+            )}
+          >
             <span className="font-bold text-2xl md:text-4xl">{save}</span>
             <p className="text-xs sm:text-sm md:text-base whitespace-nowrap">
               Weekends & Evenings

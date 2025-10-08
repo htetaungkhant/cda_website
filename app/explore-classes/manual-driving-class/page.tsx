@@ -7,14 +7,18 @@ import UniformPaddingSection from "@/components/UniformPaddingSection";
 import ContactUsBanner from "@/components/ContactUsBanner";
 import { ButtonStyle1 } from "@/components/Button";
 import { CardStyle1 } from "@/components/Card";
+import { PricingCardStyle2 } from "@/components/PricingCard";
 import { DrivingMode } from "@/types/global";
 import { Instructor } from "@/types/instructor";
+import { Course } from "@/types/course";
 import { instructorService } from "@/services/server/instructor-service";
+import { courseService } from "@/services/server/course-service";
 
 export const dynamic = "force-dynamic";
 
 export default async function ManualDrivingClass() {
   let recentInstructors: Instructor[] = [];
+  let pricings: Course[] = [];
   let error: string | null = null;
 
   try {
@@ -42,6 +46,16 @@ export default async function ManualDrivingClass() {
     recentInstructors = [];
   }
 
+  try {
+    const courses = await courseService.getAllCourses();
+    pricings = courses?.filter((course) => course.category === "standard");
+  } catch (err) {
+    console.error("Failed to fetch pricings:", err);
+    error = "Failed to load pricings. Please try again later.";
+    toast.error(error);
+    pricings = [];
+  }
+
   return (
     <>
       <TopUniformSection title="Manual Driving">
@@ -63,7 +77,17 @@ export default async function ManualDrivingClass() {
               improve your manual driving skills, our expert instructors are
               here to guide you every step of the way.
             </p>
-            <div className="lg:px-5 flex justify-center lg:justify-end mt-4 lg:mt-6">
+            {pricings[1] && (
+              <PricingCardStyle2
+                noHeader
+                drivingMode={pricings[1]?.drivingMode}
+                price={`£${pricings[1]?.primaryPrice}`}
+                save={`£${pricings[1]?.secondaryPrice}`}
+                features={pricings[1]?.descriptionList}
+                className="max-lg:mx-auto border-none lg:w-full"
+              />
+            )}
+            <div className="lg:px-5 flex justify-center lg:justify-end mt-2">
               <ButtonStyle1
                 href="https://www.totaldrive.app/a/onlinebooking.php?173468681946771&all=true"
                 target="_blank"
