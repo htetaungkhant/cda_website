@@ -199,7 +199,7 @@ const Footer = () => {
                 </li>
                 <li className="flex gap-1">
                   <IoTime className="w-3 min-w-3 h-3 md:w-4 md:min-w-4 md:h-4 text-[#E2D5B4]" />
-                  <span>9:00 AM to 18:30 PM</span>
+                  <span>08:00 AM to 05:00 PM</span>
                 </li>
                 <li className="flex gap-1">
                   <FaPhoneAlt className="w-2.5 h-2.5 md:w-3 md:h-3 lg:w-4 lg:min-w-4 lg:h-4 text-[#E2D5B4]" />
