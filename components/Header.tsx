@@ -53,8 +53,8 @@ const Header = () => {
             }`}
           />
         </button>
-        <div className="max-lg:hidden xl:flex-1 px-2 xl:px-10 flex flex-col">
-          <ul className="mx-auto w-9/10 xl:w-4/5 flex justify-between gap-5 py-1.5 text-xs xl:text-sm">
+        <div className="max-lg:hidden flex-1 flex flex-col">
+          <ul className="mx-auto w-9/10 xl:w-4/5 flex justify-center gap-5 xl:gap-10 py-1.5 text-xs xl:text-sm">
             <li className="flex gap-1 items-center">
               <FaPhoneAlt className="w-3 h-3" />
               <span>+44 1223 974630</span>
@@ -142,9 +142,11 @@ const Header = () => {
               </Link>
             </div>
           </ul>
-          <span className="block w-full h-[1px] bg-white" />
-          <nav className="px-3 xl:px-5 py-1.5">
-            <ul className="flex justify-between gap-6 xl:gap-10 text-sm xl:text-base font-semibold">
+          <div className="px-3 xl:px-7">
+            <span className="block w-full h-[1px] bg-white" />
+          </div>
+          <nav className="xl:px-3 py-1.5">
+            <ul className="flex justify-center gap-5 xl:gap-13 text-sm xl:text-lg font-semibold">
               <li>
                 <Link
                   href="/about-us"
