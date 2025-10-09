@@ -8,20 +8,28 @@ import { PricingCardStyle2 } from "@/components/PricingCard";
 import { courseService } from "@/services/server/course-service";
 import { Course } from "@/types/course";
 
-export const dynamic = 'force-dynamic';
+export const dynamic = "force-dynamic";
 
 export default async function Pricing() {
-  let pricings: Course[] = [];
+  let manualPrice: Course | null = null;
+  let automaticPrice: Course | null = null;
   let error: string | null = null;
 
   try {
     const courses = await courseService.getAllCourses();
-    pricings = courses?.filter((course) => course.category === "standard");
+    const pricings = courses?.filter(
+      (course) => course.category === "standard"
+    );
+    manualPrice =
+      pricings?.find((course) => course.drivingMode === "manual") || null;
+    automaticPrice =
+      pricings?.find((course) => course.drivingMode === "automatic") || null;
   } catch (err) {
     console.error("Failed to fetch pricings:", err);
     error = "Failed to load pricings. Please try again later.";
     toast.error(error);
-    pricings = [];
+    manualPrice = null;
+    automaticPrice = null;
   }
 
   return (
@@ -34,24 +42,24 @@ export default async function Pricing() {
           <p className="max-lg:text-center text-lg lg:text-xl">
             (Beginners and Partly-Trained Students)
           </p>
-          {pricings.length > 0 ? (
+          {manualPrice || automaticPrice ? (
             <div className="sm:mx-auto grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-8">
               {/* Pricing Card */}
-              {pricings[0] && (
+              {manualPrice && (
                 <PricingCardStyle2
-                  drivingMode={pricings[0]?.drivingMode}
-                  price={`£${pricings[0]?.primaryPrice}`}
-                  save={`£${pricings[0]?.secondaryPrice}`}
-                  features={pricings[0]?.descriptionList}
+                  drivingMode={manualPrice?.drivingMode}
+                  price={`£${manualPrice?.primaryPrice}`}
+                  save={`£${manualPrice?.secondaryPrice}`}
+                  features={manualPrice?.descriptionList}
                 />
               )}
               {/* Pricing Card */}
-              {pricings[1] && (
+              {automaticPrice && (
                 <PricingCardStyle2
-                  drivingMode={pricings[1]?.drivingMode}
-                  price={`£${pricings[1]?.primaryPrice}`}
-                  save={`£${pricings[1]?.secondaryPrice}`}
-                  features={pricings[1]?.descriptionList}
+                  drivingMode={automaticPrice?.drivingMode}
+                  price={`£${automaticPrice?.primaryPrice}`}
+                  save={`£${automaticPrice?.secondaryPrice}`}
+                  features={automaticPrice?.descriptionList}
                 />
               )}
             </div>

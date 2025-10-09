@@ -48,7 +48,11 @@ export default async function ManualDrivingClass() {
 
   try {
     const courses = await courseService.getAllCourses();
-    pricings = courses?.filter((course) => course.category === "standard");
+    pricings =
+      courses?.filter(
+        (course) =>
+          course.category === "standard" && course.drivingMode === "manual"
+      ) || [];
   } catch (err) {
     console.error("Failed to fetch pricings:", err);
     error = "Failed to load pricings. Please try again later.";
@@ -77,13 +81,13 @@ export default async function ManualDrivingClass() {
               improve your manual driving skills, our expert instructors are
               here to guide you every step of the way.
             </p>
-            {pricings[1] && (
+            {pricings[0] && (
               <PricingCardStyle2
                 noHeader
-                drivingMode={pricings[1]?.drivingMode}
-                price={`£${pricings[1]?.primaryPrice}`}
-                save={`£${pricings[1]?.secondaryPrice}`}
-                features={pricings[1]?.descriptionList}
+                drivingMode={pricings[0]?.drivingMode}
+                price={`£${pricings[0]?.primaryPrice}`}
+                save={`£${pricings[0]?.secondaryPrice}`}
+                features={pricings[0]?.descriptionList}
                 className="max-lg:mx-auto border-none lg:w-full"
               />
             )}

@@ -48,7 +48,11 @@ export default async function AutomaticDrivingClass() {
 
   try {
     const courses = await courseService.getAllCourses();
-    pricings = courses?.filter((course) => course.category === "standard");
+    pricings =
+      courses?.filter(
+        (course) =>
+          course.category === "standard" && course.drivingMode === "automatic"
+      ) || [];
   } catch (err) {
     console.error("Failed to fetch pricings:", err);
     error = "Failed to load pricings. Please try again later.";
