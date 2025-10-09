@@ -62,7 +62,7 @@ const Header = () => {
             <li className="flex gap-1 items-center">
               <MdEmail className="w-3.5 h-3.5" />
               <a
-                href="mailto:support@cambridge.academy"
+                href="mailto:info@cambridgedriving.academy"
                 className="hover:underline"
               >
                 info@cambridgedriving.academy
@@ -461,7 +461,7 @@ const Header = () => {
             <li className="flex gap-1 items-center">
               <MdEmail className="w-3.5 h-3.5" />
               <a
-                href="mailto:support@cambridge.academy"
+                href="mailto:info@cambridgedriving.academy"
                 className="hover:underline"
               >
                 info@cambridgedriving.academy

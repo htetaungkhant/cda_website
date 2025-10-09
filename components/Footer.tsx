@@ -187,10 +187,10 @@ const Footer = () => {
                 <li className="flex gap-1">
                   <MdEmail className="w-3 min-w-3 h-3 md:w-4 md:min-w-4 md:h-4 text-[#E2D5B4]" />
                   <a
-                    href="mailto:support@cambridge.academy"
+                    href="mailto:info@cambridgedriving.academy"
                     className="hover:underline"
                   >
-                    support@cambridge.academy
+                    info@cambridgedriving.academy
                   </a>
                 </li>
                 <li className="flex gap-1">

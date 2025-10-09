@@ -87,7 +87,7 @@ const PrivacyPolicy = () => {
             <h2 className="text-base font-bold">8. Contact Us</h2>
             <p>
               For privacy-related inquiries, contact us at:
-              support@cambridgedriving.academy
+              info@cambridgedriving.academy
             </p>
             <p>
               📞 Phone: <span className="font-medium">01223 974630</span>
