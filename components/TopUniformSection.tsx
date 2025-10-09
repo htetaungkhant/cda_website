@@ -15,7 +15,7 @@ export default function TopUniformSection({
   return (
     <section
       className={cn(
-        "max-w-420 mx-auto px-6 pb-8 pt-36 max-lg:px-3 max-lg:pb-6 max-lg:pt-24",
+        "max-w-420 mx-auto px-6 pb-8 pt-40 max-lg:px-3 max-lg:pb-6 max-lg:pt-24",
         className
       )}
     >
