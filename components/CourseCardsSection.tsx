@@ -153,7 +153,7 @@ const CourseCardsSection = () => {
             </p>
           </div>
           <Link
-            href="/explore-classes/intensive-driving-class"
+            href="/explore-classes/manual-intensive-driving-class"
             className="absolute bottom-5 left-5 right-5 z-10 bg-white group-hover:bg-[var(--custom-primary)] text-black group-hover:text-white font-medium rounded-full flex items-center justify-between px-3 py-1 pr-1 transition-all duration-500 ease-in-out cursor-pointer hover:shadow-lg"
           >
             <span className="whitespace-nowrap">READ MORE</span>
@@ -302,7 +302,7 @@ const CourseCardsSection = () => {
             </div>
           </div>
           <Link
-            href="/explore-classes/intensive-driving-class"
+            href="/explore-classes/manual-intensive-driving-class"
             className="bg-[var(--custom-primary)] cursor-pointer text-white font-medium rounded-full flex items-center justify-between px-3 py-1 pr-1 hover:shadow-lg"
           >
             <span className="whitespace-nowrap">READ MORE</span>

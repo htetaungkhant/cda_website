@@ -349,7 +349,8 @@ const Header = () => {
                 subMenuHrefs={[
                   "/explore-classes/manual-driving-class",
                   "/explore-classes/automatic-driving-class",
-                  "/explore-classes/intensive-driving-class",
+                  "/explore-classes/manual-intensive-driving-class",
+                  "/explore-classes/automatic-intensive-driving-class",
                   "/explore-classes/bulk-booking-class",
                   "/explore-classes/pricing",
                 ]}
