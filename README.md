@@ -114,16 +114,59 @@ cda_website/
    Create a `.env.local` file in the root directory:
 
    ```env
-   # Public Variables (exposed to browser)
-   NEXT_PUBLIC_API_URL=http://localhost:3000/api/proxy
-   NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY=your_stripe_publishable_key
-   NODE_ENV=development
-
-   # Server-Only Variables (secure, not exposed)
-   API_HOST=https://your-api-domain.com
+   # API Configuration
+   NEXT_PUBLIC_API_URL=/api/proxy
+   
+   # Server-only secrets (do NOT prefix with NEXT_PUBLIC_)
+   API_HOST=http://your-api-host
    API_KEY=your_api_key
-   STRIPE_SECRET_KEY=your_stripe_secret_key
+   
+   # Chatbot Configuration
+   CHATBOT_URL=https://your-chatbot-backend-url.run.app
+   
+   # Google APIs Configuration
+   GOOGLE_PLACE_ID=your_google_place_id
+   GOOGLE_PLACE_API_KEY=your_google_place_api_key
+   GOOGLE_CLIENT_ID=your_google_client_id
+   GOOGLE_CLIENT_SECRET=your_google_client_secret
+   GOOGLE_REDIRECT_URI=http://localhost:3000/api/auth/callback
+   GOOGLE_SERVICE_ACCOUNT_KEY=""
+   
+   # Instagram API Configuration
+   IG_APP_ID=your_instagram_app_id
+   IG_APP_SECRET=your_instagram_app_secret
+   IG_ACCESS_TOKEN=your_instagram_access_token
+   
+   # Stripe API Keys
+   STRIPE_SECRET_KEY=sk_test_your_stripe_secret_key
+   NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY=pk_test_your_stripe_publishable_key
+   
+   # Environment
+   NODE_ENV=development
    ```
+
+   **Environment Variables Explained:**
+
+   | Variable | Type | Description |
+   |----------|------|-------------|
+   | `NEXT_PUBLIC_API_URL` | Public | API proxy endpoint path (default: `/api/proxy`) |
+   | `API_HOST` | Server | Backend API server hostname/IP |
+   | `API_KEY` | Server | Authentication key for backend API |
+   | `CHATBOT_URL` | Server | AI chatbot backend service URL |
+   | `GOOGLE_PLACE_ID` | Server | Google Place ID for displaying reviews |
+   | `GOOGLE_PLACE_API_KEY` | Server | Google Places API key for fetching location data |
+   | `GOOGLE_CLIENT_ID` | Server | Google OAuth client ID (for authentication) |
+   | `GOOGLE_CLIENT_SECRET` | Server | Google OAuth client secret |
+   | `GOOGLE_REDIRECT_URI` | Server | OAuth callback URL |
+   | `GOOGLE_SERVICE_ACCOUNT_KEY` | Server | Google service account credentials (JSON) |
+   | `IG_APP_ID` | Server | Instagram/Facebook App ID |
+   | `IG_APP_SECRET` | Server | Instagram/Facebook App secret |
+   | `IG_ACCESS_TOKEN` | Server | Instagram Graph API access token |
+   | `STRIPE_SECRET_KEY` | Server | Stripe secret key for payment processing |
+   | `NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY` | Public | Stripe publishable key (client-side) |
+   | `NODE_ENV` | Both | Environment mode (development/production) |
+
+   > **Security Note:** Variables prefixed with `NEXT_PUBLIC_` are exposed to the browser. Never prefix sensitive keys (API keys, secrets) with `NEXT_PUBLIC_`.
 
 ### Development
 
