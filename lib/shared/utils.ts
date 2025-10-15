@@ -9,3 +9,21 @@ export const stripePromise = loadStripe(
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
+
+export function chunkArray<T>(
+  array: T[],
+  size: number,
+  paddingValue: T | null = null
+): (T | null)[][] | undefined {
+  if (!Array.isArray(array) || size <= 0) return;
+  const result: (T | null)[][] = [];
+  for (let i = 0; i < array.length; i += size) {
+    const chunk: (T | null)[] = array.slice(i, i + size);
+    // Pad the chunk if it's smaller than the desired size
+    while (chunk.length < size) {
+      chunk.push(paddingValue);
+    }
+    result.push(chunk);
+  }
+  return result;
+}
