@@ -440,6 +440,19 @@ const Header = () => {
             <li className="text-center">
               <Link
                 onClick={() => setHamburgerDisplay(false)}
+                href="/cdapedia"
+                className={
+                  pathname === "/cdapedia"
+                    ? "text-[var(--custom-primary)] font-bold"
+                    : ""
+                }
+              >
+                CDAPEDIA
+              </Link>
+            </li>
+            <li className="text-center">
+              <Link
+                onClick={() => setHamburgerDisplay(false)}
                 href="/contact-us"
                 className={
                   pathname === "/contact-us"
